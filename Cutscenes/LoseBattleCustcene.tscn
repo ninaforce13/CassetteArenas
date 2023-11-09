@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=1]
+[ext_resource path="res://nodes/actions/battle/BattleEndCutscene.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=3]
+[ext_resource path="res://mods/RangerArena/Actions/FullHealParty.gd" type="Script" id=4]
+[ext_resource path="res://mods/RangerArena/Actions/ResetWinStreak.gd" type="Script" id=5]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=6]
+
+[node name="BattleEndCutscene" type="Node"]
+script = ExtResource( 2 )
+pop_scene_on_exit = true
+free_cutscene_on_exit = true
+triggers = 6
+
+[node name="Sequence" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="MessageDialogAction" type="Node" parent="Sequence"]
+script = ExtResource( 3 )
+title = "Superfan Alexa"
+messages = [ "ARENAS_ALEXA_LOSE_BATTLE1", "ARENAS_ALEXA_LOSE_BATTLE2" ]
+
+[node name="FullHealParty" type="Node" parent="Sequence"]
+script = ExtResource( 4 )
+notify_player = false
+
+[node name="ResetWinStreak" type="Node" parent="Sequence"]
+script = ExtResource( 5 )
+
+[node name="SetFlagAction" type="Node" parent="Sequence"]
+script = ExtResource( 6 )
+flag = "arena_reward"
+value = false

@@ -1,0 +1,166 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://data/monster_forms/decibelle.tres" type="Resource" id=3]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=4]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=5]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=7]
+[ext_resource path="res://data/monster_forms/djinn_entonic.tres" type="Resource" id=8]
+[ext_resource path="res://data/character_sfx/wilma_sfx.tres" type="Resource" id=9]
+[ext_resource path="res://sprites/portraits/wilma.png" type="Texture" id=10]
+[ext_resource path="res://sfx/voices/wilma/wilma_farewell.wav" type="AudioStream" id=11]
+[ext_resource path="res://sprites/portraits/wilma_happy.png" type="Texture" id=12]
+[ext_resource path="res://sfx/voices/wilma/wilma_story_1.wav" type="AudioStream" id=13]
+[ext_resource path="res://sfx/voices/wilma/wilma_thinking_2.wav" type="AudioStream" id=14]
+[ext_resource path="res://battle/ai/captains/LeaderIantheSidekickAI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://nodes/encounter_config/RandomTapeConfig.gd" type="Script" id=16]
+[ext_resource path="res://mods/RangerArena/Spawn Profiles/full_dex.tres" type="Resource" id=17]
+
+[node name="RangerTrader" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+npc_name = "RANGER_TRADER_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 16,
+"body_color_2": 5,
+"eye_color": 0,
+"face_accessory_color": 0,
+"favorite_color": 0,
+"hair_accessory_color": 11,
+"hair_color": 15,
+"legs_color": 16,
+"shoe_color": -1,
+"skin_color": 19
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "hairtie",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 16
+human_colors/body_color_2 = 5
+human_colors/eye_color = 0
+human_colors/face_accessory_color = 0
+human_colors/favorite_color = 0
+human_colors/hair_accessory_color = 11
+human_colors/hair_color = 15
+human_colors/legs_color = 16
+human_colors/skin_color = 19
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "hairtie",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 16,
+"body_color_2": 5,
+"eye_color": 0,
+"face_accessory_color": 0,
+"favorite_color": 0,
+"hair_accessory_color": 11,
+"hair_color": 15,
+"legs_color": 16,
+"shoe_color": -1,
+"skin_color": 19
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 1 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 2 ) ]
+transition = 4
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 5 )
+character_name = "RANGER_TRADER_NAME_SHORT"
+pronouns = 1
+team_name_override = "BATTLE_ADJECTIVE_RANGER"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 9 )
+character_kind = 1
+human_colors = {
+"body_color_1": 16,
+"body_color_2": 5,
+"eye_color": 0,
+"face_accessory_color": 0,
+"favorite_color": 0,
+"hair_accessory_color": 0,
+"hair_color": 15,
+"legs_color": 16,
+"shoe_color": -1,
+"skin_color": 19
+}
+human_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "hairtie",
+"head": "glasses_1",
+"legs": "generic"
+}
+ai = ExtResource( 15 )
+human_colors/body_color_1 = 16
+human_colors/body_color_2 = 5
+human_colors/eye_color = 0
+human_colors/face_accessory_color = 0
+human_colors/favorite_color = 0
+human_colors/hair_accessory_color = 0
+human_colors/hair_color = 15
+human_colors/legs_color = 16
+human_colors/shoe_color = -1
+human_colors/skin_color = 19
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 4 )
+form = ExtResource( 8 )
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 4 )
+form = ExtResource( 3 )
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 16 )
+seeded = false
+bootleg_rate = 0.01
+spawn_profile = ExtResource( 17 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 7 )
+portrait = ExtResource( 10 )
+title = "RANGER_TRADER_NAME"
+messages = [ "ARENAS_WILMA_SPAWN" ]
+audio = ExtResource( 14 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 7 )
+portrait = ExtResource( 10 )
+title = "RANGER_TRADER_NAME"
+messages = [ "ARENAS_WILMA_ENTRY" ]
+audio = ExtResource( 13 )
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 7 )
+portrait = ExtResource( 12 )
+title = "RANGER_TRADER_NAME"
+messages = [ "ARENAS_WILMA_EXIT" ]
+audio = ExtResource( 11 )

@@ -1,0 +1,158 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Scripts/RandomTapeConfigExt.gd" type="Script" id=2]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=3]
+[ext_resource path="res://mods/RangerArena/Spawn Profiles/frankie_deck.tres" type="Resource" id=4]
+[ext_resource path="res://mods/RangerArena/Characters/frankie.tres" type="Resource" id=5]
+[ext_resource path="res://mods/RangerArena/Scripts/TapeConfigExt.gd" type="Script" id=6]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=8]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=9]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=12]
+[ext_resource path="res://data/monster_forms/bansheep.tres" type="Resource" id=13]
+[ext_resource path="res://data/character_sfx/frankie_sfx.tres" type="Resource" id=15]
+[ext_resource path="res://sprites/portraits/frankie_awkward.png" type="Texture" id=16]
+[ext_resource path="res://sfx/voices/female_npc_7/female_npc_7_motivated_1.wav" type="AudioStream" id=17]
+[ext_resource path="res://sprites/portraits/frankie_happy.png" type="Texture" id=18]
+[ext_resource path="res://sfx/voices/female_npc_7/female_npc_7_awkward.wav" type="AudioStream" id=19]
+
+[node name="Frankie" instance=ExtResource( 9 )]
+npc_name = "FRANKIE_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 16,
+"body_color_2": 12,
+"eye_color": 10,
+"face_accessory_color": 14,
+"favorite_color": 9,
+"hair_accessory_color": 12,
+"hair_color": 9,
+"legs_color": 16,
+"shoe_color": 12,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "cat1",
+"head": "glasses_1",
+"legs": "skirt1",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 16
+human_colors/body_color_2 = 12
+human_colors/eye_color = 10
+human_colors/face_accessory_color = 14
+human_colors/favorite_color = 9
+human_colors/hair_accessory_color = 12
+human_colors/hair_color = 9
+human_colors/legs_color = 16
+human_colors/shoe_color = 12
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "cat1",
+"head": "glasses_1",
+"legs": "skirt1",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 16,
+"body_color_2": 12,
+"eye_color": 10,
+"face_accessory_color": 14,
+"favorite_color": 9,
+"hair_accessory_color": 12,
+"hair_color": 9,
+"legs_color": 16,
+"shoe_color": 12,
+"skin_color": -1
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 3 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 12 ) ]
+transition = 4
+
+[node name="FrankieCharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 8 )
+character_name = "FRANKIE_NAME"
+pronouns = 1
+level_scale_override_key = "monster_miniboss_smart"
+base_character = ExtResource( 5 )
+character_sfx = ExtResource( 15 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/FrankieCharacterConfig" index="0"]
+script = ExtResource( 6 )
+form = ExtResource( 13 )
+
+[node name="RandomTapeConfig" type="Node" parent="EncounterConfig/FrankieCharacterConfig" index="1"]
+script = ExtResource( 2 )
+seeded = false
+bootleg_rate = 0.6
+spawn_profile = ExtResource( 4 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="RandomTapeConfig2" type="Node" parent="EncounterConfig/FrankieCharacterConfig" index="2"]
+script = ExtResource( 2 )
+seeded = false
+bootleg_rate = 0.6
+spawn_profile = ExtResource( 4 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="EntryDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 1 )
+portrait = ExtResource( 18 )
+title = "FRANKIE_NAME"
+messages = [ "ARENAS_FRANKIE_ENTRY1", "ARENAS_FRANKIE_ENTRY2" ]
+audio = ExtResource( 17 )
+
+[node name="ExitDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 1 )
+portrait = ExtResource( 16 )
+title = "FRANKIE_NAME"
+messages = [ "ARENAS_FRANKIE_EXIT" ]
+audio = ExtResource( 19 )

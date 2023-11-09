@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=1]
+[ext_resource path="res://nodes/menus/AutoFocusConnector.gd" type="Script" id=2]
+[ext_resource path="res://mods/RangerArena/JSON/AssignmentActionButtons.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="TapeActionButtons" type="PanelContainer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -591.0
+margin_top = -306.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+margin_right = 450.0
+margin_bottom = 368.0
+rect_min_size = Vector2( 450, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+alignment = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+focus_on_hover = true
+
+[node name="EditStickersBtn" type="Button" parent="Buttons"]
+margin_right = 450.0
+margin_bottom = 58.0
+text = "Edit Stickers"
+
+[node name="SetBootlegTypeBtn" type="Button" parent="Buttons"]
+margin_top = 62.0
+margin_right = 450.0
+margin_bottom = 120.0
+text = "Set Bootleg Type"
+
+[node name="AddToPartyBtn" type="Button" parent="Buttons"]
+margin_top = 124.0
+margin_right = 450.0
+margin_bottom = 182.0
+text = "Assign Tape"
+
+[node name="PutAwayBtn" type="Button" parent="Buttons"]
+margin_top = 186.0
+margin_right = 450.0
+margin_bottom = 244.0
+rect_pivot_offset = Vector2( 1258.94, -627.958 )
+text = "Unassign Tape"
+
+[node name="SignatureBtn" type="Button" parent="Buttons"]
+margin_top = 248.0
+margin_right = 450.0
+margin_bottom = 306.0
+rect_pivot_offset = Vector2( 1258.94, -627.958 )
+text = "Set Signature Tape"
+
+[node name="CancelBtn" type="Button" parent="Buttons"]
+margin_top = 310.0
+margin_right = 450.0
+margin_bottom = 368.0
+text = "UI_BUTTON_CANCEL"
+
+[connection signal="gui_input" from="." to="." method="_on_TapeActionButtons_gui_input"]
+[connection signal="pressed" from="Buttons/EditStickersBtn" to="." method="_on_EditStickers_pressed"]
+[connection signal="pressed" from="Buttons/SetBootlegTypeBtn" to="." method="_on_SetBootlegTypeBtn_pressed"]
+[connection signal="pressed" from="Buttons/AddToPartyBtn" to="." method="_on_AddToPartyBtn_pressed"]
+[connection signal="pressed" from="Buttons/PutAwayBtn" to="." method="_on_PutAwayBtn_pressed"]
+[connection signal="pressed" from="Buttons/SignatureBtn" to="." method="_on_SignatureBtn_pressed"]
+[connection signal="pressed" from="Buttons/CancelBtn" to="." method="_on_CancelBtn_pressed"]

@@ -1,0 +1,214 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://data/monster_forms/southpaw.tres" type="Resource" id=1]
+[ext_resource path="res://sprites/characters/battle/clee-o.json" type="PackedScene" id=2]
+[ext_resource path="res://sprites/characters/world/clee-o.json" type="PackedScene" id=3]
+[ext_resource path="res://mods/RangerArena/Fighters/Captains/CaptainAI/CaptainCleeoSideKick.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/recurring_npcs/CaptainCleeO.gd" type="Script" id=5]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=6]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://data/battle_moves/spit.tres" type="Resource" id=9]
+[ext_resource path="res://data/battle_moves/dog_years.tres" type="Resource" id=10]
+[ext_resource path="res://data/monster_forms/spitzfyre.tres" type="Resource" id=11]
+[ext_resource path="res://data/battle_moves/smack.tres" type="Resource" id=12]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=13]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=14]
+[ext_resource path="res://data/battle_moves/battery.tres" type="Resource" id=15]
+[ext_resource path="res://data/battle_moves/charge.tres" type="Resource" id=16]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=17]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=18]
+[ext_resource path="res://data/battle_moves/ap_refund.tres" type="Resource" id=19]
+[ext_resource path="res://data/battle_moves/multi_shot.tres" type="Resource" id=20]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=21]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=22]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=23]
+[ext_resource path="res://data/battle_moves/roll_again.tres" type="Resource" id=24]
+[ext_resource path="res://data/battle_moves/ap_starter.tres" type="Resource" id=25]
+[ext_resource path="res://data/battle_moves/multi_smack.tres" type="Resource" id=26]
+[ext_resource path="res://data/battle_moves/gambit.tres" type="Resource" id=27]
+[ext_resource path="res://data/battle_moves/desperation.tres" type="Resource" id=28]
+[ext_resource path="res://data/character_sfx/female_npc_1_sfx.tres" type="Resource" id=29]
+[ext_resource path="res://data/monster_forms/triphinx.tres" type="Resource" id=30]
+[ext_resource path="res://data/monster_forms/sharktanker.tres" type="Resource" id=31]
+[ext_resource path="res://data/monster_forms/khufo.tres" type="Resource" id=32]
+[ext_resource path="res://data/monster_forms/fortiwinx.tres" type="Resource" id=33]
+[ext_resource path="res://data/characters/base_captain_cleeo.tres" type="Resource" id=34]
+[ext_resource path="res://data/character_sfx/captain_cleeo_sfx.tres" type="Resource" id=35]
+[ext_resource path="res://sprites/portraits/cleeo_angry.png" type="Texture" id=36]
+[ext_resource path="res://sfx/voices/cleeo/cleeo_thinking_1.wav" type="AudioStream" id=37]
+[ext_resource path="res://sfx/voices/cleeo/cleeo_sigh_2.wav" type="AudioStream" id=38]
+[ext_resource path="res://sfx/voices/cleeo/cleeo_motivated_2.wav" type="AudioStream" id=39]
+[ext_resource path="res://sprites/portraits/cleeo.png" type="Texture" id=40]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=41]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 17 )
+banner_scene = ExtResource( 7 )
+title = "CAPTAIN_CLEEO_NAME"
+subtitle = "CAPTAIN_CLEEO_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 18 )]
+collision_layer = 96
+script = ExtResource( 5 )
+initial_direction = "left"
+direction = Vector2( 0, 0 )
+npc_name = "CAPTAIN_CLEEO_NAME"
+pronouns = 1
+sprite_colors = {
+}
+sprite_part_names = {
+}
+sprite_body = ExtResource( 3 )
+character = null
+
+[node name="Sprite" parent="." index="2"]
+emission_palette = [ Color( 0.890196, 0.686275, 0.996078, 1 ) ]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 6 )
+music_override = ExtResource( 22 )
+music_vox_override = ExtResource( 21 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 8 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 14 )
+character_name = "CAPTAIN_CLEEO_NAME_SHORT"
+pronouns = 1
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+base_character = ExtResource( 34 )
+character_sfx = ExtResource( 35 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+custom_battle_sprite = ExtResource( 2 )
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 13 )
+form = ExtResource( 32 )
+moves_override = [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 28 ) ]
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 13 )
+form = ExtResource( 30 )
+moves_override = [ ExtResource( 9 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 20 ), ExtResource( 28 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 13 )
+form = ExtResource( 31 )
+moves_override = [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 16 ), ExtResource( 15 ) ]
+
+[node name="Sidekick" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 14 )
+character_name = "RANGER_NAME"
+pronouns = 1
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 41 )
+character_sfx = ExtResource( 29 )
+character_kind = 1
+human_colors = {
+"body_color_1": 13,
+"body_color_2": 2,
+"eye_color": 13,
+"face_accessory_color": 2,
+"favorite_color": 13,
+"hair_accessory_color": 13,
+"hair_color": 2,
+"legs_color": 13,
+"shoe_color": 13,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "dress1",
+"body": "dress1",
+"hair": "headscarf1",
+"head": "makeup1",
+"legs": ""
+}
+ai = ExtResource( 4 )
+human_colors/body_color_1 = 13
+human_colors/body_color_2 = 2
+human_colors/eye_color = 13
+human_colors/face_accessory_color = 2
+human_colors/favorite_color = 13
+human_colors/hair_accessory_color = 13
+human_colors/hair_color = 2
+human_colors/legs_color = 13
+human_colors/shoe_color = 13
+human_colors/skin_color = -1
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/Sidekick" index="0"]
+script = ExtResource( 13 )
+form = ExtResource( 11 )
+moves_override = [ ExtResource( 19 ), ExtResource( 25 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 24 ) ]
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/Sidekick" index="1"]
+script = ExtResource( 13 )
+form = ExtResource( 1 )
+moves_override = [ ExtResource( 19 ), ExtResource( 25 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 24 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/Sidekick" index="2"]
+script = ExtResource( 13 )
+form = ExtResource( 33 )
+moves_override = [ ExtResource( 19 ), ExtResource( 25 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 24 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 23 )
+portrait = ExtResource( 36 )
+title = "CAPTAIN_CLEEO_NAME_SHORT"
+messages = [ "ARENAS_CLEEO_SPAWN1", "ARENAS_CLEEO_SPAWN2" ]
+audio = ExtResource( 38 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 23 )
+portrait = ExtResource( 40 )
+title = "CAPTAIN_CLEEO_NAME_SHORT"
+messages = [ "ARENAS_CLEEO_ENTRY1", "ARENAS_CLEEO_ENTRY2" ]
+audio = ExtResource( 39 )
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 23 )
+portrait = ExtResource( 40 )
+title = "CAPTAIN_CLEEO_NAME_SHORT"
+messages = [ "ARENAS_CLEEO_EXIT" ]
+audio = ExtResource( 37 )
+
+[connection signal="interacted" from="Interaction" to="." method="_on_Interaction_interacted"]

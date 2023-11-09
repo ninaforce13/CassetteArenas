@@ -1,0 +1,211 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://nodes/layered_sprite/WorldUniqueSprite3D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/sprite_container/SpriteContainer.gd" type="Script" id=2]
+[ext_resource path="res://data/characters/dog.tres" type="Resource" id=3]
+[ext_resource path="res://sprites/characters/world/dog.json" type="PackedScene" id=4]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=5]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=6]
+[ext_resource path="res://mods/RangerArena/Scripts/RandomTapeConfigExt.gd" type="Script" id=7]
+[ext_resource path="res://mods/RangerArena/Scripts/TapeConfigExt.gd" type="Script" id=8]
+[ext_resource path="res://data/character_sfx/dog_sfx.tres" type="Resource" id=9]
+[ext_resource path="res://data/monster_forms/spitzfyre.tres" type="Resource" id=10]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=11]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/portraits/dog.png" type="Texture" id=13]
+[ext_resource path="res://sfx/voices/dog/dog_whine.wav" type="AudioStream" id=14]
+[ext_resource path="res://sprites/portraits/dog_shocked.png" type="Texture" id=15]
+[ext_resource path="res://sfx/voices/dog/dog_bark_2.wav" type="AudioStream" id=16]
+[ext_resource path="res://mods/RangerArena/Spawn Profiles/barkley_deck.tres" type="Resource" id=17]
+[ext_resource path="res://sprites/characters/battle/dog.json" type="PackedScene" id=18]
+[ext_resource path="res://world/npc/EmotePlayer.tscn" type="PackedScene" id=19]
+[ext_resource path="res://world/npc/Footsteps.tscn" type="PackedScene" id=20]
+[ext_resource path="res://world/core/Interaction.tscn" type="PackedScene" id=21]
+[ext_resource path="res://world/npc/Controls.gd" type="Script" id=22]
+[ext_resource path="res://world/npc/FloorRay.gd" type="Script" id=23]
+[ext_resource path="res://world/npc/HumanNPC.gd" type="Script" id=24]
+[ext_resource path="res://world/npc/HumanStateMachine.tscn" type="PackedScene" id=25]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.9
+height = 0.9
+
+[node name="Dog" type="KinematicBody"]
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 24 )
+direction = Vector2( 0, 1 )
+npc_name = "DOG_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 16,
+"body_color_2": 16,
+"eye_color": 16,
+"face_accessory_color": 16,
+"favorite_color": 7,
+"hair_accessory_color": 16,
+"hair_color": 16,
+"legs_color": 16,
+"shoe_color": 16,
+"skin_color": 16
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "",
+"wings": "dog"
+}
+sprite_body = ExtResource( 4 )
+character = ExtResource( 3 )
+human_colors/body_color_1 = 16
+human_colors/body_color_2 = 16
+human_colors/eye_color = 16
+human_colors/face_accessory_color = 16
+human_colors/favorite_color = 7
+human_colors/hair_accessory_color = 16
+human_colors/hair_color = 16
+human_colors/legs_color = 16
+human_colors/shoe_color = 16
+human_colors/skin_color = 16
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Spatial" parent="."]
+script = ExtResource( 2 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+
+[node name="WorldUniqueSprite3D" parent="Sprite" instance=ExtResource( 1 )]
+part_names = {
+"arms": "sweater1",
+"body": "",
+"hair": "short",
+"head": "generic",
+"legs": "",
+"wings": "dog"
+}
+colors = {
+"body_color_1": 16,
+"body_color_2": 16,
+"eye_color": 16,
+"face_accessory_color": 16,
+"favorite_color": 7,
+"hair_accessory_color": 16,
+"hair_color": 16,
+"legs_color": 16,
+"shoe_color": 16,
+"skin_color": 16
+}
+sprite_body = ExtResource( 4 )
+
+[node name="EmotePlayer" parent="." instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="." instance=ExtResource( 21 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 1 )
+
+[node name="Footsteps" parent="." instance=ExtResource( 20 )]
+
+[node name="Controls" type="Node" parent="."]
+script = ExtResource( 22 )
+
+[node name="FloorRay" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 23 )
+
+[node name="StateMachine" parent="." instance=ExtResource( 25 )]
+
+[node name="EncounterConfig" type="Node" parent="."]
+script = ExtResource( 5 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 12 ) ]
+transition = 4
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig"]
+script = ExtResource( 6 )
+character_name = "DOG_NAME"
+pronouns = 0
+level_scale_override_key = "monster_miniboss_smart"
+base_character = ExtResource( 3 )
+character_sfx = ExtResource( 9 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+custom_battle_sprite = ExtResource( 18 )
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig"]
+script = ExtResource( 8 )
+form = ExtResource( 10 )
+
+[node name="RandomTapeConfig" type="Node" parent="EncounterConfig/CharacterConfig"]
+script = ExtResource( 7 )
+seeded = false
+bootleg_rate = 0.5
+spawn_profile = ExtResource( 17 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="RandomTapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig"]
+script = ExtResource( 7 )
+seeded = false
+bootleg_rate = 0.5
+spawn_profile = ExtResource( 17 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="EntryDialogue" type="Node" parent="."]
+script = ExtResource( 11 )
+portrait = ExtResource( 13 )
+title = "DOG_NAME"
+messages = [ "ARENAS_BARKLEY_ENTRY" ]
+audio = ExtResource( 16 )
+
+[node name="ExitDialogue" type="Node" parent="."]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "DOG_NAME"
+messages = [ "ARENAS_BARKLEY_EXIT" ]
+audio = ExtResource( 14 )
+
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="set_paused" binds= [ true ]]

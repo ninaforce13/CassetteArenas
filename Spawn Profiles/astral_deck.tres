@@ -1,0 +1,56 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://data/spawn_config_scripts/MonsterSpawnProfile.gd" type="Script" id=1]
+[ext_resource path="res://data/monster_forms/wooltergeist.tres" type="Resource" id=2]
+[ext_resource path="res://data/monster_forms/ramtasm.tres" type="Resource" id=3]
+[ext_resource path="res://data/monster_forms/stardigrade.tres" type="Resource" id=4]
+[ext_resource path="res://data/monster_forms/galagor.tres" type="Resource" id=5]
+[ext_resource path="res://data/monster_forms/adeptile.tres" type="Resource" id=6]
+[ext_resource path="res://data/monster_forms/khufo.tres" type="Resource" id=7]
+[ext_resource path="res://data/monster_forms/djinn_entonic.tres" type="Resource" id=8]
+[ext_resource path="res://data/monster_forms/shining_kuneko.tres" type="Resource" id=9]
+
+[resource]
+script = ExtResource( 1 )
+spawn_configs = [  ]
+habitat_name = ""
+habitat_require_flag = ""
+habitat_overworld_chunks = [  ]
+habitat_endless = true
+min_team_size = 1
+max_team_size = 2
+disable_fleeing = false
+level_scale_override_key = ""
+num_species = 8
+species_0/monster_form = ExtResource( 2 )
+species_0/weight = 1.0
+species_0/hour_min = 0.0
+species_0/hour_max = 24.0
+species_1/monster_form = ExtResource( 3 )
+species_1/weight = 1.0
+species_1/hour_min = 0.0
+species_1/hour_max = 24.0
+species_2/monster_form = ExtResource( 7 )
+species_2/weight = 1.0
+species_2/hour_min = 0.0
+species_2/hour_max = 24.0
+species_3/monster_form = ExtResource( 4 )
+species_3/weight = 1.0
+species_3/hour_min = 0.0
+species_3/hour_max = 24.0
+species_4/monster_form = ExtResource( 5 )
+species_4/weight = 1.0
+species_4/hour_min = 0.0
+species_4/hour_max = 24.0
+species_5/monster_form = ExtResource( 9 )
+species_5/weight = 1.0
+species_5/hour_min = 0.0
+species_5/hour_max = 24.0
+species_6/monster_form = ExtResource( 8 )
+species_6/weight = 1.0
+species_6/hour_min = 0.0
+species_6/hour_max = 24.0
+species_7/monster_form = ExtResource( 6 )
+species_7/weight = 1.0
+species_7/hour_min = 0.0
+species_7/hour_max = 24.0

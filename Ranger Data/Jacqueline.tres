@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/RangerData.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/jacqueline/cryoshear.tres" type="Resource" id=2]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/jacqueline/plasmantler.tres" type="Resource" id=3]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/jacqueline/folklord1.tres" type="Resource" id=4]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/jacqueline/decibelle.tres" type="Resource" id=5]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/jacqueline/queenyx.tres" type="Resource" id=6]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/jacqueline/mardiusa.tres" type="Resource" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "JACQUELINE_NAME"
+human_colors = {
+"body_color_1": 15,
+"body_color_2": 15,
+"eye_color": 7,
+"face_accessory_color": -1,
+"favorite_color": 10,
+"hair_accessory_color": -1,
+"hair_color": 1,
+"legs_color": 7,
+"shoe_color": 16,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "cultist1",
+"body": "cultist1",
+"hair": "jacqueline",
+"head": "generic",
+"legs": "skirt1",
+"wings": "generic"
+}
+pronouns = 0
+introdialog = "Let's set a good example for the others."
+defeatdialog = "I see, there's still much for me to learn as well."
+biotext = "Previously part of the cultists. She's now dedicated to rehabilitating her people and mending their relationship with the rest of New Wirral."
+recruiter = "Bytten Studio"
+recruiter_id = "0000-0000"
+tape0 = ExtResource( 5 )
+tape1 = ExtResource( 2 )
+tape2 = ExtResource( 4 )
+tape3 = ExtResource( 7 )
+tape4 = ExtResource( 3 )
+tape5 = ExtResource( 6 )
+stats = null
+version = 1.1
+default_stickers = true

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://data/battle_moves/change_the_record.tres" type="Resource" id=1]
+[ext_resource path="res://battle/ai/BalancedAI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://battle/ai/WeightedAIMovePreference.gd" type="Script" id=3]
+[ext_resource path="res://data/battle_moves/shrapnel.tres" type="Resource" id=4]
+
+[node name="BalancedAI" instance=ExtResource( 2 )]
+cooldown_debuff = 10.0
+
+[node name="WeightedAIMovePreference" type="Node" parent="." index="0"]
+script = ExtResource( 3 )
+move = ExtResource( 1 )
+only_if_target_is_enemy = true
+score = 10.0
+score_mode = 1
+
+[node name="WeightedAIMovePreference2" type="Node" parent="." index="1"]
+script = ExtResource( 3 )
+move = ExtResource( 4 )
+only_if_target_is_enemy = true
+score = 10.0
+score_mode = 1

@@ -1,0 +1,154 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=1]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=2]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=3]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/RangerArena/Scripts/RandomTapeConfigExt.gd" type="Script" id=6]
+[ext_resource path="res://mods/RangerArena/Scripts/TapeConfigExt.gd" type="Script" id=7]
+[ext_resource path="res://sfx/voices/clemence/clemence_sigh_2.wav" type="AudioStream" id=8]
+[ext_resource path="res://sprites/portraits/clemence_sad.png" type="Texture" id=9]
+[ext_resource path="res://sprites/portraits/clemence_happy.png" type="Texture" id=10]
+[ext_resource path="res://sfx/voices/clemence/clemence_greeting.wav" type="AudioStream" id=11]
+[ext_resource path="res://mods/RangerArena/Spawn Profiles/clemence_deck.tres" type="Resource" id=12]
+[ext_resource path="res://data/monster_forms/djinn_entonic.tres" type="Resource" id=13]
+[ext_resource path="res://data/character_sfx/female_npc_4_sfx.tres" type="Resource" id=14]
+[ext_resource path="res://mods/RangerArena/Characters/clemence.tres" type="Resource" id=15]
+
+[node name="Clemence" instance=ExtResource( 4 )]
+npc_name = "CLEMENCE_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 14,
+"body_color_2": 16,
+"eye_color": 5,
+"face_accessory_color": 2,
+"favorite_color": 0,
+"hair_accessory_color": 0,
+"hair_color": 0,
+"legs_color": 12,
+"shoe_color": 5,
+"skin_color": 19
+}
+sprite_part_names = {
+"arms": "apron1",
+"body": "apron1",
+"hair": "bob2",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 14
+human_colors/body_color_2 = 16
+human_colors/eye_color = 5
+human_colors/face_accessory_color = 2
+human_colors/favorite_color = 0
+human_colors/hair_accessory_color = 0
+human_colors/hair_color = 0
+human_colors/legs_color = 12
+human_colors/shoe_color = 5
+human_colors/skin_color = 19
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "apron1",
+"body": "apron1",
+"hair": "bob2",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 14,
+"body_color_2": 16,
+"eye_color": 5,
+"face_accessory_color": 2,
+"favorite_color": 0,
+"hair_accessory_color": 0,
+"hair_color": 0,
+"legs_color": 12,
+"shoe_color": 5,
+"skin_color": 19
+}
+
+[node name="Interaction" parent="." index="4"]
+pawn_path = NodePath("../../Clemence")
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 2 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 5 ) ]
+transition = 4
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 3 )
+character_name = "CLEMENCE_NAME"
+level_scale_override_key = "monster_miniboss_smart"
+base_character = ExtResource( 15 )
+character_sfx = ExtResource( 14 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 7 )
+form = ExtResource( 13 )
+
+[node name="RandomTapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 6 )
+seeded = false
+bootleg_rate = 0.2
+spawn_profile = ExtResource( 12 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="RandomTapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 6 )
+seeded = false
+bootleg_rate = 0.2
+spawn_profile = ExtResource( 12 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="EntryDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 1 )
+portrait = ExtResource( 10 )
+title = "CLEMENCE_NAME"
+messages = [ "ARENAS_CLEMENCE_ENTRY" ]
+audio = ExtResource( 11 )
+
+[node name="ExitDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 1 )
+portrait = ExtResource( 9 )
+title = "CLEMENCE_NAME"
+messages = [ "ARENAS_CLEMENCE_EXIT" ]
+audio = ExtResource( 8 )

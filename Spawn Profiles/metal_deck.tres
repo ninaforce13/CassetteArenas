@@ -1,0 +1,81 @@
+[gd_resource type="Resource" load_steps=15 format=2]
+
+[ext_resource path="res://data/spawn_config_scripts/MonsterSpawnProfile.gd" type="Script" id=1]
+[ext_resource path="res://data/monster_forms/gumbaal.tres" type="Resource" id=2]
+[ext_resource path="res://data/monster_forms/vendemon.tres" type="Resource" id=3]
+[ext_resource path="res://data/monster_forms/gearyu.tres" type="Resource" id=4]
+[ext_resource path="res://data/monster_forms/palangolin.tres" type="Resource" id=5]
+[ext_resource path="res://data/monster_forms/manispear.tres" type="Resource" id=6]
+[ext_resource path="res://data/monster_forms/puppercut.tres" type="Resource" id=7]
+[ext_resource path="res://data/monster_forms/southpaw.tres" type="Resource" id=8]
+[ext_resource path="res://data/monster_forms/triphinx.tres" type="Resource" id=9]
+[ext_resource path="res://data/monster_forms/allseer.tres" type="Resource" id=10]
+[ext_resource path="res://data/monster_forms/ferriclaw.tres" type="Resource" id=11]
+[ext_resource path="res://data/monster_forms/auriclaw.tres" type="Resource" id=12]
+[ext_resource path="res://data/monster_forms/binvader.tres" type="Resource" id=13]
+[ext_resource path="res://data/monster_forms/miss_mimic.tres" type="Resource" id=14]
+
+[resource]
+script = ExtResource( 1 )
+spawn_configs = [  ]
+habitat_name = ""
+habitat_require_flag = ""
+habitat_overworld_chunks = [  ]
+habitat_endless = true
+min_team_size = 1
+max_team_size = 2
+disable_fleeing = false
+level_scale_override_key = ""
+num_species = 13
+species_0/monster_form = ExtResource( 3 )
+species_0/weight = 1.0
+species_0/hour_min = 0.0
+species_0/hour_max = 24.0
+species_1/monster_form = ExtResource( 2 )
+species_1/weight = 1.0
+species_1/hour_min = 0.0
+species_1/hour_max = 24.0
+species_2/monster_form = ExtResource( 6 )
+species_2/weight = 1.0
+species_2/hour_min = 0.0
+species_2/hour_max = 24.0
+species_3/monster_form = ExtResource( 5 )
+species_3/weight = 1.0
+species_3/hour_min = 0.0
+species_3/hour_max = 24.0
+species_4/monster_form = ExtResource( 7 )
+species_4/weight = 1.0
+species_4/hour_min = 0.0
+species_4/hour_max = 24.0
+species_5/monster_form = ExtResource( 8 )
+species_5/weight = 1.0
+species_5/hour_min = 0.0
+species_5/hour_max = 24.0
+species_6/monster_form = ExtResource( 4 )
+species_6/weight = 1.0
+species_6/hour_min = 0.0
+species_6/hour_max = 24.0
+species_7/monster_form = ExtResource( 10 )
+species_7/weight = 1.0
+species_7/hour_min = 0.0
+species_7/hour_max = 24.0
+species_8/monster_form = ExtResource( 9 )
+species_8/weight = 1.0
+species_8/hour_min = 0.0
+species_8/hour_max = 24.0
+species_9/monster_form = ExtResource( 13 )
+species_9/weight = 1.0
+species_9/hour_min = 0.0
+species_9/hour_max = 24.0
+species_10/monster_form = ExtResource( 14 )
+species_10/weight = 1.0
+species_10/hour_min = 0.0
+species_10/hour_max = 24.0
+species_11/monster_form = ExtResource( 11 )
+species_11/weight = 1.0
+species_11/hour_min = 0.0
+species_11/hour_max = 24.0
+species_12/monster_form = ExtResource( 12 )
+species_12/weight = 1.0
+species_12/hour_min = 0.0
+species_12/hour_max = 24.0

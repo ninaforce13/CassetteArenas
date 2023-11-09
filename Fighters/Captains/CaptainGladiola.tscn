@@ -1,0 +1,243 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://data/battle_moves/double_slice.tres" type="Resource" id=1]
+[ext_resource path="res://data/monster_forms/southpaw.tres" type="Resource" id=2]
+[ext_resource path="res://battle/ai/captains/CaptainGladiolaSidekickAI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=4]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=5]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://data/battle_moves/spit.tres" type="Resource" id=7]
+[ext_resource path="res://data/battle_moves/dodge.tres" type="Resource" id=8]
+[ext_resource path="res://data/battle_moves/smack.tres" type="Resource" id=9]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=10]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=11]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=12]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=13]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=14]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=15]
+[ext_resource path="res://data/character_sfx/male_npc_1_sfx.tres" type="Resource" id=16]
+[ext_resource path="res://data/battle_moves/multi_smack.tres" type="Resource" id=17]
+[ext_resource path="res://data/battle_moves/peekaboo.tres" type="Resource" id=18]
+[ext_resource path="res://data/monster_forms/faerious.tres" type="Resource" id=19]
+[ext_resource path="res://data/battle_moves/jagged_edge.tres" type="Resource" id=20]
+[ext_resource path="res://data/monster_forms/palangolin.tres" type="Resource" id=21]
+[ext_resource path="res://data/battle_moves/bishbashbosh.tres" type="Resource" id=22]
+[ext_resource path="res://data/monster_forms/cryoshear.tres" type="Resource" id=23]
+[ext_resource path="res://data/character_sfx/captain_gladiola_sfx.tres" type="Resource" id=24]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=25]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=26]
+[ext_resource path="res://sprites/portraits/gladiola.png" type="Texture" id=27]
+[ext_resource path="res://sprites/portraits/gladiola_happy.png" type="Texture" id=28]
+[ext_resource path="res://data/monster_forms/auriclaw.tres" type="Resource" id=29]
+[ext_resource path="res://data/monster_forms/beanstalker.tres" type="Resource" id=30]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 12 )
+banner_scene = ExtResource( 6 )
+title = "CAPTAIN_GLADIOLA_NAME"
+subtitle = "CAPTAIN_GLADIOLA_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+npc_name = "CAPTAIN_GLADIOLA_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 11,
+"body_color_2": 14,
+"eye_color": 11,
+"face_accessory_color": 11,
+"favorite_color": 11,
+"hair_accessory_color": 14,
+"hair_color": 12,
+"legs_color": 12,
+"shoe_color": 14,
+"skin_color": 21
+}
+sprite_part_names = {
+"arms": "gladiola",
+"body": "gladiola",
+"hair": "braid1",
+"head": "makeup1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 11
+human_colors/body_color_2 = 14
+human_colors/eye_color = 11
+human_colors/face_accessory_color = 11
+human_colors/favorite_color = 11
+human_colors/hair_accessory_color = 14
+human_colors/hair_color = 12
+human_colors/legs_color = 12
+human_colors/shoe_color = 14
+human_colors/skin_color = 21
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "gladiola",
+"body": "gladiola",
+"hair": "braid1",
+"head": "makeup1",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 11,
+"body_color_2": 14,
+"eye_color": 11,
+"face_accessory_color": 11,
+"favorite_color": 11,
+"hair_accessory_color": 14,
+"hair_color": 12,
+"legs_color": 12,
+"shoe_color": 14,
+"skin_color": 21
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 5 )
+music_override = ExtResource( 15 )
+music_vox_override = ExtResource( 14 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 25 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 11 )
+character_name = "CAPTAIN_GLADIOLA_NAME_SHORT"
+pronouns = 1
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 24 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 10 )
+form = ExtResource( 21 )
+moves_override = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 17 ) ]
+
+[node name="TapeConfig5" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 10 )
+form = ExtResource( 23 )
+moves_override = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 1 ) ]
+
+[node name="TapeConfig6" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 10 )
+form = ExtResource( 19 )
+moves_override = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 1 ) ]
+
+[node name="Sidekick" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 11 )
+character_name = "RANGER_NAME"
+pronouns = 0
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 4 )
+character_sfx = ExtResource( 16 )
+character_kind = 1
+human_colors = {
+"body_color_1": 2,
+"body_color_2": 14,
+"eye_color": 0,
+"face_accessory_color": 0,
+"favorite_color": 2,
+"hair_accessory_color": 12,
+"hair_color": 12,
+"legs_color": 2,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "",
+"head": "makeup2",
+"legs": ""
+}
+ai = ExtResource( 3 )
+human_colors/body_color_1 = 2
+human_colors/body_color_2 = 14
+human_colors/eye_color = 0
+human_colors/face_accessory_color = 0
+human_colors/favorite_color = 2
+human_colors/hair_accessory_color = 12
+human_colors/hair_color = 12
+human_colors/legs_color = 2
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/Sidekick" index="0"]
+script = ExtResource( 10 )
+form = ExtResource( 2 )
+moves_override = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 22 ) ]
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/Sidekick" index="1"]
+script = ExtResource( 10 )
+form = ExtResource( 30 )
+moves_override = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 22 ) ]
+
+[node name="TapeConfig5" type="Node" parent="EncounterConfig/Sidekick" index="2"]
+script = ExtResource( 10 )
+form = ExtResource( 29 )
+moves_override = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 22 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 26 )
+portrait = ExtResource( 27 )
+title = "CAPTAIN_GLADIOLA_NAME_SHORT"
+messages = [ "ARENAS_GLADIOLA_SPAWN" ]
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 26 )
+portrait = ExtResource( 27 )
+title = "CAPTAIN_GLADIOLA_NAME_SHORT"
+messages = [ "ARENAS_GLADIOLA_ENTRY" ]
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 26 )
+portrait = ExtResource( 28 )
+title = "CAPTAIN_GLADIOLA_NAME_SHORT"
+messages = [ "ARENAS_GLADIOLA_EXIT" ]

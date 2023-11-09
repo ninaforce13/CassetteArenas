@@ -1,0 +1,246 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=1]
+[ext_resource path="res://data/battle_moves/smack.tres" type="Resource" id=2]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=3]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=4]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=5]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://data/monster_forms/capricorpse.tres" type="Resource" id=7]
+[ext_resource path="res://data/battle_moves/beast_wall.tres" type="Resource" id=8]
+[ext_resource path="res://data/monster_forms/fungogh.tres" type="Resource" id=9]
+[ext_resource path="res://data/battle_moves/throw.tres" type="Resource" id=10]
+[ext_resource path="res://data/battle_moves/bite.tres" type="Resource" id=11]
+[ext_resource path="res://data/monster_forms/scubalrus.tres" type="Resource" id=12]
+[ext_resource path="res://data/battle_moves/resistance_lightning.tres" type="Resource" id=13]
+[ext_resource path="res://data/battle_moves/starter2_passive.tres" type="Resource" id=14]
+[ext_resource path="res://data/battle_moves/mountain_smash.tres" type="Resource" id=15]
+[ext_resource path="res://data/battle_moves/elemental_wall.tres" type="Resource" id=16]
+[ext_resource path="res://data/battle_moves/gemstone_wall.tres" type="Resource" id=17]
+[ext_resource path="res://data/monster_forms/lobstacle.tres" type="Resource" id=18]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=19]
+[ext_resource path="res://data/monster_forms/picksie.tres" type="Resource" id=20]
+[ext_resource path="res://data/character_sfx/male_npc_2_sfx.tres" type="Resource" id=21]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=22]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=23]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=24]
+[ext_resource path="res://battle/ai/captains/CaptainWallaceSidekickAI.tscn" type="PackedScene" id=25]
+[ext_resource path="res://data/battle_moves/multi_smack.tres" type="Resource" id=26]
+[ext_resource path="res://data/character_sfx/captain_wallace_sfx.tres" type="Resource" id=27]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=28]
+[ext_resource path="res://sfx/voices/wallace/wallace_laugh_1.wav" type="AudioStream" id=29]
+[ext_resource path="res://sprites/portraits/wallace.png" type="Texture" id=30]
+[ext_resource path="res://sprites/portraits/wallace_happy.png" type="Texture" id=31]
+[ext_resource path="res://sfx/voices/wallace/wallace_compliment.wav" type="AudioStream" id=32]
+[ext_resource path="res://sfx/voices/wallace/wallace_motivated_2.wav" type="AudioStream" id=33]
+[ext_resource path="res://data/battle_moves/abramacabra.tres" type="Resource" id=34]
+[ext_resource path="res://data/monster_forms/folklord.tres" type="Resource" id=35]
+[ext_resource path="res://data/battle_moves/custom_starter.tres" type="Resource" id=36]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=37]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+banner_scene = ExtResource( 24 )
+title = "CAPTAIN_WALLACE_NAME"
+subtitle = "CAPTAIN_WALLACE_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 6 )]
+npc_name = "CAPTAIN_WALLACE_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 2,
+"body_color_2": 5,
+"eye_color": 6,
+"face_accessory_color": -1,
+"favorite_color": 4,
+"hair_accessory_color": 2,
+"hair_color": 16,
+"legs_color": 6,
+"shoe_color": 12,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "jacket3",
+"body": "jacket3",
+"hair": "hardhat1",
+"head": "grumpy",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 2
+human_colors/body_color_2 = 5
+human_colors/eye_color = 6
+human_colors/favorite_color = 4
+human_colors/hair_accessory_color = 2
+human_colors/hair_color = 16
+human_colors/legs_color = 6
+human_colors/shoe_color = 12
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "jacket3",
+"body": "jacket3",
+"hair": "hardhat1",
+"head": "grumpy",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 2,
+"body_color_2": 5,
+"eye_color": 6,
+"face_accessory_color": -1,
+"favorite_color": 4,
+"hair_accessory_color": 2,
+"hair_color": 16,
+"legs_color": 6,
+"shoe_color": 12,
+"skin_color": -1
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 1 )
+music_override = ExtResource( 22 )
+music_vox_override = ExtResource( 23 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 19 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 3 )
+character_name = "CAPTAIN_WALLACE_NAME_SHORT"
+pronouns = 0
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 27 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 4 )
+form = ExtResource( 7 )
+moves_override = [ ExtResource( 8 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 14 ), ExtResource( 11 ) ]
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 4 )
+form = ExtResource( 18 )
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 4 )
+form = ExtResource( 9 )
+
+[node name="Sidekick" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 3 )
+character_name = "RANGER_NAME"
+pronouns = 0
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 37 )
+character_sfx = ExtResource( 21 )
+character_kind = 1
+human_colors = {
+"body_color_1": 5,
+"body_color_2": 14,
+"eye_color": 16,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": 15,
+"legs_color": 3,
+"shoe_color": -1,
+"skin_color": 20
+}
+human_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "bald",
+"head": "beard1",
+"legs": ""
+}
+ai = ExtResource( 25 )
+human_colors/body_color_1 = 5
+human_colors/body_color_2 = 14
+human_colors/eye_color = 16
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = 15
+human_colors/legs_color = 3
+human_colors/shoe_color = -1
+human_colors/skin_color = 20
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/Sidekick" index="0"]
+script = ExtResource( 4 )
+form = ExtResource( 20 )
+moves_override = [ ExtResource( 17 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 13 ) ]
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/Sidekick" index="1"]
+script = ExtResource( 4 )
+form = ExtResource( 35 )
+moves_override = [ ExtResource( 36 ), ExtResource( 34 ), ExtResource( 2 ), ExtResource( 26 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/Sidekick" index="2"]
+script = ExtResource( 4 )
+form = ExtResource( 12 )
+moves_override = [ ExtResource( 2 ), ExtResource( 16 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 28 )
+portrait = ExtResource( 31 )
+title = "CAPTAIN_WALLACE_NAME_SHORT"
+messages = [ "ARENAS_WALLACE_SPAWN" ]
+audio = ExtResource( 29 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 28 )
+portrait = ExtResource( 30 )
+title = "CAPTAIN_WALLACE_NAME_SHORT"
+messages = [ "ARENAS_WALLACE_ENTRY" ]
+audio = ExtResource( 33 )
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 28 )
+portrait = ExtResource( 31 )
+title = "CAPTAIN_WALLACE_NAME_SHORT"
+messages = [ "ARENAS_WALLACE_EXIT" ]
+audio = ExtResource( 32 )

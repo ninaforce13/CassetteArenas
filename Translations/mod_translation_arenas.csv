@@ -1,0 +1,276 @@
+﻿id,en
+ARENAS_DOORMAN_GREETING,Would you like to participate in the Cassette Arena?
+ARENAS_MAIN_MENU1,Debut Arena
+ARENAS_MAIN_MENU2,Remasters Arena
+ARENAS_MAIN_MENU3,Mix Tapes Arena
+ARENAS_MAIN_MENU4,Bootleg Arena
+ARENAS_MAIN_MENU5,Custom Arena
+ARENAS_MAIN_MENU6,Trainee Recruitment
+ARENAS_MAIN_MENU7,Arena Options
+ARENAS_MAIN_MENU8,"What's the... ""Cassette Arena""?"
+ARENAS_MAIN_MENU9,"No, Thanks"
+ARENAS_CHOOSE1,What would you like to do?
+ARENAS_CHOOSE_OPTION1,Join Arena
+ARENAS_CHOOSE_OPTION2,Review Tape Deck
+ARENAS_CHOOSE_OPTION3,Reset Progress
+ARENAS_CHOOSE_OPTION4,What's my current Win Streak?
+ARENAS_CHOOSE_OPTION5,Nevermind
+ARENAS_CONTINUE_CONFIRMED1,"Alright, I'll go get your registered tapes."
+ARENAS_CONTINUE_CONFIRMED2,Good luck in there!
+ARENAS_NEW_RUN_PROMPT1,What tapes will you be using today?
+ARENAS_NEW_RUN_CHOICE1,Rental Tapes
+ARENAS_NEW_RUN_CHOICE2,Own Tapes
+ARENAS_RENTAL_CONFIRM1,You will have to play with these tapes until you lose a battle or reset your progress.
+ARENAS_RENTAL_CONFIRM2,Are you sure you want to use rental tapes?
+ARENAS_CONFIRM,Yes
+ARENAS_REJECT,No
+ARENAS_FORMAT_PROMPT1,Which format would you like to play in?
+ARENAS_FORMAT_CHOICE1,Doubles Format
+ARENAS_FORMAT_CHOICE2,Triples Format
+ARENAS_REGISTRATION1,Great! Let's get you registered.
+ARENAS_RENTAL_REGISTRATION,These are the rental tapes we have available this time.
+ARENAS_REGISTRATION3,Once you've confirmed your choices these tapes will be your deck for this arena until progress has been reset or you lose a match. Please choose wisely.
+ARENAS_REGISTRATION_COMPLETE1,All set. Your tapes have been registered.
+ARENAS_TRIPLES_REGISTRATION_PROMPT,Who will you take as your third party member?
+ARENAS_CANCEL,I see. [pause] Let me know if there's anything else I can do to assist.
+ARENAS_FAILED_BESTIARY_CHECK1,You have not recorded enough eligible forms to particiapte in this arena.
+ARENAS_FAILED_BESTIARY_CHECK2,Please come back when you've recorded more monsters.
+ARENAS_OWN_TAPE_CONFIRMED1,You will have to play with these tapes until you lose a battle or reset your progress.
+ARENAS_OWN_TAPE_CONFIRMED2,Are you sure you want to use your own tapes?
+ARENAS_OWN_TAPE_INSPECT1,"Note that, while we do allow you to bring your own tapes to this arena, the tapes still have to meet the arena requirements."
+ARENAS_OWN_TAPE_INSPECT2,Please wait one moment while I inspect your tapes.
+ARENAS_INSPECTION_PASSED1,Everything appears to be in order.
+ARENAS_OWN_TAPES_REGISTRATION,I'll be copying your current tapes to use as your tape deck for this arena.
+ARENAS_INSPECTION_FAILED1,"I'm sorry, but your current tapes do not meet the requirements for this arena."
+ARENAS_INSPECTION_FAILED2,Please review them and try again later.
+ARENAS_REVIEW_TEAM1,These are the tapes you currently have registered for this arena.
+ARENAS_REVIEW_TEAM2,I've recorded your changes to this deck.
+ARENAS_CONVERSATION_LOOP_END,Please let me know if there's anything else I can help you with.
+ARENAS_NEW_RUN_CHECK1,You don't seem to be registered for this arena. Please register first.
+ARENAS_RESET_PROGRESS,Are you sure you want to reset progress?
+ARENAS_RESET_CONFIRMED,"Okay, we'll reset your progress."
+ARENAS_RESET_CONFIRMED2,All set. You can start a new registration for this arena at any time.
+ARENAS_RESET_PROGRESS_FAILED,There is nothing to reset. You're not currently registered in this arena.
+ARENAS_WIN_STREAK,You have won [streak] matches in this arena so far.
+ARENAS_FAREWELL,Take care!
+ARENAS_REVIEW_LIMITS,"You may change the order they are in, but no other customization is allowed."
+ARENAS_CUSTOM_TRAINEE_INSPECT1,First I need to validate there are enough valid registration forms in the archives to meet the minimum required to run this event.
+ARENAS_CUSTOM_TRAINEE_INSPECT2,One moment please.[pause].[pause].[pause]
+ARENAS_CUSTOM_INSPECT_FAILED1,"I'm sorry, but we don't appear to have enough registered participants to run this event at this time. Please try again when there are at least two other participants registered."
+ARENAS_CREATE_NPC_PROMPT,Would you like to invite a trainee to participate in the arena?
+ARENAS_CREATE_NPC_CHOICE1,"Yes, please."
+ARENAS_CREATE_NPC_CHOICE2,Let's review the registered trainees.
+ARENAS_CREATE_NPC_CHOICE3,How does this work?
+ARENAS_CREATE_NPC_CHOICE4,Nevermind.
+ARENAS_CREATE_NPC_CONFIRMED,Great! Please fill out this registration form and we will call the trainee as soon as you are finished. 
+ARENAS_CREATE_NPC_COMPLETE1,Let's see.[pause].[pause].[pause] Everything looks to be in order!
+ARENAS_CREATE_NPC_COMPLETE2,The trainee should be arriving any moment now.
+ARENAS_CUSTOM_NPC_CONVO1,Wait for me!
+ARENAS_CUSTOM_NPC_CONVO2,"I ran over as soon as I got your invite, {ranger_rank} {player}!"
+ARENAS_CUSTOM_NPC_CONVO3,Thank you for registering me in the Cassette Arena. [pause] I'll do my best!
+ARENAS_CREATE_NPC_COMPLETE3,Thanks again for participating in our Trainee Recruitment program.
+ARENAS_REVIEW_TRAINEES,"Of course. Let me just check the archives.[pause].[pause].[pause] Ah, yes here you go."
+ARENAS_CREATE_TRAINEE,Is there a new trainee you would like to register?
+ARENAS_RECRUITMENT_EXPLANATION1,The Trainee Recruitment program allows Captains to register promising trainees to participate in the Cassette Arena.
+ARENAS_RECRUITMENT_EXPLANATION2,"To register a trainee, you just need to fill out their profile and assign them some tapes to use in the arena."
+ARENAS_RECRUITMENT_EXPLANATION3,"We will keep these registration forms in our archives. As long as the trainee has a valid registration form, they will be allowed to particiapte in any of the Cassette Arenas."
+ARENAS_RECRUITMENT_EXPLANATION4,"Please note, that they will also need to abide by the rule sets of each arena. In the event the trainee has an invalid tape for an arena, they will be provided with a temporary substitute for that arena."
+ARENAS_RECRUITMENT_EXPLANATION5,Is there a new trainee you would like to register?
+ARENAS_CUSTOMIZATION_PROMPT1,These are the only options we currently have available to customize.
+ARENAS_CUSTOMIZATION_PROMPT2,We will add more as we develop the event further.
+ARENAS_CUSTOMIZATION_PROMPT3,What would you like to customize?
+ARENAS_CUSTOMIZATION_OPTION1,Overspill
+ARENAS_CUSTOMIZATION_OPTION2,AI Fusion
+ARENAS_CUSTOMIZATION_OPTION3,Nevermind
+ARENAS_CHANGE_OVERSPILL1,Overspill determines if the leftover damage from attacks will affect the ranger's health. 
+ARENAS_CHANGE_OVERSPILL2,Changing this setting will apply to both you and your opponents.
+ARENAS_CHANGE_OVERSPILL3,What would you like to change the setting to?
+ARENAS_CHANGE_OVERSPILL_OPTION1,Enable Overspill
+ARENAS_CHANGE_OVERSPILL_OPTION2,Disable Overspill
+ARENAS_CHANGE_OVERSPILL_ENABLED,Overspill has been enabled. 
+ARENAS_CHANGE_OVERSPILL_DISABLED,Overspill has been disabled.
+ARENAS_CHANGE_AIFUSION1,This setting is to enable/disable AI Fusion in battle.
+ARENAS_CHANGE_AIFUSION2,What would you like to change the setting to?
+ARENAS_CHANGE_AIFUSION_OPTION1,AI Fusion Enabled
+ARENAS_CHANGE_AIFUSION_OPTION2,AI Fusion Disabled
+ARENAS_CHANGE_AIFUSION_ENABLED,AI Fusion has been enabled. 
+ARENAS_CHANGE_AIFUSION_DISABLED,AI Fusion has been disabled.
+ARENAS_EXPLANATION_OPTION1,Debut Arena Rules
+ARENAS_EXPLANATION_OPTION2,Remasters Arena Rules
+ARENAS_EXPLANATION_OPTION3,Mix Tapes Arena Rules
+ARENAS_EXPLANATION_OPTION4,Bootleg Arena Rules
+ARENAS_EXPLANATION_OPTION5,Custom Arena Rules
+ARENAS_EXPLANATION_OPTION6,Nevermind
+ARENAS_REWARD1,Well done! Please accept this reward!
+ARENAS_FIRST_TIME_INTRO1,"Hey, you! Over here!"
+ARENAS_FIRST_TIME_INTRO2,Hello! I won't take up much of your time. 
+ARENAS_FIRST_TIME_INTRO3,I just wanted to take this opportunity to invite you to participate in our new Cassette Arena!
+ARENAS_FIRST_TIME_INTRO4,"Participation is completely optional, but we'd love to see you in there! When you're ready to learn more just talk to me here."
+ARENAS_ALEXA_LOSE_BATTLE1,"Oh no, I guess that's it for Team {player}!"
+ARENAS_ALEXA_LOSE_BATTLE2,Better luck next time!
+ARENAS_BUFFY_SPAWN,Looks like the warm up matches are done.
+ARENAS_BUFFY_ENTRY,"Ready to start the real workout, {player}?"
+ARENAS_BUFFY_EXIT,Well done! We should make this our daily routine!
+ARENAS_FRANKIE_ENTRY1,Oh my gosh! A real tournament arc!? 
+ARENAS_FRANKIE_ENTRY2,Finally! I'll defy the odds with a surprise victory and cement my status as the hero!
+ARENAS_FRANKIE_EXIT,I guess this is still part of the training arc...
+ARENAS_AIR_TRAINEE_ENTRY,Air has no equal! Just try to withstand these gale winds!
+ARENAS_AIR_TRAINEE_EXIT,Urg.. Kicked the air right out of my lungs.
+ARENAS_ASTRAL_TRAINEE_ENTRY,Let's detatch ourselves from these earthly needs.
+ARENAS_ASTRAL_TRAINEE_EXIT,...I miss the taste of cola.
+ARENAS_BARKLEY_ENTRY,*bark* *bark* 
+ARENAS_BARKLEY_EXIT,*whine*
+ARENAS_BEAST_TRAINEE_ENTRY,"I may not stand out, but neutrality is always consistent!"
+ARENAS_BEAST_TRAINEE_EXIT1,What makes a person turn neutral? 
+ARENAS_BEAST_TRAINEE_EXIT2,"Is it lust for money, power, or just a heart full of neutrality?"
+ARENAS_CLEMENCE_ENTRY,"A fresh cup of coffee and some excercise. A good start to the day, non?"
+ARENAS_CLEMENCE_EXIT,I believe it's time I return to my establishment.
+ARENAS_COMMUNEMAN_ENTRY,Even us door guards get some time to ourselves.
+ARENAS_COMMUNEMAN_EXIT,Urgh.. I guess my shift is starting soon anyway.
+ARENAS_EARTH_TRAINEE_ENTRY,Can you feel the ground beneath your feet? Can you feel the earth breathing?
+ARENAS_EARTH_TRAINEE_EXIT,"Yeah, I can't feel it either. Sounded pretty cool though."
+ARENAS_EUGENE_ENTRY,Badass! I've always wanted to see which of us would win in a fight!
+ARENAS_EUGENE_EXIT,Man... I really thought I'd give you a run for your money.
+ARENAS_FARMER_EDWARD_ENTRY,"A farmer has to protect their crops too, you know?"
+ARENAS_FARMER_EDWARD_EXIT,"Well, better go tend to the farm before it gets too late."
+ARENAS_FARMER_MARIS_ENTRY,"Jumpkin this and Cluckabilly that. It's not always about the farm, you know?"
+ARENAS_FARMER_MARIS_EXIT,What a wonderful change of pace!
+ARENAS_FELIX_ENTRY,"No worries, let's just have fun with this."
+ARENAS_FELIX_EXIT,That was pretty rad. I knew you'd be tough.
+ARENAS_FIRE_TRAINEE_ENTRY,"Everything burns, even the air you breathe."
+ARENAS_FIRE_TRAINEE_EXIT,Could you imagine though? Sounds awful.
+ARENAS_HOYLAKE_ENTRY,Oho! An opportunity to study your performance up close!
+ARENAS_HOYLAKE_EXIT,I suppose I've taken enough notes on this encounter...
+ARENAS_ICE_TRAINEE_ENTRY,I'm that cool pint of ice cream sitting in the back of the freezer. Everybody loves me!
+ARENAS_ICE_TRAINEE_EXIT,Maybe I can convince Clemence to serve affogatos at the Cafe.
+ARENAS_JACQUELINE_ENTRY,Let's set a good example for the others.
+ARENAS_JACQUELINE_EXIT,"I see, there's still much for me to learn as well."
+ARENAS_KAYLEIGH_ENTRY,The crowd is so excited!
+ARENAS_KAYLEIGH_EXIT,Brilliant! That was so fun!
+ARENAS_KIRBY_ENTRY,I hope you'll provide some useful data.
+ARENAS_KIRBY_EXIT,I see. You've given me much to consider.
+ARENAS_ELECTRIC_TRAINEE_ENTRY,You ever try the balloon experiment? 
+ARENAS_ELECTRIC_TRAINEE_EXIT,What's a balloon?
+ARENAS_MEREDITH_ENTRY,Urgh... Is all this really necessary?
+ARENAS_MEREDITH_EXIT,"Fine. I actually had fun, alright?"
+ARENAS_METAL_TRAINEE_ENTRY,"Did you know the first edition of ""Metal Massacre"" mispelled Metallica's name with two Ts?"
+ARENAS_METAL_TRAINEE_EXIT,"I know it has nothing to do with battles, but I like trivia."
+ARENAS_PENSBY_ENTRY,Remember to stay hydrated while exercising.
+ARENAS_PENSBY_EXIT,"You're both in great condition! Don't go slacking off now, okay?"
+ARENAS_PLANT_TRAINEE_ENTRY,"Long after we leave our world in ruins, the plants will reclaim their home."
+ARENAS_PLANT_TRAINEE_EXIT,You ever feel bad about walking on grass?
+ARENAS_PLASTIC_TRAINEE_ENTRY,"When my world discovered plastic, we quickly realized there was only one logical thing to do."
+ARENAS_PLASTIC_TRAINEE_EXIT,We invented Legos and built everything from them. It was brilliant!
+ARENAS_POISON_TRAINEE_ENTRY,The teeth of snakes are curved and can be pulled back into their mouths. This allows them to consume whole animals!
+ARENAS_POISON_TRAINEE_EXIT,"I'm actually terrified of snakes, but I figure transforming into one might help cope?"
+ARENAS_GREEN_TRAINEE_ENTRY,I haven't had a lot of practice…
+ARENAS_GREEN_TRAINEE_EXIT,I guess I wasn't ready...
+ARENAS_CONFIDENT_TRAINEE_ENTRY,I'll win for sure!
+ARENAS_CONFIDENT_TRAINEE_EXIT,"You really don't hold back, do you?"
+ARENAS_SHOUNEN_TRAINEE_ENTRY,I'm gonna be the hero!
+ARENAS_SHOUNEN_TRAINEE_EXIT,"Well.. at least I won't be a nameless side character, right?"
+ARENAS_OBSSESIVE_TRAINEE_ENTRY,It's all about rare tapes!
+ARENAS_OBSSESIVE_TRAINEE_EXIT,Bah! I'll concede that stickers are important too.
+ARENAS_SUNNY_ENTRY,"Ready for the new me, {player}?"
+ARENAS_SUNNY_EXIT,Haha.. That was fun
+ARENAS_MERCHANT_ENTRY,Of course I can fight! What kind of lunatic would run around New Wirral without the means to defend themselves?
+ARENAS_MERCHANT_EXIT,"Hoho! Good show, let's do this again sometime!"
+ARENAS_VIN_ENTRY,"This time, I won't lose!"
+ARENAS_VIN_EXIT,I'm not strong enough yet.
+ARENAS_VIOLA_ENTRY,May the better of us prevail! 
+ARENAS_VIOLA_EXIT,"Alas, I was bested this time. Well played!"
+ARENAS_WATER_TRAINEE_ENTRY,"Back on my world, we drained all the water supplies."
+ARENAS_WATER_TRAINEE_EXIT,I still can't believe how much we paid for water in a bottle.
+ARENAS_WILMA_SPAWN,"Well, it's quite the event going on."
+ARENAS_WILMA_ENTRY,"Hello, sweetie."
+ARENAS_WILMA_EXIT,Take care!
+ARENAS_CLEEO_SPAWN1,"Another pointless ""convenience"" tool... "
+ARENAS_CLEEO_SPAWN2,Huh?
+ARENAS_CLEEO_ENTRY1,Fine. I'll demonstrate my superior capabilities.
+ARENAS_CLEEO_ENTRY2,Though the probability of any human in this room learning anything from this is near zero.
+ARENAS_CLEEO_EXIT,I suppose even a near zero probability is still worth the wager.
+ARENAS_CODEY_SPAWN,How are they even powering this thing...?
+ARENAS_CODEY_ENTRY,I think you're gonna like these new modifications!
+ARENAS_CODEY_EXIT,"Not bad, I see you've made some modifications of your own."
+ARENAS_CYBIL_SPAWN1,Coming to you live from the back rooms of the Town Hall
+ARENAS_CYBIL_SPAWN2,Captain Cybil is ready to take the stage!
+ARENAS_CYBIL_ENTRY,Let's give these people a show they'll never forget!
+ARENAS_CYBIL_EXIT1,Now that's what Cybil's talking about! 
+ARENAS_CYBIL_EXIT2,Keep it up!
+ARENAS_PENNY_SPAWN,Now this 'ere looks like a real banger!
+ARENAS_PENNY_ENTRY1,Best be up to scratch this time!
+ARENAS_PENNY_ENTRY2,I'm expectin' a proper night on the town.
+ARENAS_PENNY_EXIT,Still teachin' me a lesson are ya?
+ARENAS_GLADIOLA_SPAWN,Such potential in this room! 
+ARENAS_GLADIOLA_ENTRY,Ready to sharpen your blade against me once more?
+ARENAS_GLADIOLA_EXIT,What a marvelous display of prowess!
+ARENAS_HEATHER_SPAWN,We're coming to you live from Harbourtown's own Town Hall with a special report!
+ARENAS_HEATHER_ENTRY,"According to our sources, this arena's about to get blown away!"
+ARENAS_HEATHER_EXIT,I guess the barometer went a bit too low that time!
+ARENAS_JUDAS_SPAWN,These rookies have no idea how to survive out here.
+ARENAS_JUDAS_ENTRY,This is what happens when you recklessly charge into battle. 
+ARENAS_JUDAS_EXIT,I guess a little fun isn't such a bad thing.
+ARENAS_LODESTEIN_SPAWN1,There! That should keep it going a while longer.
+ARENAS_LODESTEIN_SPAWN2,Now then...
+ARENAS_LODESTEIN_ENTRY,Let's flip the switch and get this battle going!
+ARENAS_LODESTEIN_EXIT,Another electrifying experience for everyone here.
+ARENAS_SKIP_SPAWN,"Well, doesn't this look like a blast?"
+ARENAS_SKIP_ENTRY,You wouldn't believe the stuff I found today!
+ARENAS_SKIP_EXIT,"Ha. I'm still not much of a fighter, but at least I got to show off all this neat stuff!"
+ARENAS_WALLACE_SPAWN,"Haha! Finally, it's my turn!"
+ARENAS_WALLACE_ENTRY,Let's show these rookies what it means to have a strong foundation!
+ARENAS_WALLACE_EXIT,That's how it's done! Nothing more reliable than a solid wall. 
+ARENAS_ZEDD_SPAWN,"...wha? Oh, right. The thing."
+ARENAS_ZEDD_ENTRY1,"Well, {player}. I hope you haven't been slacking off too much.. "
+ARENAS_ZEDD_ENTRY2,Can't let the trainees see a Captain not pulling their weight. 
+ARENAS_ZEDD_EXIT,"Heh. Alright, I guess I did fall asleep at the wheel there."
+ARENAS_IANTHE_SPAWN,Quite the lively crowd in here...
+ARENAS_IANTHE_ENTRY,I see you've all been busy back here. Maybe I should be assigning more patrol duties.
+ARENAS_IANTHE_EXIT1,"I'm glad to see you've continued to improve as well. You've come so far, {player} and {partner}. "
+ARENAS_IANTHE_EXIT2,Keep up the good work.
+ARENAS_ANNOUNCER_INTRO1,Trainees and Rangers [pause] your attention please!
+ARENAS_ANNOUNCER_INTRO2,This round of the [cup] Arena will be starting soon!
+ARENAS_ANNOUNCER_INTRO3,But first[pause] please welcome today's challengers to the arena...
+ARENAS_ANNOUNCER_INTRO4,Team [player]!
+ARENAS_ANNOUNCER_INTRO5,"Now, let's bring in the first match up!"
+ARENAS_ANNOUNCER_ROUND_END1,That's it for this round! 
+ARENAS_ANNOUNCER_ROUND_END2,"Don't go too far though, there are still more exciting matches to come!"
+ARENAS_WIN_STREAK,You have won [streak] matches in this arena so far.
+ARENAS_FULL_PARTY_ERROR,Trainee already has 6 tapes assigned. Please remove unwanted tapes first.
+ARENAS_SIGNATURE_TAPE_ASSIGNED, has been set as this trainee's 'Signature Tape'. Rangers using their Signature Tape gain a stat buff. They will also start battles using this tape first.
+ARENAS_APPLY_COMPATIBLE_EFFECT,Apply a [Compatible with any tape] sticker?
+ARENAS_EFFECT_STRENGTH_PROMPT,How strong should effects be?
+ARENAS_EFFECT_STRENGTH_LOW,Lowest Values
+ARENAS_EFFECT_STRENGTH_MED,Average Values
+ARENAS_EFFECT_STRENGTH_HIGH,Highest Values
+ARENAS_EFFECT_PROMPT,Apply which effect?
+ARENAS_REMOVE_EFFECT_PROMPT,Remove which effect?
+ARENAS_INCOMPATIBLE_STICKERS_REMOVED,Removed incompatible sticker.
+ARENAS_STICKER_ASSIGN_COMPLETE_PROMPT,Are you done assigning tapes?
+ARENAS_TAPE_UNSAVED_WARNING,You have unsaved changes. Are you sure you want to cancel tape assignment?
+ARENAS_MISSING_TRAINEE_DATA,Please fill out the Trainee Info and Tape Assignment forms.
+ARENAS_MISSING_TAPE_DATA,Please make sure your Trainee has at least 3 'Tapes' assigned.
+ARENAS_MISSING_TRAINEE_STATS,Please fill out your Trainee's Stat sheet.
+ARENAS_INFO_CONFIRMATION,Is this information correct?
+ARENAS_CANCEL_TRAINEE_CREATE,Are you sure you don't want to fill out the registration form?
+ARENAS_SKIP_STAT_ASSIGNMENT,Are you sure you want to skip assigning stats?
+ARENAS_STAT_ASSIGNMENT_COMPLETE,Are you done assigning stats?
+ARENAS_IDLE_TRAINEE1_BANTER1,The Arena Attendant says they're adding new formats to the arena.
+ARENAS_IDLE_TRAINEE1_BANTER2,I can't wait to try them out!
+ARENAS_IDLE_TRAINEE2_BANTER1,I need to get more sleep. I'm pretty sure I saw a dog in the arena the other day...
+ARENAS_IDLE_TRAINEE3_BANTER1,I heard you can get a bootleg tape from the cassette arena.
+ARENAS_IDLE_TRAINEE3_BANTER2,I hope I can get a glitter tape!
+ARENAS_IDLE_TRAINEE4_BANTER1,Why does this vending machine accept random scraps of metal?
+ARENAS_IDLE_TRAINEE5_BANTER1,Some of the rewards in the arena are based on the tapes you registered.
+ARENAS_IDLE_TRAINEE5_BANTER2,You didn't hear it from me though.
+ARENAS_IDLE_TRAINEE6_BANTER1,We should team up some time!
+ARENAS_IDLE_TRAINEE6_BANTER2,I promise I won't be a burden.
+ARENAS_IDLE_TRAINEE7_BANTER1,Nobody is really sure how Alexa got the role of Arena Announcer. 
+ARENAS_IDLE_TRAINEE7_BANTER2,She just kind of started yelling some stuff from the balcony and nobody questioned it. 
+ARENAS_IDLE_TRAINEE8_BANTER1,The arena rewards just go back to fused material after 78 consecutive victories.
+ARENAS_IDLE_TRAINEE8_BANTER2,It's like somebody got tired of listing rewards.
+ARENAS_IDLE_TRAINEE9_BANTER1,Did you know the arena can fit up to 4 people per side?
+ARENAS_IDLE_TRAINEE9_BANTER2,I wonder how my strategy will be affected by that.
+ARENAS_IDLE_TRAINEE10_BANTER1,I don't know what half of these books even say. I've never seen this script before. 
+ARENAS_IDLE_TRAINEE11_BANTER1,The next match doesn't start for a while. Maybe I should pick up a quest from the ranger board.
+ARENAS_IDLE_TRAINEE12_BANTER1,I got beat bad in that last round. 

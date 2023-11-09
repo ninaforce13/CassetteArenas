@@ -1,0 +1,224 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://nodes/actions/ChangeTrackerTargetAction.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Actions/MessageDialogueExt.gd" type="Script" id=2]
+[ext_resource path="res://mods/RangerArena/Actions/BattleActionBbkey.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/FaceDirectionAction.gd" type="Script" id=4]
+[ext_resource path="res://addons/misc_utils/actions/values/GetNode.gd" type="Script" id=5]
+[ext_resource path="res://mods/RangerArena/Actions/FullHealParty.gd" type="Script" id=6]
+[ext_resource path="res://nodes/actions/RemoveOutOfSightAction.gd" type="Script" id=7]
+[ext_resource path="res://mods/RangerArena/Actions/DynamicMessagesAction.gd" type="Script" id=8]
+[ext_resource path="res://addons/misc_utils/actions/values/GetBlackboardValue.gd" type="Script" id=9]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=10]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=11]
+[ext_resource path="res://nodes/actions/PlayAudioAction.gd" type="Script" id=13]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=14]
+[ext_resource path="res://mods/RangerArena/Actions/InstanceCaptainSpatialAction.gd" type="Script" id=15]
+[ext_resource path="res://sfx/status_effects/healing.wav" type="AudioStream" id=16]
+[ext_resource path="res://nodes/actions/AggroAction.gd" type="Script" id=17]
+[ext_resource path="res://nodes/actions/FollowAction.gd" type="Script" id=18]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=19]
+[ext_resource path="res://nodes/actions/JumpAction.gd" type="Script" id=20]
+[ext_resource path="res://sfx/voices/female_npc_7/female_npc_7_surprise_2.wav" type="AudioStream" id=21]
+[ext_resource path="res://addons/misc_utils/actions/WaitAction.gd" type="Script" id=22]
+
+[node name="CheckConditionAction" type="Node"]
+script = ExtResource( 19 )
+always_succeed = true
+require_flags = [ "continue_round" ]
+
+[node name="Challenger" type="Node" parent="."]
+script = ExtResource( 14 )
+
+[node name="SetFlagAction" type="Node" parent="Challenger"]
+script = ExtResource( 11 )
+flag = "continue_round"
+value = false
+
+[node name="FakeOutCamera" type="Node" parent="Challenger"]
+script = ExtResource( 1 )
+speed_multiplier = 3.0
+suppress_rotation = false
+zoom = 7.0
+angle_degrees_override = Vector3( -45, 0, 0 )
+
+[node name="GetNode" type="Node" parent="Challenger/FakeOutCamera"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../CodeyCameraTarget")
+
+[node name="InstanceSpatialAction" type="Node" parent="Challenger/FakeOutCamera"]
+script = ExtResource( 15 )
+captain_name = 5
+fighter_pool = NodePath("../../../../../../ChallengerManager")
+set_bb_key = "opponent"
+node_name = "PrimaryOpponent"
+
+[node name="GetNode" type="Node" parent="Challenger/FakeOutCamera/InstanceSpatialAction"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../../CybilTarget")
+
+[node name="WaitAction" type="Node" parent="Challenger/FakeOutCamera"]
+script = ExtResource( 22 )
+base_seconds = 2.0
+
+[node name="CaptainFocus" type="Node" parent="Challenger"]
+script = ExtResource( 1 )
+speed_multiplier = 20.0
+suppress_rotation = false
+zoom = 7.0
+angle_degrees_override = Vector3( -45, 0, 0 )
+
+[node name="GetNode" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../CybilCameraTarget")
+
+[node name="AggroAction2" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 17 )
+
+[node name="GetNode" type="Node" parent="Challenger/CaptainFocus/AggroAction2"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../../SuperFan Alexa")
+
+[node name="JumpAction" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 20 )
+
+[node name="GetNode" type="Node" parent="Challenger/CaptainFocus/JumpAction"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../../SuperFan Alexa")
+
+[node name="FaceDirectionAction3" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 4 )
+direction = "right"
+
+[node name="GetNode" type="Node" parent="Challenger/CaptainFocus/FaceDirectionAction3"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../../SuperFan Alexa")
+
+[node name="MessageDialogAction" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 2 )
+audio = ExtResource( 21 )
+title = "SuperFan Alexa"
+messages = [ "What the...?" ]
+use_custom_subs = true
+
+[node name="JumpAction2" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 20 )
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/CaptainFocus/JumpAction2"]
+script = ExtResource( 9 )
+key = "opponent"
+
+[node name="SpawnDialogue" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": "Pulls the Entry dialogue from the spawned opponent"
+}
+entry_dialogue = false
+spawn_dialogue = true
+portrait_position = 2
+
+[node name="FaceDirectionAction3" type="Node" parent="Challenger"]
+script = ExtResource( 4 )
+
+[node name="GetNode2" type="Node" parent="Challenger/FaceDirectionAction3"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../SuperFan Alexa")
+
+[node name="FollowAction3" type="Node" parent="Challenger"]
+script = ExtResource( 18 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fly = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+speed_multiplier = 0.6
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/FollowAction3"]
+script = ExtResource( 9 )
+key = "opponent"
+
+[node name="GetNode" type="Node" parent="Challenger/FollowAction3"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../OpponentTarget")
+
+[node name="FaceDirectionAction2" type="Node" parent="Challenger"]
+script = ExtResource( 4 )
+direction = "left"
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/FaceDirectionAction2"]
+script = ExtResource( 9 )
+key = "opponent"
+
+[node name="EntryDialogue" type="Node" parent="Challenger"]
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": "Pulls the Entry dialogue from the spawned opponent"
+}
+portrait_position = 2
+
+[node name="Succeeder" type="Node" parent="Challenger"]
+script = ExtResource( 10 )
+
+[node name="BattleAction" type="Node" parent="Challenger/Succeeder"]
+script = ExtResource( 3 )
+result_on_player_win = 1
+result_on_player_loss = 0
+result_on_flee = 0
+disable_fleeing = true
+bb_key = "opponent"
+challenger_manager_path = NodePath("../../../../../../ChallengerManager")
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 9 )
+key = "opponent"
+
+[node name="ExitDialogue" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 8 )
+entry_dialogue = false
+portrait_position = 2
+
+[node name="SetFlagAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 11 )
+flag = "continue_round"
+
+[node name="FollowAction2" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 18 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fly = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_warp = true
+can_wait = true
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/FollowAction2"]
+script = ExtResource( 9 )
+key = "opponent"
+
+[node name="GetNode" type="Node" parent="Challenger/Succeeder/BattleAction/FollowAction2"]
+script = ExtResource( 5 )
+path = NodePath("../../../../../../../../ExitNode")
+
+[node name="RemoveOutOfSightAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 7 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/RemoveOutOfSightAction"]
+script = ExtResource( 9 )
+key = "opponent"
+
+[node name="PlayAudioAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 13 )
+stream = ExtResource( 16 )
+
+[node name="FullHealParty2" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 6 )

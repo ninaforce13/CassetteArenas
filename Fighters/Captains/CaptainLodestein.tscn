@@ -1,0 +1,250 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://data/monster_forms/mothmanic.tres" type="Resource" id=1]
+[ext_resource path="res://data/monster_forms/southpaw.tres" type="Resource" id=2]
+[ext_resource path="res://battle/ai/captains/CaptainLodesteinSidekickAI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=4]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://data/battle_moves/spit.tres" type="Resource" id=7]
+[ext_resource path="res://data/battle_moves/dodge.tres" type="Resource" id=8]
+[ext_resource path="res://data/battle_moves/smack.tres" type="Resource" id=9]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=10]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=11]
+[ext_resource path="res://data/battle_moves/battery.tres" type="Resource" id=12]
+[ext_resource path="res://data/battle_moves/charge.tres" type="Resource" id=13]
+[ext_resource path="res://data/battle_moves/broadcast.tres" type="Resource" id=14]
+[ext_resource path="res://data/monster_forms/zeustrike.tres" type="Resource" id=15]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=16]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=17]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=18]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=19]
+[ext_resource path="res://data/elemental_types/metal.tres" type="Resource" id=20]
+[ext_resource path="res://data/battle_moves/metal_wall.tres" type="Resource" id=21]
+[ext_resource path="res://data/battle_moves/iron_filings.tres" type="Resource" id=22]
+[ext_resource path="res://data/monster_forms/ferriclaw.tres" type="Resource" id=23]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=24]
+[ext_resource path="res://data/monster_forms/plasmantler.tres" type="Resource" id=25]
+[ext_resource path="res://data/monster_forms/smogmagog.tres" type="Resource" id=26]
+[ext_resource path="res://data/battle_moves/coating_lightning.tres" type="Resource" id=27]
+[ext_resource path="res://data/character_sfx/captain_lodestein_sfx.tres" type="Resource" id=28]
+[ext_resource path="res://data/character_sfx/female_npc_6_sfx.tres" type="Resource" id=29]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=30]
+[ext_resource path="res://sprites/portraits/lodestein.png" type="Texture" id=31]
+[ext_resource path="res://sprites/portraits/lodestein_happy.png" type="Texture" id=32]
+[ext_resource path="res://sfx/voices/lodestein/lodestein_compliment.wav" type="AudioStream" id=33]
+[ext_resource path="res://sfx/voices/lodestein/lodestein_laugh_1.wav" type="AudioStream" id=34]
+[ext_resource path="res://sfx/voices/lodestein/lodestein_sigh_2.wav" type="AudioStream" id=35]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 16 )
+banner_scene = ExtResource( 5 )
+title = "CAPTAIN_LODESTEIN_NAME"
+subtitle = "CAPTAIN_LODESTEIN_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 17 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+initial_direction = "up"
+direction = Vector2( 0, -1 )
+npc_name = "CAPTAIN_LODESTEIN_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 7,
+"body_color_2": 1,
+"eye_color": 16,
+"face_accessory_color": 11,
+"favorite_color": 1,
+"hair_accessory_color": 13,
+"hair_color": 12,
+"legs_color": 7,
+"shoe_color": -1,
+"skin_color": 20
+}
+sprite_part_names = {
+"arms": "lodestein",
+"body": "lodestein",
+"hair": "lodestein",
+"head": "beard1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 7
+human_colors/body_color_2 = 1
+human_colors/eye_color = 16
+human_colors/face_accessory_color = 11
+human_colors/favorite_color = 1
+human_colors/hair_accessory_color = 13
+human_colors/hair_color = 12
+human_colors/legs_color = 7
+human_colors/skin_color = 20
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "lodestein",
+"body": "lodestein",
+"hair": "lodestein",
+"head": "beard1",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 7,
+"body_color_2": 1,
+"eye_color": 16,
+"face_accessory_color": 11,
+"favorite_color": 1,
+"hair_accessory_color": 13,
+"hair_color": 12,
+"legs_color": 7,
+"shoe_color": -1,
+"skin_color": 20
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 4 )
+music_override = ExtResource( 19 )
+music_vox_override = ExtResource( 18 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 6 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 11 )
+character_name = "CAPTAIN_LODESTEIN_NAME_SHORT"
+pronouns = 0
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 28 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 10 )
+form = ExtResource( 1 )
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 10 )
+form = ExtResource( 25 )
+moves_override = [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 12 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 10 )
+form = ExtResource( 26 )
+moves_override = [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 12 ) ]
+type_override = [ ExtResource( 20 ) ]
+
+[node name="Sidekick" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 11 )
+character_name = "RANGER_NAME"
+pronouns = 1
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 24 )
+character_sfx = ExtResource( 29 )
+character_kind = 1
+human_colors = {
+"body_color_1": 4,
+"body_color_2": 5,
+"eye_color": 6,
+"face_accessory_color": 6,
+"favorite_color": 4,
+"hair_accessory_color": 3,
+"hair_color": 2,
+"legs_color": 12,
+"shoe_color": -1,
+"skin_color": 19
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "long1",
+"head": "glasses_1",
+"legs": "skirt1"
+}
+ai = ExtResource( 3 )
+human_colors/body_color_1 = 4
+human_colors/body_color_2 = 5
+human_colors/eye_color = 6
+human_colors/face_accessory_color = 6
+human_colors/favorite_color = 4
+human_colors/hair_accessory_color = 3
+human_colors/hair_color = 2
+human_colors/legs_color = 12
+human_colors/shoe_color = -1
+human_colors/skin_color = 19
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/Sidekick" index="0"]
+script = ExtResource( 10 )
+form = ExtResource( 23 )
+moves_override = [ ExtResource( 9 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 8 ), ExtResource( 27 ) ]
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/Sidekick" index="1"]
+script = ExtResource( 10 )
+form = ExtResource( 2 )
+moves_override = [ ExtResource( 9 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 8 ), ExtResource( 27 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/Sidekick" index="2"]
+script = ExtResource( 10 )
+form = ExtResource( 15 )
+moves_override = [ ExtResource( 7 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 8 ), ExtResource( 27 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 30 )
+portrait = ExtResource( 31 )
+title = "CAPTAIN_LODESTEIN_NAME_SHORT"
+messages = [ "ARENAS_LODESTEIN_SPAWN1", "ARENAS_LODESTEIN_SPAWN2" ]
+audio = ExtResource( 35 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 30 )
+portrait = ExtResource( 31 )
+title = "CAPTAIN_LODESTEIN_NAME_SHORT"
+messages = [ "ARENAS_LODESTEIN_ENTRY" ]
+audio = ExtResource( 33 )
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 30 )
+portrait = ExtResource( 32 )
+title = "CAPTAIN_LODESTEIN_NAME_SHORT"
+messages = [ "ARENAS_LODESTEIN_EXIT" ]
+audio = ExtResource( 34 )

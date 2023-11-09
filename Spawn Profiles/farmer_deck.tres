@@ -1,0 +1,41 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://data/spawn_config_scripts/MonsterSpawnProfile.gd" type="Script" id=1]
+[ext_resource path="res://data/monster_forms/faerious.tres" type="Resource" id=2]
+[ext_resource path="res://data/monster_forms/arkidd.tres" type="Resource" id=3]
+[ext_resource path="res://data/monster_forms/draculeaf.tres" type="Resource" id=6]
+[ext_resource path="res://data/monster_forms/cluckabilly.tres" type="Resource" id=7]
+[ext_resource path="res://data/monster_forms/auriclaw.tres" type="Resource" id=10]
+
+[resource]
+script = ExtResource( 1 )
+spawn_configs = [  ]
+habitat_name = ""
+habitat_require_flag = ""
+habitat_overworld_chunks = [  ]
+habitat_endless = true
+min_team_size = 1
+max_team_size = 2
+disable_fleeing = false
+level_scale_override_key = ""
+num_species = 5
+species_0/monster_form = ExtResource( 7 )
+species_0/weight = 1.0
+species_0/hour_min = 0.0
+species_0/hour_max = 24.0
+species_1/monster_form = ExtResource( 10 )
+species_1/weight = 1.0
+species_1/hour_min = 0.0
+species_1/hour_max = 24.0
+species_2/monster_form = ExtResource( 3 )
+species_2/weight = 1.0
+species_2/hour_min = 0.0
+species_2/hour_max = 24.0
+species_3/monster_form = ExtResource( 6 )
+species_3/weight = 1.0
+species_3/hour_min = 0.0
+species_3/hour_max = 24.0
+species_4/monster_form = ExtResource( 2 )
+species_4/weight = 1.0
+species_4/hour_min = 0.0
+species_4/hour_max = 24.0

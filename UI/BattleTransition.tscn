@@ -1,0 +1,3363 @@
+[gd_scene load_steps=94 format=2]
+
+[ext_resource path="res://data/characters/meredith.tres" type="Resource" id=1]
+[ext_resource path="res://sfx/ui/fusion_meter_ready.wav" type="AudioStream" id=2]
+[ext_resource path="res://mods/RangerArena/Scripts/BattleTransition.gd" type="Script" id=3]
+[ext_resource path="res://sprites/monsters/traffikrab.json" type="PackedScene" id=4]
+[ext_resource path="res://nodes/sprite_container/SpriteContainer.gd" type="Script" id=5]
+[ext_resource path="res://nodes/battle_slot/BattleSlot.gd" type="Script" id=6]
+[ext_resource path="res://data/characters/felix.tres" type="Resource" id=7]
+[ext_resource path="res://data/characters/dog.tres" type="Resource" id=8]
+[ext_resource path="res://data/characters/kayleigh.tres" type="Resource" id=9]
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=10]
+[ext_resource path="res://menus/party/MonsterSpriteContainer.gd" type="Script" id=11]
+[ext_resource path="res://nodes/battle_slot/named_sounds.tres" type="Resource" id=12]
+[ext_resource path="res://mods/RangerArena/shaders/BattleTransition.tres" type="Material" id=13]
+[ext_resource path="res://ui/fonts/regular/regular_70.tres" type="DynamicFont" id=14]
+[ext_resource path="res://ui/fonts/regular/regular_190.tres" type="DynamicFont" id=15]
+[ext_resource path="res://addons/misc_utils/OverscanMarginContainer.gd" type="Script" id=16]
+[ext_resource path="res://menus/menu_bg_fade.shader" type="Shader" id=17]
+
+[sub_resource type="ShaderMaterial" id=80]
+resource_local_to_scene = true
+shader = ExtResource( 17 )
+shader_param/progress = 1.0
+shader_param/max_alpha = 1.0
+shader_param/base_color = Color( 0.1686, 0.1098, 0.2235, 1 )
+shader_param/hi_color = Color( 0.6706, 0.4588, 0.9098, 0.0625 )
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="Environment" id=21]
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=25]
+resource_name = "bob"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:sprite_rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0.25 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=27]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "dodge"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, -2.0, 2.0, -2.0, 2.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -20, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -10, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "flee_incomplete"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -4.85185, 0, 0 ), Vector3( -5, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:albedo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.25098 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.75, 0.75, 0.75 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.5, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "hurt", false ],
+"method": "play_sprite_animation"
+} ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "knockdown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.25, 0.875, 1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=35]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+
+[sub_resource type="Animation" id=36]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1.1, 1.1, 1.1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1.1, 1.1, 1.1 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=37]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -10, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=38]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.5, 0.5, 0.5, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:wave_v_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 20.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpriteContainer:static_amount")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=39]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.5, 0.5, 0.5, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:wave_v_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 20.0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "transform_sound" ],
+"method": "play_named_sound"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpriteContainer:static_amount")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.05, 1.0 ],
+"method": "vibrate"
+} ]
+}
+
+[sub_resource type="AudioStreamRandomPitch" id=15]
+
+[sub_resource type="AudioStreamRandomPitch" id=16]
+
+[sub_resource type="AudioStreamRandomPitch" id=17]
+
+[sub_resource type="BoxShape" id=19]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="CubeMesh" id=20]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=41]
+
+[sub_resource type="StyleBoxEmpty" id=42]
+
+[sub_resource type="Animation" id=43]
+resource_name = "bob"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:sprite_rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0.25 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=44]
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=45]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+
+[sub_resource type="Animation" id=46]
+resource_name = "dodge"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, -2.0, 2.0, -2.0, 2.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=47]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -20, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=48]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -10, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=49]
+resource_name = "flee_incomplete"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -4.85185, 0, 0 ), Vector3( -5, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:albedo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.25098 ) ]
+}
+
+[sub_resource type="Animation" id=50]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.75, 0.75, 0.75 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=51]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.5, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "hurt", false ],
+"method": "play_sprite_animation"
+} ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "knockdown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.25, 0.875, 1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=53]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+
+[sub_resource type="Animation" id=54]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1.1, 1.1, 1.1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1.1, 1.1, 1.1 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=55]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -10, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=56]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.5, 0.5, 0.5, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:wave_v_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 20.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpriteContainer:static_amount")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=57]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.5, 0.5, 0.5, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:wave_v_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 20.0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "transform_sound" ],
+"method": "play_named_sound"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpriteContainer:static_amount")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.05, 1.0 ],
+"method": "vibrate"
+} ]
+}
+
+[sub_resource type="Shader" id=78]
+code = "/*
+Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/waveforms
+
+This shader is under CC0 license. Feel free to use, improve and 
+change this shader according to your needs and consider sharing 
+the modified result to godotshaders.com.
+*/
+
+shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+uniform int lines = 80; // Amount of lines the waveform is build up of
+uniform float amplitude : hint_range(0.0, 1.0) = 0.9; // Height of the wave
+uniform float frequency : hint_range(0.0, 0.5) = 0.1; // Set a lower value for a smoother wave
+uniform float intensity : hint_range(0.0, 1.0) = 0.75; // Lower values creates gaps in the wave while higher make the wave more solid
+uniform float line_sharpness : hint_range(0.0, 1.0) = 0.5; // Fuzzy edges on each line
+uniform float line_size : hint_range(0.0, 1.0) = 0.8; // Thickness of the lines
+uniform float fade : hint_range(0.0, 0.5) = 0.1; // Blurres the top and bottom of the lines
+uniform float rest_size : hint_range(-2., 2.) = -0.2; // The size of the lines when the line is not animating, i.e at value 0. Tweak if Fade is used.
+uniform float edge : hint_range(0.0, 0.5) = 0.05; // How close to the edges should the animation beginn
+uniform float speed = 0.5; // Speed of wave animation
+uniform vec4 color : hint_color = vec4(.8, 0.25, 0.5, 1.0); // Color of wave
+uniform bool dot_matrix = false; 
+uniform int dot_matriz_size = 80;
+
+uniform bool speech_sim = true; // Toggle to simulate speach. Will create a more erratic movement in the wave
+uniform float speech_intensity : hint_range(0.0, 2.0) = 0.8; // How fast will the speech movement be
+uniform float progress : hint_range(0.0, 1.0) = 1.0; // Use to turn the animation on and off from outside the shader. 0 - off, 1 - on. Can animate values between which will shrink the wave.
+
+float random(vec2 uv) {
+	return fract(sin(dot(uv.xy,
+	vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+float noise(vec2 uv) {
+	vec2 uv_index = floor(uv);
+	vec2 uv_fract = fract(uv);
+
+	// Four corners in 2D of a tile
+	float a = random(uv_index);
+	float b = random(uv_index + vec2(1.0, 0.0));
+	float c = random(uv_index + vec2(0.0, 1.0));
+	float d = random(uv_index + vec2(1.0, 1.0));
+
+	vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+	return mix(a, b, blur.x) +
+				(c - a) * blur.y * (1.0 - blur.x) +
+				(d - b) * blur.x * blur.y;
+}
+
+float fbm(vec2 uv) {
+	int octaves = 4;
+	float amp = 0.5;
+	float freq = 4.;
+	float value = 0.0;
+	
+	for(int i = 0; i < octaves; i++) {
+		value += amp * noise(freq * uv - 0.5);
+		amp *= 0.6;
+		freq *= 2.;
+	}
+	return value;
+}
+
+
+void fragment()
+{
+	// Some initialising
+	float time = TIME;
+	vec4 c = vec4(vec3(0.0), 1.0);
+	float f_columns = float(lines);
+	
+	// Make some distance to the edges before the animation starts
+	float cutoff = smoothstep(0.0, edge, (round ((UV.x) * (f_columns) ) / f_columns) );
+	cutoff *= 1. - smoothstep(1.-edge, 1.0, (round ((UV.x) * (f_columns) ) / f_columns) );
+
+	// Speech simulation setup
+	float ss = 1.0;
+	if (speech_sim == true){
+		ss = fbm(vec2(1.0, time * speed * 1.3) * speech_intensity) * 1.5;
+	}
+	
+	// Create the noise that controlls the animation
+	float noise = fbm(vec2( round( (UV.x) * f_columns ) * frequency, time * speed) ) * ss * progress;
+	noise *= cutoff; // Apply edge cutoff
+	
+	// Make wave values based on the noise
+	float wave = smoothstep(1.-intensity, 1.0, noise) * amplitude;
+	wave = wave + (rest_size * 0.2);
+	
+	// Create the lines
+	float line = abs( sin(( f_columns * 3.1416 * UV.x) + 1.5) );
+	line = smoothstep(1.-line_size, (1.-line_size) + (1.-line_sharpness), line);
+	
+	// Simulate dot_matrix
+	if (dot_matrix){
+		float dm = abs( sin(( float(dot_matriz_size) * 3.1416 * UV.y) + 1.5) );
+		dm = smoothstep(1.-line_size, (1.-line_size) + (1.-line_sharpness), dm);
+		line *= dm;
+	}
+	
+	// Duplicate mask on top an bottom and apply to line
+	float mask = 1.0 - smoothstep(wave, wave + fade, abs(UV.y - 0.5) * 2.);
+	line *= mask;
+	
+	c = vec4(line) * color;
+	
+	COLOR = c;
+}"
+
+[sub_resource type="ShaderMaterial" id=79]
+shader = SubResource( 78 )
+shader_param/lines = 80
+shader_param/amplitude = 0.9
+shader_param/frequency = 0.1
+shader_param/intensity = 0.75
+shader_param/line_sharpness = 1.0
+shader_param/line_size = 0.6
+shader_param/fade = 0.095
+shader_param/rest_size = -0.2
+shader_param/edge = 0.0
+shader_param/speed = 0.5
+shader_param/color = Color( 0.917647, 0.635294, 0.101961, 1 )
+shader_param/dot_matrix = true
+shader_param/dot_matriz_size = 20
+shader_param/speech_sim = false
+shader_param/speech_intensity = 1.111
+shader_param/progress = 0.75
+
+[sub_resource type="Animation" id=18]
+resource_name = "bob"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:sprite_rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0.25 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "dodge"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, -2.0, 2.0, -2.0, 2.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -20, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -10, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "flee_incomplete"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -4.85185, 0, 0 ), Vector3( -5, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:albedo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.25098 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.75, 0.75, 0.75 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.5, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "hurt", false ],
+"method": "play_sprite_animation"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "knockdown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.25, 0.875, 1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1.1, 1.1, 1.1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1.1, 1.1, 1.1 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -10, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.5, 0.5, 0.5, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:wave_v_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 20.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpriteContainer:static_amount")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=14]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.5, 0.5, 0.5, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:wave_v_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 20.0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "transform_sound" ],
+"method": "play_named_sound"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpriteContainer:static_amount")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.05, 1.0 ],
+"method": "vibrate"
+} ]
+}
+
+[sub_resource type="StyleBoxEmpty" id=73]
+
+[sub_resource type="Animation" id=58]
+resource_name = "bob"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:sprite_rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0.25 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=59]
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=60]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+
+[sub_resource type="Animation" id=61]
+resource_name = "dodge"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, -2.0, 2.0, -2.0, 2.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=62]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -20, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=63]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -10, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=64]
+resource_name = "flee_incomplete"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -4.85185, 0, 0 ), Vector3( -5, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:albedo")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.25098 ) ]
+}
+
+[sub_resource type="Animation" id=65]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.75, 0.75, 0.75 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:albedo")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=66]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.5, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "hurt", false ],
+"method": "play_sprite_animation"
+} ]
+}
+
+[sub_resource type="Animation" id=67]
+resource_name = "knockdown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.25, 0.875, 1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=68]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_form_defeat_cry"
+} ]
+}
+
+[sub_resource type="Animation" id=69]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1.1, 1.1, 1.1 ), Vector3( 0.9, 0.9, 0.9 ), Vector3( 1.1, 1.1, 1.1 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=70]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -10, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "battle_cry" ],
+"method": "play_form_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=71]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.5, 0.5, 0.5, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:wave_v_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 20.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpriteContainer:static_amount")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=72]
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.5, 0.5, 0.5, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteContainer:wave_amplitude")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteContainer:wave_v_frequency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 20.0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "transform_sound" ],
+"method": "play_named_sound"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpriteContainer:static_amount")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.05, 1.0 ],
+"method": "vibrate"
+} ]
+}
+
+[sub_resource type="Animation" id=74]
+resource_name = "Hide"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1920, 0 ), Vector2( -1920, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1920, 0 ), Vector2( -1920, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 544 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3840, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3:animate_zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3840, 540 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1920, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Scroller:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3840, 0 ), Vector2( -3840, 0 ), Vector2( -960, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 0 ), Vector2( 1920, 0 ), Vector2( -960, 0 ), Vector2( -1920, 0 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0.5 )
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "transform_in" ),
+"times": PoolRealArray( 0.5 )
+}
+tracks/4/type = "animation"
+tracks/4/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": PoolStringArray( "transform_in" ),
+"times": PoolRealArray( 0.5 )
+}
+tracks/5/type = "animation"
+tracks/5/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot/AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": PoolStringArray( "transform_in" ),
+"times": PoolRealArray( 0.5 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3840, 0 ), Vector2( -3840, 0 ), Vector2( -960, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 0 ), Vector2( 1920, 0 ), Vector2( -960, 0 ), Vector2( -1920, 0 ) ]
+}
+tracks/8/type = "animation"
+tracks/8/path = NodePath("Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot/AnimationPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": PoolStringArray( "transform_in" ),
+"times": PoolRealArray( 0.5 )
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "cancel"
+} ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Scroller:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="BattleTransition" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 10 )
+script = ExtResource( 3 )
+animator = NodePath("AnimationPlayer")
+player1 = ExtResource( 9 )
+player2 = ExtResource( 7 )
+player3 = ExtResource( 8 )
+player4 = ExtResource( 1 )
+
+[node name="Blur" type="TextureRect" parent="."]
+visible = false
+material = SubResource( 80 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+expand = true
+
+[node name="Scroller" type="Control" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OverscanMarginContainer" type="MarginContainer" parent="Scroller"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+script = ExtResource( 16 )
+vertical_margin = false
+horizontal_margin = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroller/OverscanMarginContainer"]
+margin_right = 1920.0
+margin_bottom = 1084.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer"]
+margin_right = 2340.0
+margin_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BackgroundColor" type="ColorRect" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer"]
+margin_right = 2340.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="SoundVFX" type="ColorRect" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer"]
+material = ExtResource( 13 )
+margin_right = 2340.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="PanelContainer" type="ColorRect" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer"]
+margin_left = -3840.0
+margin_right = -1500.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 1920, 0 )
+rect_pivot_offset = Vector2( 1920, 270 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 3834.0
+margin_bottom = 544.0
+custom_constants/margin_right = 0
+custom_constants/margin_left = 980
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+margin_left = 980.0
+margin_right = 3828.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 0 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+margin_right = 250.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 250, 0 )
+custom_styles/panel = SubResource( 40 )
+
+[node name="MonsterSpriteContainer1" type="ViewportContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 254.0
+margin_right = 794.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 540 )
+mouse_filter = 2
+size_flags_vertical = 3
+stretch = true
+script = ExtResource( 11 )
+flip_h = true
+zoom_duration = 2.0
+
+[node name="Viewport" type="Viewport" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1"]
+size = Vector2( 540, 540 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.73156 )
+environment = SubResource( 21 )
+projection = 1
+current = true
+
+[node name="BattleSlot" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport"]
+script = ExtResource( 6 )
+named_sounds = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+anims/bob = SubResource( 25 )
+anims/character_battle_cry = SubResource( 26 )
+anims/death = SubResource( 27 )
+anims/dodge = SubResource( 28 )
+anims/fade_in = SubResource( 29 )
+anims/flee = SubResource( 30 )
+anims/flee_incomplete = SubResource( 31 )
+anims/ghostly_fade = SubResource( 32 )
+anims/hurt = SubResource( 33 )
+anims/knockdown = SubResource( 34 )
+anims/long_death = SubResource( 35 )
+anims/monster_battle_cry = SubResource( 36 )
+anims/spawn = SubResource( 37 )
+anims/transform_in = SubResource( 38 )
+anims/transform_out = SubResource( 39 )
+
+[node name="SpriteContainer" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+script = ExtResource( 5 )
+albedo = Color( 0.363281, 0.351929, 0.351929, 1 )
+wave_t_frequency = 5.0
+static_amount = 0
+static_offset = 0.667
+
+[node name="Sprite" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot/SpriteContainer" instance=ExtResource( 4 )]
+
+[node name="DecoyContainer" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25 )
+script = ExtResource( 5 )
+emission = null
+wave_amplitude = null
+wave_t_frequency = null
+wave_v_frequency = null
+static_amount = null
+static_offset = null
+static_speed = null
+sparkle = null
+sprite_rotation = null
+
+[node name="Audio1" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+stream = SubResource( 15 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Audio2" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+stream = SubResource( 16 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Audio3" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+stream = SubResource( 17 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Voice" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Voice"
+
+[node name="VCams" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+
+[node name="StaticBody" type="StaticBody" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot"]
+transform = Transform( 5, 0, 0, 0, 5.82177, 0.241922, 0, -1.45153, 0.970296, 0, 3, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot/StaticBody"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot/StaticBody"]
+visible = false
+mesh = SubResource( 20 )
+
+[node name="PlayerName1" type="Label" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1"]
+unique_name_in_owner = true
+margin_top = 370.0
+margin_right = 300.0
+rect_min_size = Vector2( 300, 175 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.847059, 0.431373, 0.960784, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/line_spacing = -15
+custom_constants/shadow_offset_y = 4
+custom_fonts/font = ExtResource( 14 )
+text = "Traveling Merchant"
+align = 1
+valign = 2
+autowrap = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer"]
+margin_left = -3840.0
+margin_right = -1500.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 1920, 540 )
+custom_styles/panel = SubResource( 41 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2"]
+margin_right = 2340.0
+margin_bottom = 540.0
+custom_constants/margin_right = 0
+custom_constants/margin_left = 980
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer"]
+margin_left = 980.0
+margin_right = 2340.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 540 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+margin_right = 540.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 540 )
+custom_styles/panel = SubResource( 42 )
+
+[node name="MonsterSpriteContainer2" type="ViewportContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 544.0
+margin_right = 1084.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 540 )
+mouse_filter = 2
+size_flags_vertical = 3
+stretch = true
+script = ExtResource( 11 )
+flip_h = true
+zoom_duration = 2.0
+
+[node name="Viewport" type="Viewport" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2"]
+size = Vector2( 540, 540 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.73156 )
+environment = SubResource( 21 )
+projection = 1
+current = true
+
+[node name="BattleSlot" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport"]
+script = ExtResource( 6 )
+named_sounds = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+anims/bob = SubResource( 43 )
+anims/character_battle_cry = SubResource( 44 )
+anims/death = SubResource( 45 )
+anims/dodge = SubResource( 46 )
+anims/fade_in = SubResource( 47 )
+anims/flee = SubResource( 48 )
+anims/flee_incomplete = SubResource( 49 )
+anims/ghostly_fade = SubResource( 50 )
+anims/hurt = SubResource( 51 )
+anims/knockdown = SubResource( 52 )
+anims/long_death = SubResource( 53 )
+anims/monster_battle_cry = SubResource( 54 )
+anims/spawn = SubResource( 55 )
+anims/transform_in = SubResource( 56 )
+anims/transform_out = SubResource( 57 )
+
+[node name="SpriteContainer" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+script = ExtResource( 5 )
+albedo = Color( 0.363281, 0.351929, 0.351929, 1 )
+wave_t_frequency = 5.0
+static_amount = 0
+static_offset = 0.667
+
+[node name="Sprite" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot/SpriteContainer" instance=ExtResource( 4 )]
+
+[node name="DecoyContainer" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25 )
+script = ExtResource( 5 )
+emission = null
+wave_amplitude = null
+wave_t_frequency = null
+wave_v_frequency = null
+static_amount = null
+static_offset = null
+static_speed = null
+sparkle = null
+sprite_rotation = null
+
+[node name="Audio1" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+stream = SubResource( 15 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Audio2" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+stream = SubResource( 16 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Audio3" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+stream = SubResource( 17 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Voice" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Voice"
+
+[node name="VCams" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+
+[node name="StaticBody" type="StaticBody" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot"]
+transform = Transform( 5, 0, 0, 0, 5.82177, 0.241922, 0, -1.45153, 0.970296, 0, 3, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot/StaticBody"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot/StaticBody"]
+visible = false
+mesh = SubResource( 20 )
+
+[node name="PlayerName2" type="Label" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2"]
+unique_name_in_owner = true
+margin_top = 370.0
+margin_right = 300.0
+rect_min_size = Vector2( 300, 175 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.847059, 0.431373, 0.960784, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/line_spacing = -15
+custom_constants/shadow_offset_y = 4
+custom_fonts/font = ExtResource( 14 )
+text = "Traveling Merchant"
+align = 1
+valign = 2
+autowrap = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+margin_top = 544.0
+margin_right = 2340.0
+margin_bottom = 1084.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2"]
+margin_right = 2340.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="SoundVFX" type="ColorRect" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2"]
+material = SubResource( 79 )
+margin_right = 2340.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="PanelContainer2" type="ColorRect" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2"]
+margin_left = 1920.0
+margin_right = 4260.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 1920, 540 )
+color = Color( 0, 0, 0, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2"]
+margin_top = 10.0
+margin_right = 3840.0
+margin_bottom = 550.0
+custom_constants/margin_right = 0
+custom_constants/margin_left = 2000
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer"]
+margin_left = 2000.0
+margin_right = 3840.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 540 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 100, 0 )
+custom_styles/panel = SubResource( 40 )
+
+[node name="MonsterSpriteContainer3" type="ViewportContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 104.0
+margin_right = 644.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 540 )
+mouse_filter = 2
+size_flags_vertical = 3
+stretch = true
+script = ExtResource( 11 )
+zoom_duration = 2.0
+
+[node name="Viewport" type="Viewport" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3"]
+size = Vector2( 540, 540 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.73156 )
+environment = SubResource( 21 )
+projection = 1
+current = true
+
+[node name="BattleSlot" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport"]
+script = ExtResource( 6 )
+named_sounds = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+anims/bob = SubResource( 18 )
+anims/character_battle_cry = SubResource( 22 )
+anims/death = SubResource( 2 )
+anims/dodge = SubResource( 3 )
+anims/fade_in = SubResource( 4 )
+anims/flee = SubResource( 5 )
+anims/flee_incomplete = SubResource( 6 )
+anims/ghostly_fade = SubResource( 7 )
+anims/hurt = SubResource( 8 )
+anims/knockdown = SubResource( 9 )
+anims/long_death = SubResource( 10 )
+anims/monster_battle_cry = SubResource( 11 )
+anims/spawn = SubResource( 12 )
+anims/transform_in = SubResource( 13 )
+anims/transform_out = SubResource( 14 )
+
+[node name="SpriteContainer" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+script = ExtResource( 5 )
+albedo = Color( 0.363281, 0.351929, 0.351929, 1 )
+wave_t_frequency = 5.0
+static_amount = 0
+static_offset = 0.667
+
+[node name="Sprite" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot/SpriteContainer" instance=ExtResource( 4 )]
+
+[node name="DecoyContainer" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25 )
+script = ExtResource( 5 )
+emission = null
+wave_amplitude = null
+wave_t_frequency = null
+wave_v_frequency = null
+static_amount = null
+static_offset = null
+static_speed = null
+sparkle = null
+sprite_rotation = null
+
+[node name="Audio1" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+stream = SubResource( 15 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Audio2" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+stream = SubResource( 16 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Audio3" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+stream = SubResource( 17 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Voice" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Voice"
+
+[node name="VCams" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+
+[node name="StaticBody" type="StaticBody" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot"]
+transform = Transform( 5, 0, 0, 0, 5.82177, 0.241922, 0, -1.45153, 0.970296, 0, 3, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot/StaticBody"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot/StaticBody"]
+visible = false
+mesh = SubResource( 20 )
+
+[node name="PlayerName3" type="Label" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3"]
+unique_name_in_owner = true
+margin_left = 350.0
+margin_top = 340.0
+rect_min_size = Vector2( 300, 175 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.917647, 0.635294, 0.101961, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/line_spacing = -15
+custom_constants/shadow_offset_y = 4
+custom_fonts/font = ExtResource( 14 )
+text = "Traveling Merchant"
+valign = 2
+autowrap = true
+
+[node name="PanelContainer3" type="PanelContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2"]
+margin_left = 1920.0
+margin_right = 4260.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 1920, 540 )
+custom_styles/panel = SubResource( 73 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3"]
+margin_right = 2340.0
+margin_bottom = 540.0
+custom_constants/margin_right = 0
+custom_constants/margin_left = 1800
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer"]
+margin_left = 1800.0
+margin_right = 2340.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 540 )
+
+[node name="MonsterSpriteContainer4" type="ViewportContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 540.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 540, 540 )
+mouse_filter = 2
+size_flags_vertical = 3
+stretch = true
+script = ExtResource( 11 )
+zoom_duration = 2.0
+
+[node name="Viewport" type="Viewport" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4"]
+size = Vector2( 540, 540 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.73156 )
+environment = SubResource( 21 )
+projection = 1
+current = true
+
+[node name="BattleSlot" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport"]
+script = ExtResource( 6 )
+named_sounds = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+anims/bob = SubResource( 58 )
+anims/character_battle_cry = SubResource( 59 )
+anims/death = SubResource( 60 )
+anims/dodge = SubResource( 61 )
+anims/fade_in = SubResource( 62 )
+anims/flee = SubResource( 63 )
+anims/flee_incomplete = SubResource( 64 )
+anims/ghostly_fade = SubResource( 65 )
+anims/hurt = SubResource( 66 )
+anims/knockdown = SubResource( 67 )
+anims/long_death = SubResource( 68 )
+anims/monster_battle_cry = SubResource( 69 )
+anims/spawn = SubResource( 70 )
+anims/transform_in = SubResource( 71 )
+anims/transform_out = SubResource( 72 )
+
+[node name="SpriteContainer" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+script = ExtResource( 5 )
+albedo = Color( 0.363281, 0.351929, 0.351929, 1 )
+wave_t_frequency = 5.0
+static_amount = 0
+static_offset = 0.667
+
+[node name="Sprite" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot/SpriteContainer" instance=ExtResource( 4 )]
+
+[node name="DecoyContainer" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25 )
+script = ExtResource( 5 )
+emission = null
+wave_amplitude = null
+wave_t_frequency = null
+wave_v_frequency = null
+static_amount = null
+static_offset = null
+static_speed = null
+sparkle = null
+sprite_rotation = null
+
+[node name="Audio1" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+stream = SubResource( 15 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Audio2" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+stream = SubResource( 16 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Audio3" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+stream = SubResource( 17 )
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Battle"
+
+[node name="Voice" type="AudioStreamPlayer3D" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+unit_size = 100.0
+max_distance = 1000.0
+bus = "Voice"
+
+[node name="VCams" type="Spatial" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+
+[node name="StaticBody" type="StaticBody" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot"]
+transform = Transform( 5, 0, 0, 0, 5.82177, 0.241922, 0, -1.45153, 0.970296, 0, 3, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot/StaticBody"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot/StaticBody"]
+visible = false
+mesh = SubResource( 20 )
+
+[node name="PlayerName4" type="Label" parent="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4"]
+unique_name_in_owner = true
+margin_left = 350.0
+margin_top = 350.0
+rect_min_size = Vector2( 300, 175 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.917647, 0.635294, 0.101961, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/line_spacing = -15
+custom_constants/shadow_offset_y = 4
+custom_fonts/font = ExtResource( 14 )
+text = "Traveling Merchant"
+valign = 2
+autowrap = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer"]
+margin_right = 1920.0
+margin_bottom = 1084.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/MarginContainer"]
+margin_right = 1920.0
+margin_bottom = 1084.0
+custom_constants/separation = -100
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/MarginContainer/VBoxContainer"]
+margin_top = 382.0
+margin_right = 2340.0
+margin_bottom = 592.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 890.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 890, 0 )
+
+[node name="Label" type="Label" parent="Scroller/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 894.0
+margin_right = 995.0
+margin_bottom = 210.0
+rect_pivot_offset = Vector2( 0, 125 )
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0.847059, 0.431373, 0.960784, 1 )
+custom_colors/font_color_shadow = Color( 0.847059, 0.431373, 0.960784, 1 )
+custom_constants/shadow_offset_x = 10
+custom_constants/shadow_offset_y = 10
+custom_fonts/font = ExtResource( 15 )
+text = "V"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/MarginContainer/VBoxContainer"]
+margin_top = 492.0
+margin_right = 2340.0
+margin_bottom = 702.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 950.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 950, 0 )
+
+[node name="Label2" type="Label" parent="Scroller/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 954.0
+margin_right = 1032.0
+margin_bottom = 210.0
+rect_pivot_offset = Vector2( 0, 125 )
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0.847059, 0.431373, 0.960784, 1 )
+custom_colors/font_color_shadow = Color( 0.847059, 0.431373, 0.960784, 1 )
+custom_constants/shadow_offset_x = 10
+custom_constants/shadow_offset_y = 10
+custom_constants/shadow_as_outline = 0
+custom_fonts/font = ExtResource( 15 )
+text = "S"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Hide = SubResource( 74 )
+anims/RESET = SubResource( 23 )
+anims/show = SubResource( 24 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[connection signal="input_event" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot" method="_on_StaticBody_input_event"]
+[connection signal="mouse_entered" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot" method="_on_StaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MonsterSpriteContainer1/Viewport/BattleSlot" method="_on_StaticBody_mouse_exited"]
+[connection signal="input_event" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot" method="_on_StaticBody_input_event"]
+[connection signal="mouse_entered" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot" method="_on_StaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer2/Viewport/BattleSlot" method="_on_StaticBody_mouse_exited"]
+[connection signal="input_event" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot" method="_on_StaticBody_input_event"]
+[connection signal="mouse_entered" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot" method="_on_StaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer2/MarginContainer/HBoxContainer/MonsterSpriteContainer3/Viewport/BattleSlot" method="_on_StaticBody_mouse_exited"]
+[connection signal="input_event" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot" method="_on_StaticBody_input_event"]
+[connection signal="mouse_entered" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot" method="_on_StaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot/StaticBody" to="Scroller/OverscanMarginContainer/VBoxContainer/MarginContainer2/PanelContainer3/MarginContainer/HBoxContainer/MonsterSpriteContainer4/Viewport/BattleSlot" method="_on_StaticBody_mouse_exited"]

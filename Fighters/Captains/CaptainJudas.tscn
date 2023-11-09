@@ -1,0 +1,251 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://data/battle_moves/double_slice.tres" type="Resource" id=1]
+[ext_resource path="res://data/battle_moves/bite.tres" type="Resource" id=2]
+[ext_resource path="res://data/monster_forms/trapwurm.tres" type="Resource" id=3]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=4]
+[ext_resource path="res://data/battle_moves/parry_stance.tres" type="Resource" id=5]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=6]
+[ext_resource path="res://data/battle_moves/doc_leaf.tres" type="Resource" id=7]
+[ext_resource path="res://data/battle_moves/leech.tres" type="Resource" id=8]
+[ext_resource path="res://data/battle_moves/elemental_wall.tres" type="Resource" id=9]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=11]
+[ext_resource path="res://data/battle_moves/new_leaf.tres" type="Resource" id=12]
+[ext_resource path="res://data/battle_moves/dodge.tres" type="Resource" id=13]
+[ext_resource path="res://data/battle_moves/smack.tres" type="Resource" id=14]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=15]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=16]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=17]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=18]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=19]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=20]
+[ext_resource path="res://data/monster_forms/blossomaw.tres" type="Resource" id=21]
+[ext_resource path="res://data/battle_moves/revenge_strike.tres" type="Resource" id=22]
+[ext_resource path="res://data/battle_moves/preemptive_strike.tres" type="Resource" id=23]
+[ext_resource path="res://data/monster_forms/manispear.tres" type="Resource" id=24]
+[ext_resource path="res://data/monster_forms/hedgeherne.tres" type="Resource" id=25]
+[ext_resource path="res://data/character_sfx/male_npc_3_sfx.tres" type="Resource" id=26]
+[ext_resource path="res://data/character_sfx/captain_judas_sfx.tres" type="Resource" id=27]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=28]
+[ext_resource path="res://sprites/portraits/judas_angry.png" type="Texture" id=29]
+[ext_resource path="res://sprites/portraits/judas_happy.png" type="Texture" id=30]
+[ext_resource path="res://sprites/portraits/judas.png" type="Texture" id=31]
+[ext_resource path="res://sfx/voices/judas/judas_thinking_1.wav" type="AudioStream" id=32]
+[ext_resource path="res://sfx/voices/judas/judas_sigh_1.wav" type="AudioStream" id=33]
+[ext_resource path="res://sfx/voices/judas/judas_laugh_1.wav" type="AudioStream" id=34]
+[ext_resource path="res://data/battle_moves/trap_jaw.tres" type="Resource" id=35]
+[ext_resource path="res://data/battle_moves/splinter.tres" type="Resource" id=36]
+[ext_resource path="res://data/monster_forms/kirikuri.tres" type="Resource" id=37]
+[ext_resource path="res://data/monster_forms/draculeaf.tres" type="Resource" id=38]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 17 )
+banner_scene = ExtResource( 10 )
+title = "CAPTAIN_JUDAS_NAME"
+subtitle = "CAPTAIN_JUDAS_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+npc_name = "CAPTAIN_JUDAS_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 5,
+"body_color_2": 4,
+"eye_color": 11,
+"face_accessory_color": -1,
+"favorite_color": 4,
+"hair_accessory_color": 0,
+"hair_color": 16,
+"legs_color": 16,
+"shoe_color": 12,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "judas",
+"body": "judas",
+"hair": "headband1",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 5
+human_colors/body_color_2 = 4
+human_colors/eye_color = 11
+human_colors/favorite_color = 4
+human_colors/hair_accessory_color = 0
+human_colors/hair_color = 16
+human_colors/legs_color = 16
+human_colors/shoe_color = 12
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "judas",
+"body": "judas",
+"hair": "headband1",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 5,
+"body_color_2": 4,
+"eye_color": 11,
+"face_accessory_color": -1,
+"favorite_color": 4,
+"hair_accessory_color": 0,
+"hair_color": 16,
+"legs_color": 16,
+"shoe_color": 12,
+"skin_color": -1
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 6 )
+music_override = ExtResource( 20 )
+music_vox_override = ExtResource( 19 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 11 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 16 )
+character_name = "CAPTAIN_JUDAS_NAME_SHORT"
+pronouns = 0
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 27 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 15 )
+form = ExtResource( 24 )
+moves_override = [ ExtResource( 14 ), ExtResource( 22 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 23 ) ]
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 15 )
+form = ExtResource( 3 )
+moves_override = [ ExtResource( 14 ), ExtResource( 2 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 35 ) ]
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 15 )
+form = ExtResource( 25 )
+moves_override = [ ExtResource( 36 ), ExtResource( 14 ), ExtResource( 23 ), ExtResource( 22 ) ]
+
+[node name="CharacterConfig2" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 16 )
+character_name = "RANGER_NAME"
+pronouns = 0
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 4 )
+character_sfx = ExtResource( 26 )
+character_kind = 1
+human_colors = {
+"body_color_1": 5,
+"body_color_2": 4,
+"eye_color": 3,
+"face_accessory_color": -1,
+"favorite_color": 3,
+"hair_accessory_color": -1,
+"hair_color": 4,
+"legs_color": 3,
+"shoe_color": -1,
+"skin_color": 20
+}
+human_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "bald",
+"head": "beard1",
+"legs": "shorts1"
+}
+human_colors/body_color_1 = 5
+human_colors/body_color_2 = 4
+human_colors/eye_color = 3
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = 3
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = 4
+human_colors/legs_color = 3
+human_colors/shoe_color = -1
+human_colors/skin_color = 20
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/CharacterConfig2" index="0"]
+script = ExtResource( 15 )
+form = ExtResource( 21 )
+moves_override = [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 8 ) ]
+
+[node name="TapeConfig5" type="Node" parent="EncounterConfig/CharacterConfig2" index="1"]
+script = ExtResource( 15 )
+form = ExtResource( 38 )
+moves_override = [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 8 ) ]
+
+[node name="TapeConfig6" type="Node" parent="EncounterConfig/CharacterConfig2" index="2"]
+script = ExtResource( 15 )
+form = ExtResource( 37 )
+moves_override = [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 8 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 28 )
+portrait = ExtResource( 29 )
+title = "CAPTAIN_JUDAS_NAME_SHORT"
+messages = [ "ARENAS_JUDAS_SPAWN" ]
+audio = ExtResource( 33 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 28 )
+portrait = ExtResource( 31 )
+title = "CAPTAIN_JUDAS_NAME_SHORT"
+messages = [ "ARENAS_JUDAS_ENTRY" ]
+audio = ExtResource( 32 )
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 28 )
+portrait = ExtResource( 30 )
+title = "CAPTAIN_JUDAS_NAME_SHORT"
+messages = [ "ARENAS_JUDAS_EXIT" ]
+audio = ExtResource( 34 )

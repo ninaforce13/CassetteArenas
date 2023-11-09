@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/RangerData.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/hoylake/auriclaw.tres" type="Resource" id=2]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/hoylake/blossomaw.tres" type="Resource" id=3]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/hoylake/adeptile.tres" type="Resource" id=4]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/hoylake/folklord.tres" type="Resource" id=5]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/hoylake/ramtasm.tres" type="Resource" id=6]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/hoylake/snoopin.tres" type="Resource" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "HOYLAKE_NAME"
+human_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": -1,
+"face_accessory_color": 14,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": 13,
+"legs_color": 6,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "tshirt1",
+"body": "tshirt1",
+"hair": "bun1",
+"head": "beard2",
+"legs": "generic",
+"wings": "generic"
+}
+pronouns = 0
+introdialog = "Oho! An opportunity to study your performance up close!"
+defeatdialog = "I suppose I've taken enough notes on this encounter..."
+biotext = "An enthusiastic \"Researcher\". He's very interested in how it all works. "
+recruiter = "Bytten Studio"
+recruiter_id = "0000-0000"
+tape0 = ExtResource( 4 )
+tape1 = ExtResource( 2 )
+tape2 = ExtResource( 3 )
+tape3 = ExtResource( 5 )
+tape4 = ExtResource( 6 )
+tape5 = ExtResource( 7 )
+stats = null
+version = 1.1
+default_stickers = true

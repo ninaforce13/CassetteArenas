@@ -1,0 +1,245 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://battle/ai/captains/CaptainBuffySidekickAI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/RangerArena/Fighters/Captains/CaptainAI/CaptainBuffyAI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=3]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=5]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=6]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=7]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://data/battle_moves/ap_refund.tres" type="Resource" id=9]
+[ext_resource path="res://data/battle_moves/ap_steal.tres" type="Resource" id=10]
+[ext_resource path="res://data/battle_moves/clobber.tres" type="Resource" id=11]
+[ext_resource path="res://data/battle_moves/ap_donate.tres" type="Resource" id=12]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=13]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=14]
+[ext_resource path="res://data/character_sfx/male_npc_1_sfx.tres" type="Resource" id=15]
+[ext_resource path="res://data/monster_forms/ripterra.tres" type="Resource" id=16]
+[ext_resource path="res://sprites/portraits/buffy.png" type="Texture" id=17]
+[ext_resource path="res://data/monster_forms/liligator.tres" type="Resource" id=18]
+[ext_resource path="res://sfx/voices/buffy/buffy_laugh_1.wav" type="AudioStream" id=19]
+[ext_resource path="res://data/monster_forms/blossomaw.tres" type="Resource" id=20]
+[ext_resource path="res://data/battle_moves/ap_starter.tres" type="Resource" id=21]
+[ext_resource path="res://sfx/voices/buffy/buffy_greeting.wav" type="AudioStream" id=22]
+[ext_resource path="res://data/battle_moves/ap_boost.tres" type="Resource" id=23]
+[ext_resource path="res://data/character_sfx/captain_buffy_sfx.tres" type="Resource" id=24]
+[ext_resource path="res://data/monster_forms/faerious.tres" type="Resource" id=25]
+[ext_resource path="res://sfx/voices/buffy/buffy_compliment.wav" type="AudioStream" id=26]
+[ext_resource path="res://sprites/portraits/buffy_happy.png" type="Texture" id=27]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=28]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=29]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=30]
+[ext_resource path="res://data/monster_forms/ratcousel.tres" type="Resource" id=31]
+[ext_resource path="res://data/monster_forms/queenyx.tres" type="Resource" id=32]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 7 )
+banner_scene = ExtResource( 4 )
+title = "CAPTAIN_BUFFY_NAME"
+subtitle = "CAPTAIN_BUFFY_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 8 )]
+npc_name = "CAPTAIN_BUFFY_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 6,
+"body_color_2": 4,
+"eye_color": 16,
+"face_accessory_color": -1,
+"favorite_color": 3,
+"hair_accessory_color": 3,
+"hair_color": 16,
+"legs_color": 8,
+"shoe_color": 14,
+"skin_color": 21
+}
+sprite_part_names = {
+"arms": "vest1",
+"body": "buffy",
+"hair": "headband2",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 6
+human_colors/body_color_2 = 4
+human_colors/eye_color = 16
+human_colors/favorite_color = 3
+human_colors/hair_accessory_color = 3
+human_colors/hair_color = 16
+human_colors/legs_color = 8
+human_colors/shoe_color = 14
+human_colors/skin_color = 21
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "vest1",
+"body": "buffy",
+"hair": "headband2",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 6,
+"body_color_2": 4,
+"eye_color": 16,
+"face_accessory_color": -1,
+"favorite_color": 3,
+"hair_accessory_color": 3,
+"hair_color": 16,
+"legs_color": 8,
+"shoe_color": 14,
+"skin_color": 21
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 3 )
+music_override = ExtResource( 14 )
+music_vox_override = ExtResource( 13 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 30 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 6 )
+character_name = "CAPTAIN_BUFFY_NAME_SHORT"
+pronouns = 1
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 24 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+ai = ExtResource( 2 )
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 5 )
+form = ExtResource( 18 )
+moves_override = [ ExtResource( 23 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 11 ) ]
+
+[node name="TapeConfig6" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 5 )
+form = ExtResource( 25 )
+moves_override = [ ExtResource( 23 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 11 ) ]
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 5 )
+form = ExtResource( 16 )
+moves_override = [ ExtResource( 23 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 11 ) ]
+
+[node name="CharacterConfig2" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 6 )
+character_name = "RANGER_NAME"
+pronouns = 0
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 28 )
+character_sfx = ExtResource( 15 )
+character_kind = 1
+human_colors = {
+"body_color_1": 8,
+"body_color_2": -1,
+"eye_color": 8,
+"face_accessory_color": -1,
+"favorite_color": 8,
+"hair_accessory_color": 0,
+"hair_color": 16,
+"legs_color": 3,
+"shoe_color": 3,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "vest1",
+"body": "vest1",
+"hair": "headband1",
+"head": "",
+"legs": "shorts1"
+}
+ai = ExtResource( 1 )
+human_colors/body_color_1 = 8
+human_colors/body_color_2 = -1
+human_colors/eye_color = 8
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = 8
+human_colors/hair_accessory_color = 0
+human_colors/hair_color = 16
+human_colors/legs_color = 3
+human_colors/shoe_color = 3
+human_colors/skin_color = -1
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig2" index="0"]
+script = ExtResource( 5 )
+form = ExtResource( 20 )
+moves_override = [ ExtResource( 23 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 12 ) ]
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig2" index="1"]
+script = ExtResource( 5 )
+form = ExtResource( 32 )
+moves_override = [ ExtResource( 23 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 12 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig2" index="2"]
+script = ExtResource( 5 )
+form = ExtResource( 31 )
+moves_override = [ ExtResource( 23 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 12 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 29 )
+portrait = ExtResource( 17 )
+title = "CAPTAIN_BUFFY_NAME_SHORT"
+messages = [ "ARENAS_BUFFY_SPAWN" ]
+audio = ExtResource( 19 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 29 )
+portrait = ExtResource( 27 )
+title = "CAPTAIN_BUFFY_NAME_SHORT"
+messages = [ "ARENAS_BUFFY_ENTRY" ]
+audio = ExtResource( 22 )
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 29 )
+portrait = ExtResource( 27 )
+title = "CAPTAIN_BUFFY_NAME_SHORT"
+messages = [ "ARENAS_BUFFY_EXIT" ]
+audio = ExtResource( 26 )

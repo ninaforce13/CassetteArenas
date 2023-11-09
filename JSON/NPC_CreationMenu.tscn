@@ -1,0 +1,778 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://nodes/menus/AutoFocusConnector.gd" type="Script" id=1]
+[ext_resource path="res://menus/FullWidthButtonPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/menus/RowFocusIndicator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://menus/menu_bg_fade.shader" type="Shader" id=4]
+[ext_resource path="res://nodes/menus/ArrowOptionList.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/layered_sprite/BattleHumanSprite.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/fonts/regular/regular_70.tres" type="DynamicFont" id=7]
+[ext_resource path="res://menus/BaseMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/menus/InputMappedButton.gd" type="Script" id=9]
+[ext_resource path="res://mods/RangerArena/Scripts/WidthLimitLineEditNoSpecialChar.gd" type="Script" id=10]
+[ext_resource path="res://mods/RangerArena/JSON/NPCCharacterCreationMenu.gd" type="Script" id=11]
+[ext_resource path="res://nodes/menus/AutoScrollContainer.gd" type="Script" id=12]
+[ext_resource path="res://menus/character_creation/GridRowLabel.gd" type="Script" id=13]
+[ext_resource path="res://nodes/layered_sprite/WorldHumanSprite.tscn" type="PackedScene" id=14]
+[ext_resource path="res://nodes/menus/ScrollIndicator.tscn" type="PackedScene" id=15]
+[ext_resource path="res://nodes/menus/ColorArrowOptionList.tscn" type="PackedScene" id=16]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+render_priority = 127
+shader = ExtResource( 4 )
+shader_param/progress = 1.0
+shader_param/max_alpha = 1.0
+shader_param/base_color = Color( 0.1686, 0.1098, 0.2235, 1 )
+shader_param/hi_color = Color( 0.6706, 0.4588, 0.9098, 0.0625 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "default"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Blur:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Blur:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scroller:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Scroller:margin_left")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 540, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Scroller:margin_right")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 540, 0.0 ]
+}
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 128
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -32, 48 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -32, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 16.0
+content_margin_right = 16.0
+bg_color = Color( 1, 1, 1, 1 )
+expand_margin_top = 200.0
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.803922, 0.803922, 0.803922, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[node name="CharacterCreationMenu" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 1914.0
+margin_bottom = 1076.0
+script = ExtResource( 11 )
+apperance_load = {
+}
+hidden_options = [  ]
+extra_hair_values = [  ]
+extra_head_values = [ "visor1", "mask1", "makeup2" ]
+extra_body_values = [  ]
+extra_legs_values = [  ]
+initial_randomize = true
+dlc_part_color = Color( 0, 0, 0, 1 )
+
+[node name="Blur" parent="." index="0"]
+material = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/default = SubResource( 9 )
+anims/show = SubResource( 10 )
+
+[node name="OverscanMarginContainer" parent="Scroller" index="0"]
+custom_constants/margin_top = 0
+custom_constants/margin_bottom = 0
+vertical_margin = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer" index="0"]
+margin_left = 172.0
+margin_right = 1752.0
+margin_bottom = 1072.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="PreviewPanel" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer" index="0"]
+margin_top = 259.0
+margin_right = 670.0
+margin_bottom = 813.0
+size_flags_vertical = 4
+custom_constants/separation = 0
+
+[node name="PanelContainer2" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/PreviewPanel" index="0"]
+margin_right = 670.0
+margin_bottom = 554.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/PreviewPanel/PanelContainer2" index="0"]
+margin_right = 640.0
+margin_bottom = 524.0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/PreviewPanel/PanelContainer2/VBoxContainer" index="0"]
+margin_right = 640.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 640, 520 )
+stretch = true
+stretch_shrink = 10
+
+[node name="Viewport" type="Viewport" parent="Scroller/OverscanMarginContainer/HBoxContainer/PreviewPanel/PanelContainer2/VBoxContainer/ViewportContainer" index="0"]
+size = Vector2( 64, 52 )
+transparent_bg = true
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="WorldHumanSprite" parent="Scroller/OverscanMarginContainer/HBoxContainer/PreviewPanel/PanelContainer2/VBoxContainer/ViewportContainer/Viewport" index="0" instance=ExtResource( 14 )]
+position = Vector2( 0, 6 )
+idle = "run"
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="BattleHumanSprite" parent="Scroller/OverscanMarginContainer/HBoxContainer/PreviewPanel/PanelContainer2/VBoxContainer/ViewportContainer/Viewport" index="1" instance=ExtResource( 6 )]
+position = Vector2( 18, 0 )
+
+[node name="Buttons" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/PreviewPanel/PanelContainer2/VBoxContainer" index="1"]
+margin_left = 120.0
+margin_top = 524.0
+margin_right = 520.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 4
+script = ExtResource( 1 )
+assign_left_right = false
+
+[node name="InputPanel" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer" index="1"]
+show_behind_parent = true
+margin_left = 670.0
+margin_right = 1580.0
+margin_bottom = 1072.0
+rect_min_size = Vector2( 160, 0 )
+size_flags_horizontal = 8
+custom_styles/panel = SubResource( 4 )
+
+[node name="Control" type="Control" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel" index="0"]
+margin_right = 910.0
+size_flags_vertical = 0
+
+[node name="GridRowFocusIndicator" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/Control" index="0" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 910.0
+margin_bottom = 0.0
+container_path = NodePath("../../MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer")
+hide_when_focus_lost = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel" index="1"]
+margin_right = 910.0
+margin_bottom = 1072.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 97
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 72
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer" index="0"]
+margin_top = 97.0
+margin_right = 910.0
+margin_bottom = 1000.0
+custom_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer" index="0"]
+margin_right = 910.0
+margin_bottom = 90.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer" index="0"]
+margin_left = 16.0
+margin_right = 894.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Trainee Information"
+align = 1
+autowrap = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer" index="1"]
+show_behind_parent = true
+margin_top = 98.0
+margin_right = 910.0
+margin_bottom = 903.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 8 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2" index="0"]
+show_behind_parent = true
+margin_right = 910.0
+margin_bottom = 805.0
+rect_clip_content = false
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+script = ExtResource( 12 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer" index="0"]
+margin_right = 910.0
+margin_bottom = 1428.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 16
+custom_constants/margin_left = 16
+
+[node name="InputContainer" type="GridContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer" index="0"]
+margin_left = 16.0
+margin_right = 894.0
+margin_bottom = 1428.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 16
+custom_constants/hseparation = 16
+columns = 2
+script = ExtResource( 1 )
+preserve_focus_index = true
+focus_on_hover = true
+
+[node name="Label" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="0"]
+margin_right = 562.0
+margin_bottom = 60.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_NAME"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_name" type="LineEdit" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="1"]
+margin_left = 578.0
+margin_right = 878.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 300, 0 )
+hint_tooltip = "UI_CC_LABEL_NAME"
+custom_colors/font_color_uneditable = Color( 0.258824, 0.258824, 0.258824, 1 )
+custom_styles/read_only = SubResource( 11 )
+text = "Trainee"
+align = 1
+context_menu_enabled = false
+script = ExtResource( 10 )
+
+[node name="Timer2" type="Timer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/Field_name" index="0"]
+wait_time = 0.65
+
+[node name="PopupMenu2" type="PopupMenu" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/Field_name" index="1"]
+items = [ "Cut", null, 0, false, false, 0, 268435544, null, "", false, "Copy", null, 0, false, false, 1, 268435523, null, "", false, "Paste", null, 0, false, false, 2, 268435542, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Select All", null, 0, false, false, 4, 268435521, null, "", false, "Clear", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Undo", null, 0, false, false, 5, 268435546, null, "", false, "Redo", null, 0, false, false, 6, 301989978, null, "", false ]
+
+[node name="Timer3" type="Timer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/Field_name" index="2"]
+wait_time = 0.65
+
+[node name="PopupMenu3" type="PopupMenu" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/Field_name" index="3"]
+items = [ "Cut", null, 0, false, false, 0, 268435544, null, "", false, "Copy", null, 0, false, false, 1, 268435523, null, "", false, "Paste", null, 0, false, false, 2, 268435542, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Select All", null, 0, false, false, 4, 268435521, null, "", false, "Clear", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Undo", null, 0, false, false, 5, 268435546, null, "", false, "Redo", null, 0, false, false, 6, 301989978, null, "", false ]
+
+[node name="Label2" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="2"]
+margin_top = 76.0
+margin_right = 562.0
+margin_bottom = 136.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_PRONOUNS"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_pronouns" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="3" instance=ExtResource( 5 )]
+margin_left = 578.0
+margin_top = 76.0
+margin_right = 878.0
+margin_bottom = 136.0
+values = [ 0, 1, 2 ]
+value_labels = [ "UI_CC_VALUE_PRONOUN.m", "UI_CC_VALUE_PRONOUN.f", "UI_CC_VALUE_PRONOUN.n" ]
+
+[node name="Label3" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="4"]
+margin_top = 152.0
+margin_right = 562.0
+margin_bottom = 212.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_FAVORITE_COLOR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_favorite_color" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="5" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 152.0
+margin_right = 878.0
+margin_bottom = 212.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="6"]
+margin_top = 228.0
+margin_right = 562.0
+margin_bottom = 288.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_SKIN_COLOR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_skin_color" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="7" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 228.0
+margin_right = 878.0
+margin_bottom = 288.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="8"]
+margin_top = 304.0
+margin_right = 562.0
+margin_bottom = 364.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_HAIR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_hair" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="9" instance=ExtResource( 5 )]
+margin_left = 578.0
+margin_top = 304.0
+margin_right = 878.0
+margin_bottom = 364.0
+
+[node name="Label6" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="10"]
+margin_top = 380.0
+margin_right = 562.0
+margin_bottom = 440.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_HAIR_COLOR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_hair_color" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="11" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 380.0
+margin_right = 878.0
+margin_bottom = 440.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="12"]
+margin_top = 456.0
+margin_right = 562.0
+margin_bottom = 516.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_HAIR_ACCESSORY_COLOR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_hair_accessory_color" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="13" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 456.0
+margin_right = 878.0
+margin_bottom = 516.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="14"]
+margin_top = 532.0
+margin_right = 562.0
+margin_bottom = 592.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_HEAD"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_head" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="15" instance=ExtResource( 5 )]
+margin_left = 578.0
+margin_top = 532.0
+margin_right = 878.0
+margin_bottom = 592.0
+
+[node name="Label9" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="16"]
+margin_top = 608.0
+margin_right = 562.0
+margin_bottom = 668.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_EYE_COLOR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_eye_color" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="17" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 608.0
+margin_right = 878.0
+margin_bottom = 668.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label10" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="18"]
+margin_top = 684.0
+margin_right = 562.0
+margin_bottom = 744.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_FACE_ACCESSORY_COLOR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_face_accessory_color" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="19" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 684.0
+margin_right = 878.0
+margin_bottom = 744.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label11" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="20"]
+margin_top = 760.0
+margin_right = 562.0
+margin_bottom = 820.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_BODY"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_body" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="21" instance=ExtResource( 5 )]
+margin_left = 578.0
+margin_top = 760.0
+margin_right = 878.0
+margin_bottom = 820.0
+
+[node name="Label12" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="22"]
+margin_top = 836.0
+margin_right = 562.0
+margin_bottom = 896.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_BODY_COLOR_1"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_body_color_1" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="23" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 836.0
+margin_right = 878.0
+margin_bottom = 896.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label13" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="24"]
+margin_top = 912.0
+margin_right = 562.0
+margin_bottom = 972.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_BODY_COLOR_2"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_body_color_2" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="25" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 912.0
+margin_right = 878.0
+margin_bottom = 972.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label14" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="26"]
+margin_top = 988.0
+margin_right = 562.0
+margin_bottom = 1048.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_LEGS"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_legs" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="27" instance=ExtResource( 5 )]
+margin_left = 578.0
+margin_top = 988.0
+margin_right = 878.0
+margin_bottom = 1048.0
+
+[node name="Label15" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="28"]
+margin_top = 1064.0
+margin_right = 562.0
+margin_bottom = 1124.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_LEGS_COLOR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_legs_color" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="29" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 1064.0
+margin_right = 878.0
+margin_bottom = 1124.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label16" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="30"]
+margin_top = 1140.0
+margin_right = 562.0
+margin_bottom = 1200.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_CC_LABEL_SHOE_COLOR"
+align = 2
+script = ExtResource( 13 )
+
+[node name="Field_shoe_color" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="31" instance=ExtResource( 16 )]
+margin_left = 578.0
+margin_top = 1140.0
+margin_right = 878.0
+margin_bottom = 1200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label17" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="32"]
+margin_top = 1216.0
+margin_right = 562.0
+margin_bottom = 1276.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pre-Battle Dialog"
+align = 2
+script = ExtResource( 13 )
+
+[node name="IntroText" type="LineEdit" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="33"]
+margin_left = 578.0
+margin_top = 1216.0
+margin_right = 878.0
+margin_bottom = 1276.0
+rect_min_size = Vector2( 300, 0 )
+hint_tooltip = "Pre-battle Dialog"
+text = "Hello!"
+max_length = 130
+context_menu_enabled = false
+placeholder_text = "Trainee"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Timer2" type="Timer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/IntroText" index="2"]
+wait_time = 0.65
+
+[node name="PopupMenu2" type="PopupMenu" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/IntroText" index="3"]
+items = [ "Cut", null, 0, false, false, 0, 268435544, null, "", false, "Copy", null, 0, false, false, 1, 268435523, null, "", false, "Paste", null, 0, false, false, 2, 268435542, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Select All", null, 0, false, false, 4, 268435521, null, "", false, "Clear", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Undo", null, 0, false, false, 5, 268435546, null, "", false, "Redo", null, 0, false, false, 6, 301989978, null, "", false ]
+
+[node name="Timer3" type="Timer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/IntroText" index="4"]
+wait_time = 0.65
+
+[node name="PopupMenu3" type="PopupMenu" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/IntroText" index="5"]
+items = [ "Cut", null, 0, false, false, 0, 268435544, null, "", false, "Copy", null, 0, false, false, 1, 268435523, null, "", false, "Paste", null, 0, false, false, 2, 268435542, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Select All", null, 0, false, false, 4, 268435521, null, "", false, "Clear", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Undo", null, 0, false, false, 5, 268435546, null, "", false, "Redo", null, 0, false, false, 6, 301989978, null, "", false ]
+
+[node name="Label18" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="34"]
+margin_top = 1292.0
+margin_right = 562.0
+margin_bottom = 1352.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Post-Battle Dialog"
+align = 2
+script = ExtResource( 13 )
+
+[node name="DefeatText" type="LineEdit" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="35"]
+margin_left = 578.0
+margin_top = 1292.0
+margin_right = 878.0
+margin_bottom = 1352.0
+rect_min_size = Vector2( 300, 0 )
+hint_tooltip = "Post-Battle Dialog"
+text = "I've been wounded!"
+max_length = 130
+context_menu_enabled = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Timer2" type="Timer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/DefeatText" index="2"]
+wait_time = 0.65
+
+[node name="PopupMenu2" type="PopupMenu" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/DefeatText" index="3"]
+items = [ "Cut", null, 0, false, false, 0, 268435544, null, "", false, "Copy", null, 0, false, false, 1, 268435523, null, "", false, "Paste", null, 0, false, false, 2, 268435542, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Select All", null, 0, false, false, 4, 268435521, null, "", false, "Clear", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Undo", null, 0, false, false, 5, 268435546, null, "", false, "Redo", null, 0, false, false, 6, 301989978, null, "", false ]
+
+[node name="Timer3" type="Timer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/DefeatText" index="4"]
+wait_time = 0.65
+
+[node name="PopupMenu3" type="PopupMenu" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/DefeatText" index="5"]
+items = [ "Cut", null, 0, false, false, 0, 268435544, null, "", false, "Copy", null, 0, false, false, 1, 268435523, null, "", false, "Paste", null, 0, false, false, 2, 268435542, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Select All", null, 0, false, false, 4, 268435521, null, "", false, "Clear", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Undo", null, 0, false, false, 5, 268435546, null, "", false, "Redo", null, 0, false, false, 6, 301989978, null, "", false ]
+
+[node name="Label19" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="36"]
+margin_top = 1368.0
+margin_right = 562.0
+margin_bottom = 1428.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Character Bio"
+align = 2
+script = ExtResource( 13 )
+
+[node name="BioText" type="LineEdit" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer" index="37"]
+margin_left = 578.0
+margin_top = 1368.0
+margin_right = 878.0
+margin_bottom = 1428.0
+rect_min_size = Vector2( 300, 0 )
+hint_tooltip = "Post-Battle Dialog"
+text = "A dedicated trainee who is ready to make their name known!"
+max_length = 130
+context_menu_enabled = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Timer2" type="Timer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/BioText" index="2"]
+wait_time = 0.65
+
+[node name="PopupMenu2" type="PopupMenu" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/BioText" index="3"]
+items = [ "Cut", null, 0, false, false, 0, 268435544, null, "", false, "Copy", null, 0, false, false, 1, 268435523, null, "", false, "Paste", null, 0, false, false, 2, 268435542, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Select All", null, 0, false, false, 4, 268435521, null, "", false, "Clear", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Undo", null, 0, false, false, 5, 268435546, null, "", false, "Redo", null, 0, false, false, 6, 301989978, null, "", false ]
+
+[node name="Timer3" type="Timer" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/BioText" index="4"]
+wait_time = 0.65
+
+[node name="PopupMenu3" type="PopupMenu" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/BioText" index="5"]
+items = [ "Cut", null, 0, false, false, 0, 268435544, null, "", false, "Copy", null, 0, false, false, 1, 268435523, null, "", false, "Paste", null, 0, false, false, 2, 268435542, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Select All", null, 0, false, false, 4, 268435521, null, "", false, "Clear", null, 0, false, false, 3, 0, null, "", false, "", null, 0, false, false, -1, 0, null, "", true, "Undo", null, 0, false, false, 5, 268435546, null, "", false, "Redo", null, 0, false, false, 6, 301989978, null, "", false ]
+
+[node name="_h_scroll2" type="HScrollBar" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer" index="1"]
+visible = false
+max_value = 910.0
+page = 910.0
+
+[node name="_v_scroll2" type="VScrollBar" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer" index="2"]
+max_value = 1200.0
+page = 813.0
+
+[node name="_h_scroll3" type="HScrollBar" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer" index="3"]
+
+[node name="_v_scroll3" type="VScrollBar" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer" index="4"]
+
+[node name="ScrollIndicator" parent="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2" index="1" instance=ExtResource( 15 )]
+margin_right = 910.0
+margin_bottom = 805.0
+scroll_container = NodePath("../ScrollContainer")
+
+[node name="FullWidthButtonPanel" parent="." index="3" instance=ExtResource( 2 )]
+
+[node name="HBoxContainer" parent="FullWidthButtonPanel" index="0"]
+margin_right = 1824.0
+margin_bottom = 68.0
+
+[node name="RandomizeButton" type="Button" parent="FullWidthButtonPanel/HBoxContainer" index="0"]
+margin_right = 257.0
+margin_bottom = 58.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 6 )
+text = "UI_CC_RANDOMIZE"
+flat = true
+expand_icon = true
+script = ExtResource( 9 )
+action = "ui_action_1"
+
+[node name="Control" type="Control" parent="FullWidthButtonPanel/HBoxContainer" index="1"]
+margin_left = 321.0
+margin_right = 903.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+
+[node name="SaveButton" type="Button" parent="FullWidthButtonPanel/HBoxContainer" index="2"]
+margin_left = 967.0
+margin_right = 1355.0
+margin_bottom = 58.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "UI_BUTTON_SAVE_CHANGES"
+flat = true
+expand_icon = true
+script = ExtResource( 9 )
+action = "ui_save"
+
+[node name="CancelButton" type="Button" parent="FullWidthButtonPanel/HBoxContainer" index="3"]
+margin_left = 1419.0
+margin_right = 1740.0
+margin_bottom = 58.0
+text = "UI_BUTTON_CANCEL"
+flat = true
+expand_icon = true
+script = ExtResource( 9 )
+action = "ui_cancel"
+
+[connection signal="focus_entered" from="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/Field_name" to="." method="_on_Field_name_focus_entered"]
+[connection signal="focus_exited" from="Scroller/OverscanMarginContainer/HBoxContainer/InputPanel/MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/MarginContainer/InputContainer/Field_name" to="." method="_on_Field_name_focus_exited"]
+[connection signal="pressed" from="FullWidthButtonPanel/HBoxContainer/RandomizeButton" to="." method="_on_RandomizeButton_pressed"]
+[connection signal="pressed" from="FullWidthButtonPanel/HBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="FullWidthButtonPanel/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
+
+[editable path="FullWidthButtonPanel"]

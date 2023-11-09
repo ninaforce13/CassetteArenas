@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://data/MonsterTape.gd" type="Script" id=1]
+[ext_resource path="res://data/monster_forms/decibelle.tres" type="Resource" id=2]
+[ext_resource path="res://data/elemental_types/air.tres" type="Resource" id=3]
+
+[resource]
+resource_name = "decibelle Gr5 air"
+script = ExtResource( 1 )
+name_override = ""
+form = ExtResource( 2 )
+grade = 5
+seed_value = 0
+type_override = [ ExtResource( 3 ) ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = true

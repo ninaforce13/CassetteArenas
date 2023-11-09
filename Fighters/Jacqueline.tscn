@@ -1,0 +1,153 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/RandomTapeConfigExt.gd" type="Script" id=1]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=2]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=3]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/RangerArena/Scripts/TapeConfigExt.gd" type="Script" id=5]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=6]
+[ext_resource path="res://sprites/portraits/jacqueline.png" type="Texture" id=7]
+[ext_resource path="res://sfx/voices/jacqueline/jacqueline_angry.wav" type="AudioStream" id=8]
+[ext_resource path="res://sprites/portraits/jacqueline_shocked.png" type="Texture" id=9]
+[ext_resource path="res://sfx/voices/jacqueline/jacqueline_motivated_2.wav" type="AudioStream" id=10]
+[ext_resource path="res://data/elemental_types/air.tres" type="Resource" id=11]
+[ext_resource path="res://data/monster_forms/decibelle.tres" type="Resource" id=12]
+[ext_resource path="res://data/character_sfx/female_npc_1_sfx.tres" type="Resource" id=13]
+[ext_resource path="res://mods/RangerArena/Spawn Profiles/jacqueline_deck.tres" type="Resource" id=14]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=15]
+[ext_resource path="res://mods/RangerArena/Characters/jacqueline.tres" type="Resource" id=16]
+
+[node name="Jacqueline" instance=ExtResource( 4 )]
+npc_name = "JACQUELINE_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 15,
+"body_color_2": 15,
+"eye_color": 7,
+"face_accessory_color": -1,
+"favorite_color": 10,
+"hair_accessory_color": -1,
+"hair_color": 1,
+"legs_color": 7,
+"shoe_color": 16,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "cultist1",
+"body": "cultist1",
+"hair": "jacqueline",
+"head": "generic",
+"legs": "skirt1",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 15
+human_colors/body_color_2 = 15
+human_colors/eye_color = 7
+human_colors/favorite_color = 10
+human_colors/hair_color = 1
+human_colors/legs_color = 7
+human_colors/shoe_color = 16
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "cultist1",
+"body": "cultist1",
+"hair": "jacqueline",
+"head": "generic",
+"legs": "skirt1",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 15,
+"body_color_2": 15,
+"eye_color": 7,
+"face_accessory_color": -1,
+"favorite_color": 10,
+"hair_accessory_color": -1,
+"hair_color": 1,
+"legs_color": 7,
+"shoe_color": 16,
+"skin_color": -1
+}
+
+[node name="Interaction" parent="." index="4"]
+disabled = true
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 3 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 15 ) ]
+transition = 4
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 2 )
+character_name = "JACQUELINE_NAME"
+level_scale_override_key = "monster_miniboss_smart"
+base_character = ExtResource( 16 )
+character_sfx = ExtResource( 13 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 5 )
+form = ExtResource( 12 )
+type_override = [ ExtResource( 11 ) ]
+
+[node name="RandomTapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 1 )
+seeded = false
+bootleg_rate = 0.1
+spawn_profile = ExtResource( 14 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="RandomTapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 1 )
+seeded = false
+bootleg_rate = 0.1
+spawn_profile = ExtResource( 14 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="EntryDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 6 )
+portrait = ExtResource( 7 )
+title = "JACQUELINE_NAME"
+messages = [ "ARENAS_JACQUELINE_ENTRY" ]
+audio = ExtResource( 10 )
+
+[node name="ExitDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 6 )
+portrait = ExtResource( 9 )
+title = "JACQUELINE_NAME"
+messages = [ "ARENAS_JACQUELINE_EXIT" ]
+audio = ExtResource( 8 )

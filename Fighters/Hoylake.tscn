@@ -1,0 +1,147 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=1]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=2]
+[ext_resource path="res://mods/RangerArena/Scripts/RandomTapeConfigExt.gd" type="Script" id=3]
+[ext_resource path="res://mods/RangerArena/Scripts/TapeConfigExt.gd" type="Script" id=4]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=5]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://data/monster_forms/adeptile.tres" type="Resource" id=7]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/RangerArena/Spawn Profiles/hoylake_deck.tres" type="Resource" id=9]
+[ext_resource path="res://sprites/portraits/hoylake_happy.png" type="Texture" id=10]
+[ext_resource path="res://sprites/portraits/hoylake_thinking.png" type="Texture" id=11]
+[ext_resource path="res://sfx/voices/hoylake/hoylake_thinking_2.wav" type="AudioStream" id=12]
+[ext_resource path="res://sfx/voices/hoylake/hoylake_surprise_1.wav" type="AudioStream" id=13]
+[ext_resource path="res://data/character_sfx/male_npc_4_sfx.tres" type="Resource" id=14]
+[ext_resource path="res://mods/RangerArena/Characters/Hoylake.tres" type="Resource" id=15]
+
+[node name="Hoylake" instance=ExtResource( 6 )]
+npc_name = "HOYLAKE_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": -1,
+"face_accessory_color": 14,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": 13,
+"legs_color": 6,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "tshirt1",
+"body": "tshirt1",
+"hair": "bun1",
+"head": "beard2",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 12
+human_colors/body_color_2 = 14
+human_colors/face_accessory_color = 14
+human_colors/hair_color = 13
+human_colors/legs_color = 6
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "tshirt1",
+"body": "tshirt1",
+"hair": "bun1",
+"head": "beard2",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": -1,
+"face_accessory_color": 14,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": 13,
+"legs_color": 6,
+"shoe_color": -1,
+"skin_color": -1
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 2 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 8 ) ]
+transition = 4
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 5 )
+character_name = "HOYLAKE_NAME"
+pronouns = 0
+level_scale_override_key = "monster_miniboss_smart"
+base_character = ExtResource( 15 )
+character_sfx = ExtResource( 14 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 4 )
+form = ExtResource( 7 )
+
+[node name="RandomTapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 3 )
+seeded = false
+bootleg_rate = 0.5
+spawn_profile = ExtResource( 9 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="RandomTapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 3 )
+seeded = false
+bootleg_rate = 0.5
+spawn_profile = ExtResource( 9 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="EntryDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 1 )
+portrait = ExtResource( 10 )
+title = "HOYLAKE_NAME"
+messages = [ "ARENAS_HOYLAKE_ENTRY" ]
+audio = ExtResource( 13 )
+
+[node name="ExitDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 1 )
+portrait = ExtResource( 11 )
+title = "HOYLAKE_NAME"
+messages = [ "ARENAS_HOYLAKE_EXIT" ]
+audio = ExtResource( 12 )

@@ -1,0 +1,304 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=1]
+[ext_resource path="res://sprites/vfx/status_effects/status_sleep.png" type="Texture" id=2]
+[ext_resource path="res://data/battle_moves/smack.tres" type="Resource" id=3]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=4]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=5]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=6]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://data/battle_moves/coating_beast.tres" type="Resource" id=8]
+[ext_resource path="res://sfx/voices/zedd/zedd_thinking_1.wav" type="AudioStream" id=9]
+[ext_resource path="res://data/character_sfx/captain_zedd_sfx.tres" type="Resource" id=10]
+[ext_resource path="res://data/battle_moves/coating_astral.tres" type="Resource" id=11]
+[ext_resource path="res://data/battle_moves/elemental_wall.tres" type="Resource" id=12]
+[ext_resource path="res://data/battle_moves/spit.tres" type="Resource" id=13]
+[ext_resource path="res://data/battle_moves/provoke.tres" type="Resource" id=14]
+[ext_resource path="res://data/monster_forms/artillerex.tres" type="Resource" id=15]
+[ext_resource path="res://data/battle_moves/sure_fire.tres" type="Resource" id=16]
+[ext_resource path="res://data/monster_forms/pyromeleon.tres" type="Resource" id=17]
+[ext_resource path="res://data/elemental_types/astral.tres" type="Resource" id=18]
+[ext_resource path="res://data/battle_moves/meditate.tres" type="Resource" id=19]
+[ext_resource path="res://data/battle_moves/hypnotize.tres" type="Resource" id=20]
+[ext_resource path="res://data/battle_moves/dejavu.tres" type="Resource" id=21]
+[ext_resource path="res://data/battle_moves/galactic_beatdown.tres" type="Resource" id=22]
+[ext_resource path="res://data/battle_moves/hibernate.tres" type="Resource" id=23]
+[ext_resource path="res://data/battle_moves/magnet.tres" type="Resource" id=24]
+[ext_resource path="res://data/battle_moves/leech.tres" type="Resource" id=25]
+[ext_resource path="res://data/monster_forms/galagor.tres" type="Resource" id=26]
+[ext_resource path="res://data/battle_moves/rapid_fire.tres" type="Resource" id=27]
+[ext_resource path="res://data/character_sfx/male_npc_1_sfx.tres" type="Resource" id=28]
+[ext_resource path="res://world/recurring_npcs/CaptainZedd_ZParticles.gd" type="Script" id=29]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=30]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=31]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=32]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=33]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=34]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=35]
+[ext_resource path="res://battle/ai/captains/CaptainZeddSidekickAI.tscn" type="PackedScene" id=37]
+[ext_resource path="res://data/battle_moves/magic_tome.tres" type="Resource" id=42]
+[ext_resource path="res://data/monster_forms/adeptile.tres" type="Resource" id=46]
+[ext_resource path="res://data/monster_forms/grampus.tres" type="Resource" id=47]
+[ext_resource path="res://data/monster_forms/blossomaw.tres" type="Resource" id=48]
+[ext_resource path="res://sfx/voices/zedd/zedd_laugh_1.wav" type="AudioStream" id=49]
+[ext_resource path="res://sfx/voices/zedd/zedd_questioning.wav" type="AudioStream" id=50]
+[ext_resource path="res://sprites/portraits/zedd_happy.png" type="Texture" id=51]
+[ext_resource path="res://sprites/portraits/zedd.png" type="Texture" id=52]
+[ext_resource path="res://data/battle_moves/roll_again.tres" type="Resource" id=53]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 6 )
+banner_scene = ExtResource( 33 )
+title = "CAPTAIN_ZEDD_NAME"
+subtitle = "CAPTAIN_ZEDD_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+params_billboard_mode = 3
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.98
+particles_anim_h_frames = 9
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.0329546 ), 0.0, 0.0, 0, 0, Vector2( 0.418006, 0.669318 ), 1.32528, 1.32528, 0, 0, Vector2( 0.765273, 0.978409 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -10.6416, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( -0.5, 0, 0 )
+initial_velocity = 1.5
+scale_curve = SubResource( 4 )
+
+[sub_resource type="QuadMesh" id=6]
+size = Vector2( 1, 1.25 )
+
+[node name="Captain" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+initial_direction = "up"
+direction = Vector2( 0, -1 )
+npc_name = "CAPTAIN_ZEDD_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 15,
+"body_color_2": 11,
+"eye_color": 13,
+"face_accessory_color": 6,
+"favorite_color": 4,
+"hair_accessory_color": 17,
+"hair_color": 16,
+"legs_color": 16,
+"shoe_color": 12,
+"skin_color": 20
+}
+sprite_part_names = {
+"arms": "poncho1",
+"body": "poncho1",
+"hair": "zedd",
+"head": "grumpy",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 15
+human_colors/body_color_2 = 11
+human_colors/eye_color = 13
+human_colors/face_accessory_color = 6
+human_colors/favorite_color = 4
+human_colors/hair_accessory_color = 17
+human_colors/hair_color = 16
+human_colors/legs_color = 16
+human_colors/shoe_color = 12
+human_colors/skin_color = 20
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "poncho1",
+"body": "poncho1",
+"hair": "zedd",
+"head": "grumpy",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 15,
+"body_color_2": 11,
+"eye_color": 13,
+"face_accessory_color": 6,
+"favorite_color": 4,
+"hair_accessory_color": 17,
+"hair_color": 16,
+"legs_color": 16,
+"shoe_color": 12,
+"skin_color": 20
+}
+
+[node name="StateMachine" parent="." index="8"]
+default_state = "Defeated"
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 1 )
+music_override = ExtResource( 31 )
+music_vox_override = ExtResource( 32 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 34 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 4 )
+character_name = "CAPTAIN_ZEDD_NAME_SHORT"
+pronouns = 0
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 10 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 5 )
+form = ExtResource( 26 )
+moves_override = [ ExtResource( 3 ), ExtResource( 24 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 13 ), ExtResource( 21 ) ]
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 5 )
+form = ExtResource( 46 )
+moves_override = [ ExtResource( 14 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 42 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 5 )
+form = ExtResource( 47 )
+moves_override = [ ExtResource( 3 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ) ]
+type_override = [ ExtResource( 18 ) ]
+
+[node name="Sidekick" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 4 )
+character_name = "RANGER_NAME"
+pronouns = 0
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 35 )
+character_sfx = ExtResource( 28 )
+character_kind = 1
+human_colors = {
+"body_color_1": 14,
+"body_color_2": 6,
+"eye_color": 0,
+"face_accessory_color": 6,
+"favorite_color": 6,
+"hair_accessory_color": -1,
+"hair_color": 8,
+"legs_color": 3,
+"shoe_color": -1,
+"skin_color": 21
+}
+human_part_names = {
+"arms": "tshirt1",
+"body": "tshirt1",
+"hair": "",
+"head": "glasses_1",
+"legs": "shorts1"
+}
+ai = ExtResource( 37 )
+human_colors/body_color_1 = 14
+human_colors/body_color_2 = 6
+human_colors/eye_color = 0
+human_colors/face_accessory_color = 6
+human_colors/favorite_color = 6
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = 8
+human_colors/legs_color = 3
+human_colors/shoe_color = -1
+human_colors/skin_color = 21
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/Sidekick" index="0"]
+script = ExtResource( 5 )
+form = ExtResource( 17 )
+moves_override = [ ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 53 ) ]
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/Sidekick" index="1"]
+script = ExtResource( 5 )
+form = ExtResource( 15 )
+moves_override = [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 27 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/Sidekick" index="2"]
+script = ExtResource( 5 )
+form = ExtResource( 48 )
+moves_override = [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 25 ) ]
+
+[node name="ZParticles" type="Particles" parent="." index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0 )
+material_override = SubResource( 2 )
+amount = 3
+lifetime = 12.0
+visibility_aabb = AABB( -4, 0, -4, 8, 8, 8 )
+local_coords = false
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 6 )
+script = ExtResource( 29 )
+
+[node name="SpawnDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 30 )
+portrait = ExtResource( 52 )
+title = "CAPTAIN_ZEDD_NAME_SHORT"
+messages = [ "ARENAS_ZEDD_SPAWN" ]
+audio = ExtResource( 50 )
+
+[node name="EntryDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 30 )
+portrait = ExtResource( 52 )
+title = "CAPTAIN_ZEDD_NAME_SHORT"
+messages = [ "ARENAS_ZEDD_ENTRY1", "ARENAS_ZEDD_ENTRY2" ]
+audio = ExtResource( 9 )
+
+[node name="ExitDialogue" type="Node" parent="." index="13"]
+script = ExtResource( 30 )
+portrait = ExtResource( 51 )
+title = "CAPTAIN_ZEDD_NAME_SHORT"
+messages = [ "ARENAS_ZEDD_EXIT" ]
+audio = ExtResource( 49 )
+
+[connection signal="state_changed" from="StateMachine" to="ZParticles" method="_on_StateMachine_state_changed"]

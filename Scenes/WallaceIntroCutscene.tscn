@@ -1,0 +1,178 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://sfx/status_effects/healing.wav" type="AudioStream" id=1]
+[ext_resource path="res://nodes/actions/FollowAction.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/AggroAction.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/FaceDirectionAction.gd" type="Script" id=4]
+[ext_resource path="res://addons/misc_utils/actions/values/GetBlackboardValue.gd" type="Script" id=5]
+[ext_resource path="res://addons/misc_utils/actions/values/GetNode.gd" type="Script" id=6]
+[ext_resource path="res://mods/RangerArena/Actions/FullHealParty.gd" type="Script" id=7]
+[ext_resource path="res://nodes/actions/PlayAudioAction.gd" type="Script" id=8]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=10]
+[ext_resource path="res://nodes/actions/ChangeTrackerTargetAction.gd" type="Script" id=11]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=12]
+[ext_resource path="res://mods/RangerArena/Actions/BattleActionBbkey.gd" type="Script" id=13]
+[ext_resource path="res://mods/RangerArena/Actions/InstanceCaptainSpatialAction.gd" type="Script" id=14]
+[ext_resource path="res://mods/RangerArena/Actions/DynamicMessagesAction.gd" type="Script" id=15]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=16]
+[ext_resource path="res://nodes/actions/RemoveOutOfSightAction.gd" type="Script" id=17]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=18]
+
+[node name="CheckConditionAction" type="Node"]
+script = ExtResource( 16 )
+always_succeed = true
+require_flags = [ "continue_round" ]
+
+[node name="Challenger" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="SetFlagAction" type="Node" parent="Challenger"]
+script = ExtResource( 12 )
+flag = "continue_round"
+value = false
+
+[node name="InstanceSpatialAction" type="Node" parent="Challenger"]
+script = ExtResource( 14 )
+captain_name = 1
+fighter_pool = NodePath("../../../../../ChallengerManager")
+set_bb_key = "opponent"
+node_name = "PrimaryOpponent"
+
+[node name="GetNode" type="Node" parent="Challenger/InstanceSpatialAction"]
+script = ExtResource( 6 )
+path = NodePath("../../../../../../WallaceTarget")
+
+[node name="CaptainFocus" type="Node" parent="Challenger"]
+script = ExtResource( 11 )
+speed_multiplier = 3.0
+suppress_rotation = false
+zoom = 7.0
+angle_degrees_override = Vector3( -45, 0, 0 )
+
+[node name="GetNode" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 6 )
+path = NodePath("../../../../../../WallaceCameraTarget")
+
+[node name="AggroAction" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 3 )
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/CaptainFocus/AggroAction"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="FaceDirectionAction2" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 4 )
+direction = "left"
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/CaptainFocus/FaceDirectionAction2"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="SpawnDialogue" type="Node" parent="Challenger/CaptainFocus"]
+script = ExtResource( 15 )
+__meta__ = {
+"_editor_description_": "Pulls the Entry dialogue from the spawned opponent"
+}
+entry_dialogue = false
+spawn_dialogue = true
+portrait_position = 2
+
+[node name="FollowAction3" type="Node" parent="Challenger"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fly = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_warp = true
+can_wait = true
+speed_multiplier = 0.6
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/FollowAction3"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetNode" type="Node" parent="Challenger/FollowAction3"]
+script = ExtResource( 6 )
+path = NodePath("../../../../../../OpponentTarget")
+
+[node name="FaceDirectionAction2" type="Node" parent="Challenger"]
+script = ExtResource( 4 )
+direction = "left"
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/FaceDirectionAction2"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="EntryDialogue" type="Node" parent="Challenger"]
+script = ExtResource( 15 )
+__meta__ = {
+"_editor_description_": "Pulls the Entry dialogue from the spawned opponent"
+}
+portrait_position = 2
+
+[node name="Succeeder" type="Node" parent="Challenger"]
+script = ExtResource( 18 )
+
+[node name="BattleAction" type="Node" parent="Challenger/Succeeder"]
+script = ExtResource( 13 )
+result_on_player_win = 1
+result_on_player_loss = 0
+result_on_flee = 0
+disable_fleeing = true
+bb_key = "opponent"
+challenger_manager_path = NodePath("../../../../../../ChallengerManager")
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="ExitDialogue" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 15 )
+entry_dialogue = false
+portrait_position = 2
+
+[node name="SetFlagAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 12 )
+flag = "continue_round"
+
+[node name="FollowAction2" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fly = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_warp = true
+can_wait = true
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/FollowAction2"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetNode" type="Node" parent="Challenger/Succeeder/BattleAction/FollowAction2"]
+script = ExtResource( 6 )
+path = NodePath("../../../../../../../../ExitNode")
+
+[node name="RemoveOutOfSightAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 17 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/RemoveOutOfSightAction"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="PlayAudioAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 8 )
+stream = ExtResource( 1 )
+
+[node name="FullHealParty2" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 7 )

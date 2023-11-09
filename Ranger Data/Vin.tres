@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/RangerData.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/Vin/gearyu.tres" type="Resource" id=2]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/Vin/Jormungold.tres" type="Resource" id=3]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/Vin/grampus.tres" type="Resource" id=4]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/Vin/aeroboros.tres" type="Resource" id=5]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/Vin/apocrowlypse.tres" type="Resource" id=6]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/Vin/artillirex.tres" type="Resource" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "VIN_NAME"
+human_colors = {
+"body_color_1": 12,
+"body_color_2": 12,
+"eye_color": 4,
+"face_accessory_color": 4,
+"favorite_color": 0,
+"hair_accessory_color": 11,
+"hair_color": 14,
+"legs_color": 12,
+"shoe_color": 14,
+"skin_color": 19
+}
+human_part_names = {
+"arms": "cultist1",
+"body": "cultist1",
+"hair": "vin",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+pronouns = 0
+introdialog = "This time, I won't lose!"
+defeatdialog = "I'm not strong enough yet."
+biotext = "Once a misguided thief, Vin now seeks to prove himself a worthy adversary to you."
+recruiter = "Bytten Studio"
+recruiter_id = "0000-0000"
+tape0 = ExtResource( 3 )
+tape1 = ExtResource( 5 )
+tape2 = ExtResource( 6 )
+tape3 = ExtResource( 7 )
+tape4 = ExtResource( 2 )
+tape5 = ExtResource( 4 )
+stats = null
+version = 1.1
+default_stickers = true

@@ -1,0 +1,236 @@
+[gd_resource type="Resource" load_steps=46 format=2]
+
+[ext_resource path="res://data/spawn_config_scripts/MonsterSpawnProfile.gd" type="Script" id=1]
+[ext_resource path="res://data/monster_forms/braxsuit.tres" type="Resource" id=5]
+[ext_resource path="res://data/monster_forms/brushroom.tres" type="Resource" id=7]
+[ext_resource path="res://data/monster_forms/busheye.tres" type="Resource" id=11]
+[ext_resource path="res://data/monster_forms/pawndead.tres" type="Resource" id=13]
+[ext_resource path="res://data/monster_forms/scampire.tres" type="Resource" id=14]
+[ext_resource path="res://data/monster_forms/diveal.tres" type="Resource" id=17]
+[ext_resource path="res://data/monster_forms/padpole.tres" type="Resource" id=18]
+[ext_resource path="res://data/monster_forms/pondwalker.tres" type="Resource" id=22]
+[ext_resource path="res://data/monster_forms/faucetear.tres" type="Resource" id=24]
+[ext_resource path="res://data/monster_forms/salamagus.tres" type="Resource" id=27]
+[ext_resource path="res://data/monster_forms/bulletino.tres" type="Resource" id=30]
+[ext_resource path="res://data/monster_forms/nevermort.tres" type="Resource" id=32]
+[ext_resource path="res://data/monster_forms/terracooka.tres" type="Resource" id=34]
+[ext_resource path="res://data/monster_forms/elfless.tres" type="Resource" id=36]
+[ext_resource path="res://data/monster_forms/squirey.tres" type="Resource" id=38]
+[ext_resource path="res://data/monster_forms/macabra.tres" type="Resource" id=39]
+[ext_resource path="res://data/monster_forms/carniviper.tres" type="Resource" id=44]
+[ext_resource path="res://data/monster_forms/puppercut.tres" type="Resource" id=49]
+[ext_resource path="res://data/monster_forms/dominoth.tres" type="Resource" id=50]
+[ext_resource path="res://data/monster_forms/stardigrade.tres" type="Resource" id=54]
+[ext_resource path="res://data/monster_forms/pombomb.tres" type="Resource" id=56]
+[ext_resource path="res://data/monster_forms/binvader.tres" type="Resource" id=61]
+[ext_resource path="res://data/monster_forms/bansheep.tres" type="Resource" id=64]
+[ext_resource path="res://data/monster_forms/boltam.tres" type="Resource" id=68]
+[ext_resource path="res://data/monster_forms/burnace.tres" type="Resource" id=72]
+[ext_resource path="res://data/monster_forms/allseer.tres" type="Resource" id=76]
+[ext_resource path="res://data/monster_forms/muskrateer.tres" type="Resource" id=78]
+[ext_resource path="res://data/monster_forms/clocksley.tres" type="Resource" id=80]
+[ext_resource path="res://data/monster_forms/dandylion.tres" type="Resource" id=86]
+[ext_resource path="res://data/monster_forms/cluckabilly.tres" type="Resource" id=88]
+[ext_resource path="res://data/monster_forms/candevil.tres" type="Resource" id=89]
+[ext_resource path="res://data/monster_forms/jumpkin.tres" type="Resource" id=96]
+[ext_resource path="res://data/monster_forms/sirenade.tres" type="Resource" id=102]
+[ext_resource path="res://data/monster_forms/kittelly.tres" type="Resource" id=105]
+[ext_resource path="res://data/monster_forms/sanzatime.tres" type="Resource" id=107]
+[ext_resource path="res://data/monster_forms/mascotoy.tres" type="Resource" id=108]
+[ext_resource path="res://data/monster_forms/kuneko.tres" type="Resource" id=109]
+[ext_resource path="res://data/monster_forms/twirligig.tres" type="Resource" id=115]
+[ext_resource path="res://data/monster_forms/springheel.tres" type="Resource" id=117]
+[ext_resource path="res://data/monster_forms/spirouette.tres" type="Resource" id=118]
+[ext_resource path="res://data/monster_forms/traffikrab.tres" type="Resource" id=119]
+[ext_resource path="res://data/monster_forms/sparktan.tres" type="Resource" id=121]
+[ext_resource path="res://data/monster_forms/ferriclaw.tres" type="Resource" id=125]
+[ext_resource path="res://data/monster_forms/trapwurm.tres" type="Resource" id=127]
+
+[resource]
+script = ExtResource( 1 )
+spawn_configs = [  ]
+habitat_name = ""
+habitat_require_flag = ""
+habitat_overworld_chunks = [  ]
+habitat_endless = true
+min_team_size = 1
+max_team_size = 2
+disable_fleeing = false
+level_scale_override_key = ""
+num_species = 44
+species_0/monster_form = ExtResource( 76 )
+species_0/weight = 1.0
+species_0/hour_min = 0.0
+species_0/hour_max = 24.0
+species_1/monster_form = ExtResource( 64 )
+species_1/weight = 1.0
+species_1/hour_min = 0.0
+species_1/hour_max = 24.0
+species_2/monster_form = ExtResource( 61 )
+species_2/weight = 1.0
+species_2/hour_min = 0.0
+species_2/hour_max = 24.0
+species_3/monster_form = ExtResource( 68 )
+species_3/weight = 1.0
+species_3/hour_min = 0.0
+species_3/hour_max = 24.0
+species_4/monster_form = ExtResource( 5 )
+species_4/weight = 1.0
+species_4/hour_min = 0.0
+species_4/hour_max = 24.0
+species_5/monster_form = ExtResource( 7 )
+species_5/weight = 1.0
+species_5/hour_min = 0.0
+species_5/hour_max = 24.0
+species_6/monster_form = ExtResource( 30 )
+species_6/weight = 1.0
+species_6/hour_min = 0.0
+species_6/hour_max = 24.0
+species_7/monster_form = ExtResource( 72 )
+species_7/weight = 1.0
+species_7/hour_min = 0.0
+species_7/hour_max = 24.0
+species_8/monster_form = ExtResource( 11 )
+species_8/weight = 1.0
+species_8/hour_min = 0.0
+species_8/hour_max = 24.0
+species_9/monster_form = ExtResource( 89 )
+species_9/weight = 1.0
+species_9/hour_min = 0.0
+species_9/hour_max = 24.0
+species_10/monster_form = ExtResource( 44 )
+species_10/weight = 1.0
+species_10/hour_min = 0.0
+species_10/hour_max = 24.0
+species_11/monster_form = ExtResource( 80 )
+species_11/weight = 1.0
+species_11/hour_min = 0.0
+species_11/hour_max = 24.0
+species_12/monster_form = ExtResource( 88 )
+species_12/weight = 1.0
+species_12/hour_min = 0.0
+species_12/hour_max = 24.0
+species_13/monster_form = ExtResource( 36 )
+species_13/weight = 1.0
+species_13/hour_min = 0.0
+species_13/hour_max = 24.0
+species_14/monster_form = ExtResource( 86 )
+species_14/weight = 1.0
+species_14/hour_min = 0.0
+species_14/hour_max = 24.0
+species_15/monster_form = ExtResource( 17 )
+species_15/weight = 1.0
+species_15/hour_min = 0.0
+species_15/hour_max = 24.0
+species_16/monster_form = ExtResource( 50 )
+species_16/weight = 1.0
+species_16/hour_min = 0.0
+species_16/hour_max = 24.0
+species_17/monster_form = ExtResource( 24 )
+species_17/weight = 1.0
+species_17/hour_min = 0.0
+species_17/hour_max = 24.0
+species_18/monster_form = ExtResource( 125 )
+species_18/weight = 1.0
+species_18/hour_min = 0.0
+species_18/hour_max = 24.0
+species_19/monster_form = ExtResource( 96 )
+species_19/weight = 1.0
+species_19/hour_min = 0.0
+species_19/hour_max = 24.0
+species_20/monster_form = ExtResource( 105 )
+species_20/weight = 1.0
+species_20/hour_min = 0.0
+species_20/hour_max = 24.0
+species_21/monster_form = ExtResource( 109 )
+species_21/weight = 1.0
+species_21/hour_min = 0.0
+species_21/hour_max = 24.0
+species_22/monster_form = ExtResource( 39 )
+species_22/weight = 1.0
+species_22/hour_min = 0.0
+species_22/hour_max = 24.0
+species_23/monster_form = ExtResource( 108 )
+species_23/weight = 1.0
+species_23/hour_min = 0.0
+species_23/hour_max = 24.0
+species_24/monster_form = ExtResource( 78 )
+species_24/weight = 1.0
+species_24/hour_min = 0.0
+species_24/hour_max = 24.0
+species_25/monster_form = ExtResource( 32 )
+species_25/weight = 1.0
+species_25/hour_min = 0.0
+species_25/hour_max = 24.0
+species_26/monster_form = ExtResource( 18 )
+species_26/weight = 1.0
+species_26/hour_min = 0.0
+species_26/hour_max = 24.0
+species_27/monster_form = ExtResource( 13 )
+species_27/weight = 1.0
+species_27/hour_min = 0.0
+species_27/hour_max = 24.0
+species_28/monster_form = ExtResource( 56 )
+species_28/weight = 1.0
+species_28/hour_min = 0.0
+species_28/hour_max = 24.0
+species_29/monster_form = ExtResource( 22 )
+species_29/weight = 1.0
+species_29/hour_min = 0.0
+species_29/hour_max = 24.0
+species_30/monster_form = ExtResource( 49 )
+species_30/weight = 1.0
+species_30/hour_min = 0.0
+species_30/hour_max = 24.0
+species_31/monster_form = ExtResource( 27 )
+species_31/weight = 1.0
+species_31/hour_min = 0.0
+species_31/hour_max = 24.0
+species_32/monster_form = ExtResource( 14 )
+species_32/weight = 1.0
+species_32/hour_min = 0.0
+species_32/hour_max = 24.0
+species_33/monster_form = ExtResource( 107 )
+species_33/weight = 1.0
+species_33/hour_min = 0.0
+species_33/hour_max = 24.0
+species_34/monster_form = ExtResource( 102 )
+species_34/weight = 1.0
+species_34/hour_min = 0.0
+species_34/hour_max = 24.0
+species_35/monster_form = ExtResource( 121 )
+species_35/weight = 1.0
+species_35/hour_min = 0.0
+species_35/hour_max = 24.0
+species_36/monster_form = ExtResource( 118 )
+species_36/weight = 1.0
+species_36/hour_min = 0.0
+species_36/hour_max = 24.0
+species_37/monster_form = ExtResource( 117 )
+species_37/weight = 1.0
+species_37/hour_min = 0.0
+species_37/hour_max = 24.0
+species_38/monster_form = ExtResource( 38 )
+species_38/weight = 1.0
+species_38/hour_min = 0.0
+species_38/hour_max = 24.0
+species_39/monster_form = ExtResource( 54 )
+species_39/weight = 1.0
+species_39/hour_min = 0.0
+species_39/hour_max = 24.0
+species_40/monster_form = ExtResource( 34 )
+species_40/weight = 1.0
+species_40/hour_min = 0.0
+species_40/hour_max = 24.0
+species_41/monster_form = ExtResource( 119 )
+species_41/weight = 1.0
+species_41/hour_min = 0.0
+species_41/hour_max = 24.0
+species_42/monster_form = ExtResource( 127 )
+species_42/weight = 1.0
+species_42/hour_min = 0.0
+species_42/hour_max = 24.0
+species_43/monster_form = ExtResource( 115 )
+species_43/weight = 1.0
+species_43/hour_min = 0.0
+species_43/hour_max = 24.0

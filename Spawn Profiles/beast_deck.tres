@@ -1,0 +1,76 @@
+[gd_resource type="Resource" load_steps=14 format=2]
+
+[ext_resource path="res://data/spawn_config_scripts/MonsterSpawnProfile.gd" type="Script" id=1]
+[ext_resource path="res://data/monster_forms/anathema.tres" type="Resource" id=4]
+[ext_resource path="res://data/monster_forms/scampire.tres" type="Resource" id=14]
+[ext_resource path="res://data/monster_forms/squirey.tres" type="Resource" id=38]
+[ext_resource path="res://data/monster_forms/macabra.tres" type="Resource" id=39]
+[ext_resource path="res://data/monster_forms/folklord.tres" type="Resource" id=41]
+[ext_resource path="res://data/monster_forms/bansheep.tres" type="Resource" id=64]
+[ext_resource path="res://data/monster_forms/muskrateer.tres" type="Resource" id=78]
+[ext_resource path="res://data/monster_forms/candevil.tres" type="Resource" id=89]
+[ext_resource path="res://data/monster_forms/ripterra.tres" type="Resource" id=92]
+[ext_resource path="res://data/monster_forms/hopskin.tres" type="Resource" id=95]
+[ext_resource path="res://data/monster_forms/snoopin.tres" type="Resource" id=103]
+[ext_resource path="res://data/monster_forms/springheel.tres" type="Resource" id=117]
+
+[resource]
+script = ExtResource( 1 )
+spawn_configs = [  ]
+habitat_name = ""
+habitat_require_flag = ""
+habitat_overworld_chunks = [  ]
+habitat_endless = true
+min_team_size = 1
+max_team_size = 2
+disable_fleeing = false
+level_scale_override_key = ""
+num_species = 12
+species_0/monster_form = ExtResource( 4 )
+species_0/weight = 1.0
+species_0/hour_min = 0.0
+species_0/hour_max = 24.0
+species_1/monster_form = ExtResource( 64 )
+species_1/weight = 1.0
+species_1/hour_min = 0.0
+species_1/hour_max = 24.0
+species_2/monster_form = ExtResource( 89 )
+species_2/weight = 1.0
+species_2/hour_min = 0.0
+species_2/hour_max = 24.0
+species_3/monster_form = ExtResource( 117 )
+species_3/weight = 1.0
+species_3/hour_min = 0.0
+species_3/hour_max = 24.0
+species_4/monster_form = ExtResource( 95 )
+species_4/weight = 1.0
+species_4/hour_min = 0.0
+species_4/hour_max = 24.0
+species_5/monster_form = ExtResource( 92 )
+species_5/weight = 1.0
+species_5/hour_min = 0.0
+species_5/hour_max = 24.0
+species_6/monster_form = ExtResource( 103 )
+species_6/weight = 1.0
+species_6/hour_min = 0.0
+species_6/hour_max = 24.0
+species_7/monster_form = ExtResource( 14 )
+species_7/weight = 1.0
+species_7/hour_min = 0.0
+species_7/hour_max = 24.0
+species_8/monster_form = ExtResource( 39 )
+species_8/weight = 1.0
+species_8/hour_min = 0.0
+species_8/hour_max = 24.0
+species_9/monster_form = ExtResource( 41 )
+species_9/weight = 1.0
+species_9/hour_min = 0.0
+species_9/hour_max = 24.0
+species_10/monster_form = ExtResource( 78 )
+species_10/weight = 1.0
+species_10/hour_min = 0.0
+species_10/hour_max = 24.0
+species_11/monster_form = ExtResource( 38 )
+species_11/weight = 1.0
+species_11/hour_min = 0.0
+species_11/hour_max = 24.0

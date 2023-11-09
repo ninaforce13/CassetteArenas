@@ -1,0 +1,261 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://data/monster_forms/apocrowlypse.tres" type="Resource" id=1]
+[ext_resource path="res://data/monster_forms/wingloom.tres" type="Resource" id=2]
+[ext_resource path="res://battle/ai/captains/CaptainCodeySidekickAI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/RangerArena/Fighters/Captains/CaptainAI/CaptainCodeyAI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=5]
+[ext_resource path="res://data/battle_moves/glitter_bomb.tres" type="Resource" id=6]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://data/battle_moves/new_leaf.tres" type="Resource" id=9]
+[ext_resource path="res://data/battle_moves/spit.tres" type="Resource" id=10]
+[ext_resource path="res://data/battle_moves/echolocation.tres" type="Resource" id=11]
+[ext_resource path="res://data/elemental_types/air.tres" type="Resource" id=12]
+[ext_resource path="res://data/elemental_types/glitter.tres" type="Resource" id=13]
+[ext_resource path="res://data/elemental_types/glass.tres" type="Resource" id=14]
+[ext_resource path="res://data/battle_moves/smack.tres" type="Resource" id=15]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=16]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=17]
+[ext_resource path="res://data/battle_moves/silicon_slash.tres" type="Resource" id=18]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=19]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=20]
+[ext_resource path="res://data/monster_forms/artillerex.tres" type="Resource" id=21]
+[ext_resource path="res://data/battle_moves/multi_shot.tres" type="Resource" id=22]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=23]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=24]
+[ext_resource path="res://data/battle_moves/dejavu.tres" type="Resource" id=25]
+[ext_resource path="res://data/battle_moves/crystal_lens.tres" type="Resource" id=26]
+[ext_resource path="res://data/battle_moves/zephyr.tres" type="Resource" id=27]
+[ext_resource path="res://data/monster_forms/aeroboros.tres" type="Resource" id=28]
+[ext_resource path="res://data/battle_moves/glass_cannon.tres" type="Resource" id=29]
+[ext_resource path="res://data/monster_forms/arkidd.tres" type="Resource" id=30]
+[ext_resource path="res://data/character_sfx/captain_codey_sfx.tres" type="Resource" id=31]
+[ext_resource path="res://data/character_sfx/female_npc_6_sfx.tres" type="Resource" id=32]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=33]
+[ext_resource path="res://sprites/portraits/codey.png" type="Texture" id=34]
+[ext_resource path="res://sprites/portraits/codey_happy.png" type="Texture" id=35]
+[ext_resource path="res://sfx/voices/codey/codey_compliment.wav" type="AudioStream" id=36]
+[ext_resource path="res://sfx/voices/codey/codey_motivated_2.wav" type="AudioStream" id=37]
+[ext_resource path="res://sfx/voices/codey/codey_thinking_2.wav" type="AudioStream" id=38]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=39]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 19 )
+banner_scene = ExtResource( 7 )
+title = "CAPTAIN_CODEY_NAME"
+subtitle = "CAPTAIN_CODEY_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 20 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+npc_name = "CAPTAIN_CODEY_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": 9,
+"face_accessory_color": 12,
+"favorite_color": 12,
+"hair_accessory_color": 11,
+"hair_color": 2,
+"legs_color": 16,
+"shoe_color": 4,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "codey",
+"body": "codey",
+"hair": "codey",
+"head": "grumpy",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 12
+human_colors/body_color_2 = 14
+human_colors/eye_color = 9
+human_colors/face_accessory_color = 12
+human_colors/favorite_color = 12
+human_colors/hair_accessory_color = 11
+human_colors/hair_color = 2
+human_colors/legs_color = 16
+human_colors/shoe_color = 4
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "codey",
+"body": "codey",
+"hair": "codey",
+"head": "grumpy",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": 9,
+"face_accessory_color": 12,
+"favorite_color": 12,
+"hair_accessory_color": 11,
+"hair_color": 2,
+"legs_color": 16,
+"shoe_color": 4,
+"skin_color": -1
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 5 )
+music_override = ExtResource( 24 )
+music_vox_override = ExtResource( 23 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 8 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 17 )
+character_name = "CAPTAIN_CODEY_NAME_SHORT"
+pronouns = 0
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 31 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+ai = ExtResource( 4 )
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 16 )
+form = ExtResource( 30 )
+moves_override = [ ExtResource( 6 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 15 ) ]
+type_override = [ ExtResource( 13 ) ]
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 16 )
+form = ExtResource( 21 )
+moves_override = [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 11 ) ]
+type_override = [ ExtResource( 12 ) ]
+
+[node name="TapeConfig5" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 16 )
+form = ExtResource( 28 )
+moves_override = [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 9 ) ]
+type_override = [ ExtResource( 14 ) ]
+
+[node name="CharacterConfig2" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 17 )
+character_name = "RANGER_NAME"
+pronouns = 1
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 39 )
+character_sfx = ExtResource( 32 )
+character_kind = 1
+human_colors = {
+"body_color_1": 0,
+"body_color_2": 0,
+"eye_color": 3,
+"face_accessory_color": 2,
+"favorite_color": 2,
+"hair_accessory_color": 14,
+"hair_color": 2,
+"legs_color": 12,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "vest1",
+"body": "vest1",
+"hair": "hat1",
+"head": "glasses_1",
+"legs": "skirt1"
+}
+ai = ExtResource( 3 )
+human_colors/body_color_1 = 0
+human_colors/body_color_2 = 0
+human_colors/eye_color = 3
+human_colors/face_accessory_color = 2
+human_colors/favorite_color = 2
+human_colors/hair_accessory_color = 14
+human_colors/hair_color = 2
+human_colors/legs_color = 12
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig2" index="0"]
+script = ExtResource( 16 )
+form = ExtResource( 1 )
+moves_override = [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 11 ) ]
+type_override = [ ExtResource( 14 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig2" index="1"]
+script = ExtResource( 16 )
+form = ExtResource( 2 )
+moves_override = [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 11 ) ]
+type_override = [ ExtResource( 14 ) ]
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/CharacterConfig2" index="2"]
+script = ExtResource( 16 )
+form = ExtResource( 1 )
+moves_override = [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 11 ) ]
+type_override = [ ExtResource( 14 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 33 )
+portrait = ExtResource( 34 )
+title = "CAPTAIN_CODEY_NAME_SHORT"
+messages = [ "ARENAS_CODEY_SPAWN" ]
+audio = ExtResource( 38 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 33 )
+portrait = ExtResource( 35 )
+title = "CAPTAIN_CODEY_NAME_SHORT"
+messages = [ "ARENAS_CODEY_ENTRY" ]
+audio = ExtResource( 37 )
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 33 )
+portrait = ExtResource( 34 )
+title = "CAPTAIN_CODEY_NAME_SHORT"
+messages = [ "ARENAS_CODEY_EXIT" ]
+audio = ExtResource( 36 )

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://battle/ai/BalancedAI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/status_effects/ghostly.tres" type="Resource" id=2]
+[ext_resource path="res://battle/ai/WeightedAIMovePreference.gd" type="Script" id=3]
+[ext_resource path="res://data/battle_moves/new_leaf.tres" type="Resource" id=4]
+
+[node name="BalancedAI" instance=ExtResource( 1 )]
+weight_buff = 10.0
+
+[node name="WeightedAIMovePreference" type="Node" parent="." index="0"]
+script = ExtResource( 3 )
+move = ExtResource( 4 )
+score = 0.0
+
+[node name="WeightedAIMovePreference2" type="Node" parent="." index="1"]
+script = ExtResource( 3 )
+move = ExtResource( 4 )
+only_if_target_is_self = true
+only_if_status_due_to_run_out = ExtResource( 2 )
+score = 20.0

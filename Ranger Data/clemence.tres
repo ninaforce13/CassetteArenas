@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/RangerData.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/clemence/apocrowlypse.tres" type="Resource" id=2]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/clemence/braxsuit.tres" type="Resource" id=3]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/clemence/coaldron.tres" type="Resource" id=4]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/clemence/DjinnEntonic.tres" type="Resource" id=5]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/clemence/adeptile.tres" type="Resource" id=6]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/clemence/Burnace.tres" type="Resource" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "CLEMENCE_NAME"
+human_colors = {
+"body_color_1": 14,
+"body_color_2": 16,
+"eye_color": 5,
+"face_accessory_color": 2,
+"favorite_color": 0,
+"hair_accessory_color": 0,
+"hair_color": 0,
+"legs_color": 12,
+"shoe_color": 5,
+"skin_color": 19
+}
+human_part_names = {
+"arms": "apron1",
+"body": "apron1",
+"hair": "bob2",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+pronouns = 1
+introdialog = "A fresh cup of coffee and some excercise. A good start to the day, non?"
+defeatdialog = "I believe it's time I return to my establishment."
+biotext = "Owner of the Gramophone Cafe."
+recruiter = "Bytten Studio"
+recruiter_id = "0000-0000"
+tape0 = ExtResource( 5 )
+tape1 = ExtResource( 4 )
+tape2 = ExtResource( 7 )
+tape3 = ExtResource( 3 )
+tape4 = ExtResource( 2 )
+tape5 = ExtResource( 6 )
+stats = null
+version = 1.1
+default_stickers = true

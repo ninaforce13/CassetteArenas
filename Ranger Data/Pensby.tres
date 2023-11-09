@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/RangerData.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/pensby/adeptile.tres" type="Resource" id=2]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/pensby/apocrowlypse.tres" type="Resource" id=3]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/pensby/lobstacle.tres" type="Resource" id=4]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/pensby/blossomaw.tres" type="Resource" id=5]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/pensby/galagor.tres" type="Resource" id=6]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/pensby/fortiwinx.tres" type="Resource" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "PENSBY_NAME"
+human_colors = {
+"body_color_1": 14,
+"body_color_2": 12,
+"eye_color": 16,
+"face_accessory_color": 14,
+"favorite_color": 10,
+"hair_accessory_color": 1,
+"hair_color": 12,
+"legs_color": 14,
+"shoe_color": 12,
+"skin_color": 21
+}
+human_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "bun2",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+pronouns = 1
+introdialog = "Remember to stay hydrated while exercising."
+defeatdialog = "You're both in great condition! Don't go slacking off now, okay?"
+biotext = "Harbourtown's one and only Doctor."
+recruiter = "Bytten Studio"
+recruiter_id = "0000-0000"
+tape0 = ExtResource( 3 )
+tape1 = ExtResource( 2 )
+tape2 = ExtResource( 5 )
+tape3 = ExtResource( 7 )
+tape4 = ExtResource( 6 )
+tape5 = ExtResource( 4 )
+stats = null
+version = 1.1
+default_stickers = true

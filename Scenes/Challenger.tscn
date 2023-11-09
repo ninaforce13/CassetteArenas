@@ -1,0 +1,531 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://sfx/status_effects/healing.wav" type="AudioStream" id=1]
+[ext_resource path="res://nodes/actions/FollowAction.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/FaceDirectionAction.gd" type="Script" id=4]
+[ext_resource path="res://addons/misc_utils/actions/values/GetBlackboardValue.gd" type="Script" id=5]
+[ext_resource path="res://addons/misc_utils/actions/values/GetNode.gd" type="Script" id=6]
+[ext_resource path="res://mods/RangerArena/Actions/IncreaseStreakAction.gd" type="Script" id=7]
+[ext_resource path="res://nodes/actions/PlayAudioAction.gd" type="Script" id=8]
+[ext_resource path="res://mods/RangerArena/Actions/FullHealParty.gd" type="Script" id=9]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=10]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=11]
+[ext_resource path="res://mods/RangerArena/Actions/BattleActionBbkey.gd" type="Script" id=12]
+[ext_resource path="res://mods/RangerArena/Actions/InstanceRandomSpatialAction.gd" type="Script" id=13]
+[ext_resource path="res://mods/RangerArena/Actions/DynamicMessagesAction.gd" type="Script" id=14]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=15]
+[ext_resource path="res://nodes/actions/RemoveOutOfSightAction.gd" type="Script" id=16]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=17]
+[ext_resource path="res://addons/misc_utils/actions/decorators/RepeatWhile.gd" type="Script" id=18]
+[ext_resource path="res://mods/RangerArena/Actions/CombineCharacterConfigs.gd" type="Script" id=19]
+
+[node name="CheckConditionAction" type="Node"]
+script = ExtResource( 15 )
+always_succeed = true
+require_flags = [ "continue_round" ]
+
+[node name="Challenger" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="SetFlagAction" type="Node" parent="Challenger"]
+script = ExtResource( 11 )
+flag = "continue_round"
+value = false
+
+[node name="InstanceSpatialAction" type="Node" parent="Challenger"]
+script = ExtResource( 13 )
+fighter_pool = NodePath("../../../../../ChallengerManager")
+set_bb_key = "opponent"
+node_name = "PrimaryOpponent"
+
+[node name="GetNode" type="Node" parent="Challenger/InstanceSpatialAction"]
+script = ExtResource( 6 )
+path = NodePath("../../../../../../PartnerInitial")
+
+[node name="InstanceSpatialAction2" type="Node" parent="Challenger"]
+script = ExtResource( 13 )
+fighter_pool = NodePath("../../../../../ChallengerManager")
+set_bb_key = "opponent2"
+node_name = "SecondaryOpponent"
+
+[node name="GetNode" type="Node" parent="Challenger/InstanceSpatialAction2"]
+script = ExtResource( 6 )
+path = NodePath("../../../../../../PlayerInitial")
+
+[node name="CheckExtraPartner" type="Node" parent="Challenger"]
+script = ExtResource( 15 )
+always_succeed = true
+require_flags = [ "extra_partner1" ]
+
+[node name="InstanceSpatialAction2" type="Node" parent="Challenger/CheckExtraPartner"]
+script = ExtResource( 13 )
+fighter_pool = NodePath("../../../../../ChallengerManager")
+set_bb_key = "opponent3"
+node_name = "ThirdOpponent"
+
+[node name="GetNode" type="Node" parent="Challenger/CheckExtraPartner/InstanceSpatialAction2"]
+script = ExtResource( 6 )
+node_name = "Partner2Initial"
+
+[node name="CombineCharacterConfigs" type="Node" parent="Challenger/CheckExtraPartner"]
+script = ExtResource( 19 )
+__meta__ = {
+"_editor_description_": "Combines the character configs into the parent encounter"
+}
+use_bb_keys = [ "opponent", "opponent2", "opponent3" ]
+ally_nodes = [ "Partner2" ]
+
+[node name="NoExtras" type="Node" parent="Challenger"]
+script = ExtResource( 15 )
+always_succeed = true
+deny_flags = [ "extra_partner1" ]
+
+[node name="CombineCharacterConfigs" type="Node" parent="Challenger/NoExtras"]
+script = ExtResource( 19 )
+__meta__ = {
+"_editor_description_": "Combines the character config from opponent 2 into opponent 1 "
+}
+
+[node name="RepeatWhile2" type="Node" parent="Challenger"]
+script = ExtResource( 18 )
+
+[node name="CheckExtraPartner" type="Node" parent="Challenger/RepeatWhile2"]
+script = ExtResource( 15 )
+always_succeed = true
+require_flags = [ "extra_partner1" ]
+
+[node name="FollowAction" type="Node" parent="Challenger/RepeatWhile2/CheckExtraPartner"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+min_distance = 3.0
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/RepeatWhile2/CheckExtraPartner/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent3"
+
+[node name="GetBlackboardValue2" type="Node" parent="Challenger/RepeatWhile2/CheckExtraPartner/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="FollowAction" type="Node" parent="Challenger/RepeatWhile2"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+min_distance = 3.0
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/RepeatWhile2/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="GetBlackboardValue2" type="Node" parent="Challenger/RepeatWhile2/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="FollowAction2" type="Node" parent="Challenger/RepeatWhile2"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+speed_multiplier = 0.6
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/RepeatWhile2/FollowAction2"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetNode" type="Node" parent="Challenger/RepeatWhile2/FollowAction2"]
+script = ExtResource( 6 )
+node_name = "MainCameraTarget"
+
+[node name="Triples" type="Node" parent="Challenger"]
+script = ExtResource( 15 )
+always_succeed = true
+require_flags = [ "extra_partner1" ]
+
+[node name="FollowAction3" type="Node" parent="Challenger/Triples"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fly = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+min_distance = 1.0
+speed_multiplier = 0.6
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Triples/FollowAction3"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetNode" type="Node" parent="Challenger/Triples/FollowAction3"]
+script = ExtResource( 6 )
+node_name = "OpponentTarget"
+
+[node name="FollowAction4" type="Node" parent="Challenger/Triples"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fly = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+min_distance = 1.0
+speed_multiplier = 0.6
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Triples/FollowAction4"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="GetNode" type="Node" parent="Challenger/Triples/FollowAction4"]
+script = ExtResource( 6 )
+node_name = "OpponentPartnerTarget"
+
+[node name="FollowAction" type="Node" parent="Challenger/Triples"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fly = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+speed_multiplier = 0.6
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Triples/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent3"
+
+[node name="GetNode" type="Node" parent="Challenger/Triples/FollowAction"]
+script = ExtResource( 6 )
+node_name = "OpponentPartner2Target"
+
+[node name="FaceDirectionAction2" type="Node" parent="Challenger/Triples"]
+script = ExtResource( 4 )
+direction = "left"
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Triples/FaceDirectionAction2"]
+script = ExtResource( 5 )
+key = "opponent3"
+
+[node name="GetBlackboardValue2" type="Node" parent="Challenger/Triples/FaceDirectionAction2"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetBlackboardValue3" type="Node" parent="Challenger/Triples/FaceDirectionAction2"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="Doubles" type="Node" parent="Challenger"]
+script = ExtResource( 15 )
+always_succeed = true
+deny_flags = [ "extra_partner1" ]
+
+[node name="FollowAction3" type="Node" parent="Challenger/Doubles"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fly = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+min_distance = 1.0
+speed_multiplier = 0.6
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Doubles/FollowAction3"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetNode" type="Node" parent="Challenger/Doubles/FollowAction3"]
+script = ExtResource( 6 )
+node_name = "OpponentTarget"
+
+[node name="FollowAction4" type="Node" parent="Challenger/Doubles"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_fall = true
+can_glide = true
+can_wait = true
+speed_multiplier = 0.6
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Doubles/FollowAction4"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="GetNode" type="Node" parent="Challenger/Doubles/FollowAction4"]
+script = ExtResource( 6 )
+node_name = "OpponentPartnerTarget"
+
+[node name="FaceDirectionAction2" type="Node" parent="Challenger/Doubles"]
+script = ExtResource( 4 )
+direction = "left"
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Doubles/FaceDirectionAction2"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetBlackboardValue2" type="Node" parent="Challenger/Doubles/FaceDirectionAction2"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="EntryDialogue" type="Node" parent="Challenger"]
+script = ExtResource( 14 )
+__meta__ = {
+"_editor_description_": "Pulls the Entry dialogue from the spawned opponent"
+}
+portrait_position = 2
+
+[node name="EntryDialogue2" type="Node" parent="Challenger"]
+script = ExtResource( 14 )
+__meta__ = {
+"_editor_description_": "Pulls the Entry dialogue from the spawned opponent"
+}
+bb_key_retrieval = "opponent2"
+portrait_position = 2
+
+[node name="CheckExtraPartner3" type="Node" parent="Challenger"]
+script = ExtResource( 15 )
+always_succeed = true
+require_flags = [ "extra_partner1" ]
+
+[node name="EntryDialogue2" type="Node" parent="Challenger/CheckExtraPartner3"]
+script = ExtResource( 14 )
+__meta__ = {
+"_editor_description_": "Pulls the Entry dialogue from the spawned opponent"
+}
+bb_key_retrieval = "opponent3"
+portrait_position = 2
+
+[node name="Succeeder" type="Node" parent="Challenger"]
+script = ExtResource( 17 )
+
+[node name="BattleAction" type="Node" parent="Challenger/Succeeder"]
+script = ExtResource( 12 )
+result_on_player_win = 1
+result_on_player_loss = 0
+result_on_flee = 0
+disable_fleeing = true
+bb_key = "opponent"
+challenger_manager_path = NodePath("../../../../../../ChallengerManager")
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="ExitDialogue" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 14 )
+entry_dialogue = false
+portrait_position = 2
+
+[node name="ExitDialogue2" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 14 )
+bb_key_retrieval = "opponent2"
+entry_dialogue = false
+portrait_position = 2
+
+[node name="CheckExtraPartner3" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 15 )
+always_succeed = true
+require_flags = [ "extra_partner1" ]
+
+[node name="EntryDialogue2" type="Node" parent="Challenger/Succeeder/BattleAction/CheckExtraPartner3"]
+script = ExtResource( 14 )
+__meta__ = {
+"_editor_description_": "Pulls the Entry dialogue from the spawned opponent"
+}
+bb_key_retrieval = "opponent3"
+entry_dialogue = false
+portrait_position = 2
+
+[node name="SetFlagAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 11 )
+flag = "continue_round"
+
+[node name="IncreaseWinStreakAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 7 )
+
+[node name="Triples" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 15 )
+always_succeed = true
+require_flags = [ "extra_partner1" ]
+
+[node name="RepeatWhile3" type="Node" parent="Challenger/Succeeder/BattleAction/Triples"]
+script = ExtResource( 18 )
+
+[node name="FollowAction" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+min_distance = 3.0
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetBlackboardValue2" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="FollowAction2" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+min_distance = 3.0
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3/FollowAction2"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="GetBlackboardValue2" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3/FollowAction2"]
+script = ExtResource( 5 )
+key = "opponent3"
+
+[node name="FollowAction3" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3/FollowAction3"]
+script = ExtResource( 5 )
+key = "opponent3"
+
+[node name="GetNode" type="Node" parent="Challenger/Succeeder/BattleAction/Triples/RepeatWhile3/FollowAction3"]
+script = ExtResource( 6 )
+node_name = "ExitNode"
+
+[node name="Doubles" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 15 )
+always_succeed = true
+deny_flags = [ "extra_partner1" ]
+
+[node name="RepeatWhile4" type="Node" parent="Challenger/Succeeder/BattleAction/Doubles"]
+script = ExtResource( 18 )
+
+[node name="FollowAction" type="Node" parent="Challenger/Succeeder/BattleAction/Doubles/RepeatWhile4"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+min_distance = 3.0
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/Doubles/RepeatWhile4/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="GetBlackboardValue2" type="Node" parent="Challenger/Succeeder/BattleAction/Doubles/RepeatWhile4/FollowAction"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="FollowAction2" type="Node" parent="Challenger/Succeeder/BattleAction/Doubles/RepeatWhile4"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+always_succeed = true
+can_jump = true
+can_fall = true
+can_glide = true
+can_wait = true
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/Doubles/RepeatWhile4/FollowAction2"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="GetNode" type="Node" parent="Challenger/Succeeder/BattleAction/Doubles/RepeatWhile4/FollowAction2"]
+script = ExtResource( 6 )
+node_name = "ExitNode"
+
+[node name="RemoveOutOfSightAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 16 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/RemoveOutOfSightAction"]
+script = ExtResource( 5 )
+key = "opponent"
+
+[node name="RemoveOutOfSightAction2" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 16 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/RemoveOutOfSightAction2"]
+script = ExtResource( 5 )
+key = "opponent2"
+
+[node name="CheckExtraPartner" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 15 )
+always_succeed = true
+require_flags = [ "extra_partner1" ]
+
+[node name="RemoveOutOfSightAction2" type="Node" parent="Challenger/Succeeder/BattleAction/CheckExtraPartner"]
+script = ExtResource( 16 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetBlackboardValue" type="Node" parent="Challenger/Succeeder/BattleAction/CheckExtraPartner/RemoveOutOfSightAction2"]
+script = ExtResource( 5 )
+key = "opponent3"
+
+[node name="PlayAudioAction" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 8 )
+stream = ExtResource( 1 )
+
+[node name="FullHealParty2" type="Node" parent="Challenger/Succeeder/BattleAction"]
+script = ExtResource( 9 )

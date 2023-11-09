@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://mods/RangerArena/Translations/mod_translation_arenas.en.translation" ]
+
+source_file="res://mods/RangerArena/Translations/mod_translation_arenas.csv"
+dest_files=[ "res://mods/RangerArena/Translations/mod_translation_arenas.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

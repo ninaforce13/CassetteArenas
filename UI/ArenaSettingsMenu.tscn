@@ -1,0 +1,127 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=1]
+[ext_resource path="res://nodes/menus/ArrowOptionList.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.815686, 0.8, 0.682353, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.576471, 0.32549, 0.32549, 1 )
+border_blend = true
+
+[node name="ArenaSettings" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 560.0
+margin_top = 4.0
+margin_right = 1360.0
+margin_bottom = 1076.0
+rect_min_size = Vector2( 800, 0 )
+size_flags_horizontal = 4
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 750.0
+margin_bottom = 1062.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 700, 0 )
+size_flags_horizontal = 4
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
+margin_right = 700.0
+margin_bottom = 1052.0
+grow_horizontal = 0
+grow_vertical = 0
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_right = 221.0
+margin_bottom = 60.0
+custom_colors/font_color = Color( 0.576471, 0.32549, 0.32549, 1 )
+text = "Selected Arena: "
+align = 2
+
+[node name="ArenaOptions" parent="PanelContainer/MarginContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 225.0
+margin_right = 357.0
+margin_bottom = 60.0
+values = [ 0, 1, 2, 3, 4 ]
+value_labels = [ "Debut Arena", "Remasters Arena", "Mix Tapes Arena", "Bootleg Arena", "Custom Arena" ]
+font_color_selected = Color( 0.576471, 0.32549, 0.32549, 1 )
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_top = 64.0
+margin_right = 221.0
+margin_bottom = 124.0
+custom_colors/font_color = Color( 0.576471, 0.32549, 0.32549, 1 )
+text = "Battle Format:"
+align = 2
+
+[node name="BattleFormats" parent="PanelContainer/MarginContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 225.0
+margin_top = 64.0
+margin_right = 357.0
+margin_bottom = 124.0
+values = [ 0, 1 ]
+value_labels = [ "Doubles Format", "Triples Format" ]
+font_color_selected = Color( 0.576471, 0.32549, 0.32549, 1 )
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_top = 128.0
+margin_right = 221.0
+margin_bottom = 188.0
+custom_colors/font_color = Color( 0.576471, 0.32549, 0.32549, 1 )
+text = "Tape Deck:"
+align = 2
+
+[node name="BattleFormats2" parent="PanelContainer/MarginContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 225.0
+margin_top = 128.0
+margin_right = 357.0
+margin_bottom = 188.0
+values = [ 0, 1 ]
+value_labels = [ "Personal Deck", "Rental Deck" ]
+font_color_selected = Color( 0.576471, 0.32549, 0.32549, 1 )
+
+[node name="Label4" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_top = 192.0
+margin_right = 221.0
+margin_bottom = 252.0
+custom_colors/font_color = Color( 0.576471, 0.32549, 0.32549, 1 )
+text = "Status:"
+align = 2
+
+[node name="Label5" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_left = 225.0
+margin_top = 192.0
+margin_right = 357.0
+margin_bottom = 252.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Open"
+align = 1
+
+[node name="Label6" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_top = 256.0
+margin_right = 221.0
+margin_bottom = 316.0
+custom_colors/font_color = Color( 0.576471, 0.32549, 0.32549, 1 )
+text = "Win Streak:"
+align = 2
+
+[node name="Label7" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_left = 225.0
+margin_top = 256.0
+margin_right = 357.0
+margin_bottom = 316.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1

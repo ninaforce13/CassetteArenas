@@ -1,0 +1,248 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://battle/ai/captains/CaptainCybilSidekickAI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/RangerArena/Fighters/Captains/CaptainAI/CaptainCybilAI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=3]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://data/monster_forms/decibelle.tres" type="Resource" id=5]
+[ext_resource path="res://data/battle_moves/spit.tres" type="Resource" id=6]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=7]
+[ext_resource path="res://data/battle_moves/echolocation.tres" type="Resource" id=8]
+[ext_resource path="res://data/battle_moves/change_the_record.tres" type="Resource" id=9]
+[ext_resource path="res://data/battle_moves/sonic_boom.tres" type="Resource" id=10]
+[ext_resource path="res://data/elemental_types/glass.tres" type="Resource" id=11]
+[ext_resource path="res://data/battle_moves/smack.tres" type="Resource" id=12]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=13]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=14]
+[ext_resource path="res://data/battle_moves/energy_shot.tres" type="Resource" id=15]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=16]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=17]
+[ext_resource path="res://data/battle_moves/shrapnel.tres" type="Resource" id=18]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=19]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=20]
+[ext_resource path="res://data/battle_moves/trick.tres" type="Resource" id=21]
+[ext_resource path="res://data/battle_moves/glass_bonds.tres" type="Resource" id=22]
+[ext_resource path="res://data/monster_forms/zeustrike.tres" type="Resource" id=23]
+[ext_resource path="res://data/character_sfx/captain_cybil_sfx.tres" type="Resource" id=24]
+[ext_resource path="res://data/monster_forms/smogmagog.tres" type="Resource" id=25]
+[ext_resource path="res://data/monster_forms/rockertrice.tres" type="Resource" id=26]
+[ext_resource path="res://data/character_sfx/male_npc_3_sfx.tres" type="Resource" id=27]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=28]
+[ext_resource path="res://data/monster_forms/mothmanic.tres" type="Resource" id=29]
+[ext_resource path="res://data/monster_forms/khufo.tres" type="Resource" id=30]
+[ext_resource path="res://sfx/voices/cybil/cybil_motivated_2.wav" type="AudioStream" id=31]
+[ext_resource path="res://sprites/portraits/captain_cybil.png" type="Texture" id=32]
+[ext_resource path="res://sprites/portraits/captain_cybil_happy.png" type="Texture" id=33]
+[ext_resource path="res://sfx/voices/cybil/cybil_compliment.wav" type="AudioStream" id=34]
+[ext_resource path="res://sfx/voices/cybil/cybil_greeting.wav" type="AudioStream" id=35]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=36]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 16 )
+banner_scene = ExtResource( 4 )
+title = "CAPTAIN_CYBIL_NAME"
+subtitle = "CAPTAIN_CYBIL_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 17 )]
+npc_name = "CAPTAIN_CYBIL_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 14,
+"body_color_2": 3,
+"eye_color": -1,
+"face_accessory_color": 3,
+"favorite_color": 3,
+"hair_accessory_color": -1,
+"hair_color": 3,
+"legs_color": 3,
+"shoe_color": 12,
+"skin_color": 22
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "straight1",
+"head": "visor1",
+"legs": "shorts1",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 14
+human_colors/body_color_2 = 3
+human_colors/face_accessory_color = 3
+human_colors/favorite_color = 3
+human_colors/hair_color = 3
+human_colors/legs_color = 3
+human_colors/shoe_color = 12
+human_colors/skin_color = 22
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "straight1",
+"head": "visor1",
+"legs": "shorts1",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 14,
+"body_color_2": 3,
+"eye_color": -1,
+"face_accessory_color": 3,
+"favorite_color": 3,
+"hair_accessory_color": -1,
+"hair_color": 3,
+"legs_color": 3,
+"shoe_color": 12,
+"skin_color": 22
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 3 )
+music_override = ExtResource( 20 )
+music_vox_override = ExtResource( 19 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 7 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 14 )
+character_name = "CAPTAIN_CYBIL_NAME_SHORT"
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 24 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+ai = ExtResource( 2 )
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 13 )
+form = ExtResource( 23 )
+moves_override = [ ExtResource( 6 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 9 ), ExtResource( 8 ) ]
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 13 )
+form = ExtResource( 5 )
+moves_override = [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ) ]
+
+[node name="TapeConfig5" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 13 )
+form = ExtResource( 25 )
+moves_override = [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 22 ), ExtResource( 18 ) ]
+type_override = [ ExtResource( 11 ) ]
+
+[node name="CharacterConfig2" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 14 )
+character_name = "RANGER_NAME"
+pronouns = 0
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 36 )
+character_sfx = ExtResource( 27 )
+character_kind = 1
+human_colors = {
+"body_color_1": 3,
+"body_color_2": 14,
+"eye_color": 3,
+"face_accessory_color": 3,
+"favorite_color": 3,
+"hair_accessory_color": -1,
+"hair_color": 3,
+"legs_color": 12,
+"shoe_color": 14,
+"skin_color": 21
+}
+human_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "afro2",
+"head": "glasses_1",
+"legs": ""
+}
+ai = ExtResource( 1 )
+human_colors/body_color_1 = 3
+human_colors/body_color_2 = 14
+human_colors/eye_color = 3
+human_colors/face_accessory_color = 3
+human_colors/favorite_color = 3
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = 3
+human_colors/legs_color = 12
+human_colors/shoe_color = 14
+human_colors/skin_color = 21
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig2" index="0"]
+script = ExtResource( 13 )
+form = ExtResource( 26 )
+moves_override = [ ExtResource( 6 ), ExtResource( 21 ), ExtResource( 9 ), ExtResource( 8 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig2" index="1"]
+script = ExtResource( 13 )
+form = ExtResource( 30 )
+moves_override = [ ExtResource( 12 ), ExtResource( 21 ), ExtResource( 9 ), ExtResource( 8 ) ]
+
+[node name="TapeConfig4" type="Node" parent="EncounterConfig/CharacterConfig2" index="2"]
+script = ExtResource( 13 )
+form = ExtResource( 29 )
+moves_override = [ ExtResource( 6 ), ExtResource( 21 ), ExtResource( 9 ), ExtResource( 8 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 28 )
+portrait = ExtResource( 32 )
+title = "CAPTAIN_CYBIL_NAME_SHORT"
+messages = [ "ARENAS_CYBIL_SPAWN1", "ARENAS_CYBIL_SPAWN2" ]
+audio = ExtResource( 35 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 28 )
+portrait = ExtResource( 33 )
+title = "CAPTAIN_CYBIL_NAME_SHORT"
+messages = [ "ARENAS_CYBIL_ENTRY" ]
+audio = ExtResource( 31 )
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 28 )
+portrait = ExtResource( 32 )
+title = "CAPTAIN_CYBIL_NAME_SHORT"
+messages = [ "ARENAS_CYBIL_EXIT1", "ARENAS_CYBIL_EXIT2" ]
+audio = ExtResource( 34 )

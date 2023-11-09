@@ -1,0 +1,150 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/RandomTapeConfigExt.gd" type="Script" id=1]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=2]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=3]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/RangerArena/Spawn Profiles/full_dex.tres" type="Resource" id=5]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=6]
+[ext_resource path="res://sfx/voices/male_npc_1/male_npc_1_greeting.wav" type="AudioStream" id=7]
+[ext_resource path="res://sfx/voices/male_npc_1/male_npc_1_thinking_1.wav" type="AudioStream" id=8]
+[ext_resource path="res://sprites/portraits/kirby.png" type="Texture" id=9]
+[ext_resource path="res://sprites/portraits/kirby_thinking.png" type="Texture" id=10]
+[ext_resource path="res://data/character_sfx/male_npc_1_sfx.tres" type="Resource" id=11]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=12]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=13]
+
+[node name="Kirby" instance=ExtResource( 4 )]
+npc_name = "KIRBY_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 14,
+"body_color_2": 13,
+"eye_color": -1,
+"face_accessory_color": 6,
+"favorite_color": 6,
+"hair_accessory_color": -1,
+"hair_color": 2,
+"legs_color": 12,
+"shoe_color": 13,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "neat1",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 14
+human_colors/body_color_2 = 13
+human_colors/face_accessory_color = 6
+human_colors/favorite_color = 6
+human_colors/hair_color = 2
+human_colors/legs_color = 12
+human_colors/shoe_color = 13
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "neat1",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 14,
+"body_color_2": 13,
+"eye_color": -1,
+"face_accessory_color": 6,
+"favorite_color": 6,
+"hair_accessory_color": -1,
+"hair_color": 2,
+"legs_color": 12,
+"shoe_color": 13,
+"skin_color": -1
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 3 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 12 ) ]
+transition = 4
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 2 )
+character_name = "KIRBY_NAME"
+level_scale_override_key = "monster_miniboss_smart"
+base_character = ExtResource( 13 )
+character_sfx = ExtResource( 11 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="RandomTapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 1 )
+seeded = false
+bootleg_rate = 0.75
+spawn_profile = ExtResource( 5 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="RandomTapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 1 )
+seeded = false
+bootleg_rate = 0.75
+spawn_profile = ExtResource( 5 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="RandomTapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 1 )
+seeded = false
+bootleg_rate = 0.75
+spawn_profile = ExtResource( 5 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="EntryDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 6 )
+portrait = ExtResource( 9 )
+title = "KIRBY_NAME"
+messages = [ "ARENAS_KIRBY_ENTRY" ]
+audio = ExtResource( 7 )
+
+[node name="ExitDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 6 )
+portrait = ExtResource( 10 )
+title = "KIRBY_NAME"
+messages = [ "ARENAS_KIRBY_EXIT" ]
+audio = ExtResource( 8 )

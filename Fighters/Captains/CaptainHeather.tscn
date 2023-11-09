@@ -1,0 +1,244 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://data/battle_moves/icicle_dart.tres" type="Resource" id=1]
+[ext_resource path="res://battle/ai/captains/CaptainHeatherSidekickAI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=3]
+[ext_resource path="res://menus/boss_title/TitleBanner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://data/battle_moves/spit.tres" type="Resource" id=5]
+[ext_resource path="res://data/battle_moves/hot_potato.tres" type="Resource" id=6]
+[ext_resource path="res://data/battle_moves/hurricane.tres" type="Resource" id=7]
+[ext_resource path="res://nodes/encounter_config/TapeConfig.gd" type="Script" id=8]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=9]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=10]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=11]
+[ext_resource path="res://data/battle_moves/fog.tres" type="Resource" id=12]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=13]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=14]
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=15]
+[ext_resource path="res://data/battle_moves/avalanche.tres" type="Resource" id=16]
+[ext_resource path="res://data/battle_moves/zephyr.tres" type="Resource" id=17]
+[ext_resource path="res://data/battle_moves/ice_wall.tres" type="Resource" id=18]
+[ext_resource path="res://data/battle_moves/thunder_blast.tres" type="Resource" id=19]
+[ext_resource path="res://data/battle_moves/blizzard.tres" type="Resource" id=20]
+[ext_resource path="res://data/monster_forms/faerious.tres" type="Resource" id=21]
+[ext_resource path="res://data/monster_forms/zeustrike.tres" type="Resource" id=22]
+[ext_resource path="res://data/battle_moves/bushfire.tres" type="Resource" id=23]
+[ext_resource path="res://data/monster_forms/hedgeherne.tres" type="Resource" id=24]
+[ext_resource path="res://data/character_sfx/female_npc_2_sfx.tres" type="Resource" id=25]
+[ext_resource path="res://data/character_sfx/captain_heather_sfx.tres" type="Resource" id=26]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=27]
+[ext_resource path="res://sprites/portraits/heather.png" type="Texture" id=28]
+[ext_resource path="res://sprites/portraits/heather_happy.png" type="Texture" id=29]
+[ext_resource path="res://sfx/voices/heather/heather_introduction.wav" type="AudioStream" id=30]
+[ext_resource path="res://data/monster_forms/sparktan.tres" type="Resource" id=31]
+[ext_resource path="res://data/monster_forms/flapwoods.tres" type="Resource" id=32]
+[ext_resource path="res://data/monster_forms/cryoshear.tres" type="Resource" id=33]
+[ext_resource path="res://mods/RangerArena/Fighters/Captains/CaptainAI/CaptainHeatherAI.tscn" type="PackedScene" id=34]
+[ext_resource path="res://mods/RangerArena/Characters/trainee.tres" type="Resource" id=35]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 10 )
+banner_scene = ExtResource( 4 )
+title = "CAPTAIN_HEATHER_NAME"
+subtitle = "CAPTAIN_HEATHER_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[node name="Captain" instance=ExtResource( 11 )]
+npc_name = "CAPTAIN_HEATHER_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 14,
+"body_color_2": 0,
+"eye_color": 16,
+"face_accessory_color": 12,
+"favorite_color": 6,
+"hair_accessory_color": -1,
+"hair_color": 12,
+"legs_color": 6,
+"shoe_color": -1,
+"skin_color": 23
+}
+sprite_part_names = {
+"arms": "heather",
+"body": "heather",
+"hair": "sharp1",
+"head": "makeup1",
+"legs": "skirt1",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 14
+human_colors/body_color_2 = 0
+human_colors/eye_color = 16
+human_colors/face_accessory_color = 12
+human_colors/favorite_color = 6
+human_colors/hair_color = 12
+human_colors/legs_color = 6
+human_colors/skin_color = 23
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "sweater1",
+"body": "heather",
+"hair": "sharp1",
+"head": "makeup1",
+"legs": "skirt1",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 14,
+"body_color_2": 0,
+"eye_color": 16,
+"face_accessory_color": 12,
+"favorite_color": 6,
+"hair_accessory_color": -1,
+"hair_color": 12,
+"legs_color": 6,
+"shoe_color": -1,
+"skin_color": 23
+}
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 3 )
+music_override = ExtResource( 14 )
+music_vox_override = ExtResource( 13 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 27 ) ]
+transition = 4
+title_banner = SubResource( 1 )
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 9 )
+character_name = "CAPTAIN_HEATHER_NAME_SHORT"
+pronouns = 1
+team_name_override = "BATTLE_ADJECTIVE_CAPTAIN"
+level_scale_override_key = "monster_miniboss_smart"
+character_sfx = ExtResource( 26 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+human_part_names = {
+"arms": "",
+"body": "",
+"hair": "",
+"head": "",
+"legs": ""
+}
+copy_human_sprite = NodePath("../..")
+ai = ExtResource( 34 )
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 8 )
+form = ExtResource( 32 )
+moves_override = [ ExtResource( 17 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 5 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 8 )
+form = ExtResource( 24 )
+moves_override = [ ExtResource( 5 ), ExtResource( 23 ), ExtResource( 6 ) ]
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 8 )
+form = ExtResource( 22 )
+moves_override = [ ExtResource( 19 ), ExtResource( 12 ), ExtResource( 20 ), ExtResource( 7 ), ExtResource( 5 ) ]
+
+[node name="CharacterConfig2" type="Node" parent="EncounterConfig" index="1"]
+script = ExtResource( 9 )
+character_name = "RANGER_NAME"
+level_scale_override_key = "npc_noticeboard"
+base_character = ExtResource( 35 )
+character_sfx = ExtResource( 25 )
+character_kind = 1
+human_colors = {
+"body_color_1": 4,
+"body_color_2": 7,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": 8,
+"hair_accessory_color": -1,
+"hair_color": 6,
+"legs_color": 12,
+"shoe_color": -1,
+"skin_color": 20
+}
+human_part_names = {
+"arms": "jacket2",
+"body": "jacket2",
+"hair": "long1",
+"head": "",
+"legs": ""
+}
+ai = ExtResource( 2 )
+human_colors/body_color_1 = 4
+human_colors/body_color_2 = 7
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = 8
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = 6
+human_colors/legs_color = 12
+human_colors/shoe_color = -1
+human_colors/skin_color = 20
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig2" index="0"]
+script = ExtResource( 8 )
+form = ExtResource( 31 )
+moves_override = [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 5 ) ]
+
+[node name="TapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig2" index="1"]
+script = ExtResource( 8 )
+form = ExtResource( 33 )
+moves_override = [ ExtResource( 1 ), ExtResource( 16 ), ExtResource( 5 ) ]
+
+[node name="TapeConfig3" type="Node" parent="EncounterConfig/CharacterConfig2" index="2"]
+script = ExtResource( 8 )
+form = ExtResource( 21 )
+moves_override = [ ExtResource( 18 ), ExtResource( 16 ), ExtResource( 5 ) ]
+
+[node name="SpawnDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 15 )
+portrait = ExtResource( 28 )
+title = "CAPTAIN_HEATHER_NAME_SHORT"
+messages = [ "ARENAS_HEATHER_SPAWN" ]
+audio = ExtResource( 30 )
+
+[node name="EntryDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 15 )
+portrait = ExtResource( 28 )
+title = "CAPTAIN_HEATHER_NAME_SHORT"
+messages = [ "ARENAS_HEATHER_ENTRY" ]
+
+[node name="ExitDialogue" type="Node" parent="." index="12"]
+script = ExtResource( 15 )
+portrait = ExtResource( 29 )
+title = "CAPTAIN_HEATHER_NAME_SHORT"
+messages = [ "ARENAS_HEATHER_EXIT" ]

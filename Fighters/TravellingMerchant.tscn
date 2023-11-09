@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/DialogueHolder.gd" type="Script" id=1]
+[ext_resource path="res://nodes/encounter_config/EncounterConfig.gd" type="Script" id=2]
+[ext_resource path="res://data/monster_forms/picksie.tres" type="Resource" id=3]
+[ext_resource path="res://mods/RangerArena/Scripts/RandomTapeConfigExt.gd" type="Script" id=4]
+[ext_resource path="res://nodes/encounter_config/CharacterConfig.gd" type="Script" id=5]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/RangerArena/Spawn Profiles/full_dex.tres" type="Resource" id=7]
+[ext_resource path="res://mods/RangerArena/Cutscenes/LoseBattleCustcene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/RangerArena/Scripts/TapeConfigExt.gd" type="Script" id=9]
+[ext_resource path="res://sfx/voices/male_npc_4/male_npc_4_laugh_1.wav" type="AudioStream" id=10]
+[ext_resource path="res://sfx/voices/male_npc_4/male_npc_4_laugh_2.wav" type="AudioStream" id=11]
+[ext_resource path="res://data/character_sfx/male_npc_4_sfx.tres" type="Resource" id=12]
+[ext_resource path="res://mods/RangerArena/Characters/traveling_merchant.tres" type="Resource" id=13]
+
+[node name="TravelingMerchant" instance=ExtResource( 6 )]
+npc_name = "TRAVELING_MERCHANT_NAME"
+pronouns = 0
+sprite_colors = {
+"body_color_1": 19,
+"body_color_2": 19,
+"eye_color": 6,
+"face_accessory_color": -1,
+"favorite_color": 0,
+"hair_accessory_color": -1,
+"hair_color": 14,
+"legs_color": 6,
+"shoe_color": 19,
+"skin_color": 19
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "bald",
+"head": "generic",
+"legs": "shorts1",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 19
+human_colors/body_color_2 = 19
+human_colors/eye_color = 6
+human_colors/favorite_color = 0
+human_colors/hair_color = 14
+human_colors/legs_color = 6
+human_colors/shoe_color = 19
+human_colors/skin_color = 19
+
+[node name="Sprite" parent="." index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0"]
+part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "bald",
+"head": "generic",
+"legs": "shorts1",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 19,
+"body_color_2": 19,
+"eye_color": 6,
+"face_accessory_color": -1,
+"favorite_color": 0,
+"hair_accessory_color": -1,
+"hair_color": 14,
+"legs_color": 6,
+"shoe_color": 19,
+"skin_color": 19
+}
+
+[node name="Interaction" parent="." index="4"]
+pawn_path = NodePath("../../TravelingMerchant")
+
+[node name="EncounterConfig" type="Node" parent="." index="9"]
+script = ExtResource( 2 )
+can_flee = false
+enable_ai_fusion = true
+suppress_exp = true
+cutscenes = [ ExtResource( 8 ) ]
+transition = 4
+
+[node name="CharacterConfig" type="Node" parent="EncounterConfig" index="0"]
+script = ExtResource( 5 )
+character_name = "TRAVELING_MERCHANT_NAME"
+pronouns = 0
+level_scale_override_key = "monster_miniboss_smart"
+base_character = ExtResource( 13 )
+character_sfx = ExtResource( 12 )
+character_kind = 1
+human_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+copy_human_sprite = NodePath("../..")
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="TapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="0"]
+script = ExtResource( 9 )
+form = ExtResource( 3 )
+
+[node name="RandomTapeConfig" type="Node" parent="EncounterConfig/CharacterConfig" index="1"]
+script = ExtResource( 4 )
+seeded = false
+bootleg_rate = 1.0
+spawn_profile = ExtResource( 7 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="RandomTapeConfig2" type="Node" parent="EncounterConfig/CharacterConfig" index="2"]
+script = ExtResource( 4 )
+seeded = false
+bootleg_rate = 1.0
+spawn_profile = ExtResource( 7 )
+profile_evolution_rate = 0.0
+non_profile_rate = 0.0
+
+[node name="EntryDialogue" type="Node" parent="." index="10"]
+script = ExtResource( 1 )
+title = "TRAVELING_MERCHANT_NAME"
+messages = [ "ARENAS_MERCHANT_ENTRY" ]
+audio = ExtResource( 10 )
+
+[node name="ExitDialogue" type="Node" parent="." index="11"]
+script = ExtResource( 1 )
+title = "TRAVELING_MERCHANT_NAME"
+messages = [ "ARENAS_MERCHANT_EXIT" ]
+audio = ExtResource( 11 )

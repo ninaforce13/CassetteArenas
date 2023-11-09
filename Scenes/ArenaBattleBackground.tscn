@@ -1,0 +1,4815 @@
+[gd_scene load_steps=64 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/objects/static_physics/amber_lodge/MicStand.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/environment/world/mall_vinyl_6.png" type="Texture" id=3]
+[ext_resource path="res://nodes/battle_slot/BattleSlot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/maps/InteriorMeshlib.meshlib" type="MeshLibrary" id=5]
+[ext_resource path="res://nodes/camera/BattleCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/environment/world/mall_vinyl_4.png" type="Texture" id=7]
+[ext_resource path="res://models/world_scenes/props/sun_ray.png" type="Texture" id=8]
+[ext_resource path="res://nodes/environment/ConfigurableEnvironment.gd" type="Script" id=9]
+[ext_resource path="res://battle/backgrounds/BattleBackground.gd" type="Script" id=10]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/hanging_lamp_1/hanging_lamp_1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://models/world_scenes/props/dust_particle.json" type="PackedScene" id=12]
+[ext_resource path="res://world/objects/interior_props/OldProjector1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://mods/RangerArena/CameraProfiles/battle_camera_arena.tres" type="Environment" id=14]
+[ext_resource path="res://world/maps/StationMeshlib.meshlib" type="MeshLibrary" id=15]
+[ext_resource path="res://world/core/Interaction.tscn" type="PackedScene" id=16]
+[ext_resource path="res://mods/RangerArena/NPC/TwirligigNPC.tscn" type="PackedScene" id=17]
+[ext_resource path="res://mods/RangerArena/NPC/BoltamNPC.tscn" type="PackedScene" id=18]
+[ext_resource path="res://mods/RangerArena/Scripts/CrowdRandomizer.gd" type="Script" id=19]
+[ext_resource path="res://sprites/environment/world/mall_vinyl_1.png" type="Texture" id=20]
+[ext_resource path="res://sprites/environment/world/mall_vinyl_5.png" type="Texture" id=21]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/coffee_stool_1/coffee_stool_1.tscn" type="PackedScene" id=22]
+[ext_resource path="res://sprites/environment/world/mall_vinyl_3.png" type="Texture" id=23]
+[ext_resource path="res://nodes/sprite_container/SpriteContainer.gd" type="Script" id=24]
+[ext_resource path="res://world/npc/EmotePlayer.tscn" type="PackedScene" id=25]
+[ext_resource path="res://world/npc/Footsteps.tscn" type="PackedScene" id=26]
+[ext_resource path="res://world/npc/FloorRay.gd" type="Script" id=27]
+[ext_resource path="res://world/npc/Controls.gd" type="Script" id=28]
+[ext_resource path="res://nodes/layered_sprite/WorldHumanSprite3D.tscn" type="PackedScene" id=29]
+[ext_resource path="res://world/npc/HumanStateMachine.tscn" type="PackedScene" id=30]
+[ext_resource path="res://world/npc/HumanNPC.gd" type="Script" id=31]
+[ext_resource path="res://sprites/environment/world/mall_vinyl_2.png" type="Texture" id=32]
+[ext_resource path="res://ui/battle/backup_tape_icon.png" type="Texture" id=33]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/vinyl.png" type="Texture" id=34]
+[ext_resource path="res://mods/RangerArena/NPC/CluckabillyNPC.tscn" type="PackedScene" id=35]
+[ext_resource path="res://mods/RangerArena/NPC/AllseerNPC.tscn" type="PackedScene" id=36]
+[ext_resource path="res://mods/RangerArena/NPC/FaucetearNPC.tscn" type="PackedScene" id=37]
+[ext_resource path="res://mods/RangerArena/NPC/MascotoyNPC.tscn" type="PackedScene" id=38]
+[ext_resource path="res://mods/RangerArena/NPC/NevermortNPC.tscn" type="PackedScene" id=39]
+[ext_resource path="res://mods/RangerArena/NPC/JellytonNPC.tscn" type="PackedScene" id=40]
+[ext_resource path="res://mods/RangerArena/NPC/DivealNPC.tscn" type="PackedScene" id=41]
+[ext_resource path="res://mods/RangerArena/NPC/MasquerattleNPC.tscn" type="PackedScene" id=42]
+[ext_resource path="res://mods/RangerArena/NPC/BulletinoNPC.tscn" type="PackedScene" id=43]
+[ext_resource path="res://mods/RangerArena/NPC/CarniviperNPC.tscn" type="PackedScene" id=44]
+[ext_resource path="res://mods/RangerArena/NPC/ElflessNPC.tscn" type="PackedScene" id=45]
+[ext_resource path="res://mods/RangerArena/NPC/DominothNPC.tscn" type="PackedScene" id=46]
+[ext_resource path="res://mods/RangerArena/NPC/FerriclawNPC.tscn" type="PackedScene" id=47]
+[ext_resource path="res://mods/RangerArena/NPC/IcepeckNPC.tscn" type="PackedScene" id=48]
+[ext_resource path="res://mods/RangerArena/NPC/SpookiOnnaNPC.tscn" type="PackedScene" id=49]
+[ext_resource path="res://mods/RangerArena/NPC/SquireyNPC.tscn" type="PackedScene" id=51]
+[ext_resource path="res://mods/RangerArena/NPC/TraffikrabNPC.tscn" type="PackedScene" id=52]
+[ext_resource path="res://mods/RangerArena/NPC/PuppercutNPC.tscn" type="PackedScene" id=54]
+[ext_resource path="res://mods/RangerArena/NPC/SpringheelNPC.tscn" type="PackedScene" id=55]
+[ext_resource path="res://mods/RangerArena/NPC/PombombNPC.tscn" type="PackedScene" id=56]
+[ext_resource path="res://mods/RangerArena/NPC/TerracookaNPC.tscn" type="PackedScene" id=57]
+[ext_resource path="res://mods/RangerArena/NPC/SanzatimeNPC.tscn" type="PackedScene" id=58]
+[ext_resource path="res://mods/RangerArena/NPC/PicksieNPC.tscn" type="PackedScene" id=59]
+[ext_resource path="res://mods/RangerArena/Scripts/SpawnMonsterCrowd.gd" type="Script" id=60]
+
+[sub_resource type="CapsuleShape" id=4]
+radius = 0.9
+height = 0.9
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+params_depth_draw_mode = 3
+albedo_texture = ExtResource( 8 )
+
+[sub_resource type="Animation" id=2]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 617, 1800 ) ]
+}
+
+[sub_resource type="CapsuleShape" id=5]
+radius = 0.9
+height = 0.9
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.835339, 31.0106, 22.0208 )
+
+[node name="Arena" type="Spatial"]
+script = ExtResource( 10 )
+clouds_enabled = false
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.01, 0 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 2, -65529, 0, 0, -7, 0, 2, -6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 2, -65529, 1, 0, -7, 1, 2, -6, 1, 0, -5, 1, 0, -4, 1, 0, -3, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 2, -65529, 2, 0, -7, 2, 2, -6, 2, 0, -5, 2, 0, -4, 2, 0, -3, 2, 1441792, -2, 2, 0, -1, 2, 0, -65536, 3, 0, -65535, 3, 0, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 2, -7, 3, 2, -6, 3, 0, -5, 3, 0, -4, 3, 0, -3, 3, 0, -2, 3, 1441792, -1, 3, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 4, 0, -65531, 4, 0, -65530, 4, 2, -7, 4, 2, -6, 4, 0, -5, 4, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 2, -7, 5, 2, -6, 5, 0, -5, 5, 0, -4, 5, 0, -3, 5, 0, -2, 5, 0, -1, 5, 0, -65536, 6, 0, -65535, 6, 0, -65534, 6, 0, -65533, 6, 0, -65532, 6, 0, -65531, 6, 0, -65530, 6, 2, -7, 6, 2, -6, 6, 0, -5, 6, 0, -4, 6, 0, -3, 6, 0, -2, 6, 0, -1, 6, 0, -65536, 7, 0, -65535, 7, 0, -65534, 7, 0, -65533, 7, 0, -65532, 7, 0, -65531, 7, 0, -65530, 7, 2, -7, 7, 2, -6, 7, 0, -5, 7, 0, -4, 7, 0, -3, 7, 0, -2, 7, 0, -1, 7, 0, -65536, 8, 0, -65535, 8, 0, -65534, 8, 0, -65533, 8, 0, -65532, 8, 0, -65531, 8, 0, -65530, 8, 2, -7, 8, 2, -6, 8, 0, -5, 8, 0, -4, 8, 0, -3, 8, 0, -2, 8, 0, -1, 8, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 0, -65532, 9, 0, -65531, 9, 0, -65530, 9, 2, -7, 9, 2, -6, 9, 0, -5, 9, 0, -4, 9, 0, -3, 9, 0, -2, 9, 0, -1, 9, 0, 65541, 10, 1441801, 131065, 10, 655369, -65536, 10, 2, -65535, 10, 2, -65534, 10, 2, -65533, 10, 2, -65532, 10, 2, -65531, 10, 2, -65530, 10, 2, -7, 10, 2, -6, 10, 2, -5, 10, 2, -4, 10, 2, -3, 10, 2, -2, 10, 2, -1, 10, 2, 65536, 65533, 2, 65537, 65533, 2, 65538, 65533, 2, 131069, 65533, 2, 131070, 65533, 2, 131071, 65533, 2, 131072, 65533, 15, 131073, 65533, 15, 131074, 65533, 1048592, 196605, 65533, 655376, 196606, 65533, 15, 196607, 65533, 15, 196608, 65533, 15, 196609, 65533, 15, 196610, 65533, 1048592, 262141, 65533, 655376, 262142, 65533, 15, 262143, 65533, 15, 262144, 65533, 655375, 262145, 65533, 655375, 262146, 65533, 1048592, 327677, 65533, 655376, 327678, 65533, 655375, 327679, 65533, 655375, 327680, 65533, 655375, 327681, 65533, 655375, 327682, 65533, 1048592, 393213, 65533, 655376, 393214, 65533, 655375, 393215, 65533, 655375, 393216, 65533, 655375, 393217, 65533, 655375, 393218, 65533, 1048592, 458749, 65533, 655376, 458750, 65533, 655375, 458751, 65533, 655375, 458752, 65533, 655375, 458753, 65533, 655375, 458754, 65533, 1048592, 524285, 65533, 655376, 524286, 65533, 655375, 524287, 65533, 655375, 524288, 65533, 655375, 524289, 65533, 655375, 524290, 65533, 1048592, 589821, 65533, 655376, 589822, 65533, 655375, 589823, 65533, 655375, 589824, 65533, 655375, 589825, 65533, 655375, 589826, 65533, 1048592, 655357, 65533, 655376, 655358, 65533, 655375, 655359, 65533, 655375, 655360, 65533, 655375, 655361, 65533, 655375, 655362, 65533, 19, 720893, 65533, 655376, 720894, 65533, 655375, 720895, 65533, 655375, 720896, 65533, 655375, 720897, 65533, 655375, 720898, 65533, 19, 786429, 65533, 1048595, 786430, 65533, 655375, 786431, 65533, 655375, 65536, 65534, 2, 65537, 65534, 2, 65538, 65534, 2, 131069, 65534, 2, 131070, 65534, 2, 131071, 65534, 2, 131074, 65534, 1441807, 196605, 65534, 1048591, 196610, 65534, 1441807, 262141, 65534, 1441807, 262146, 65534, 1441807, 327677, 65534, 1048591, 327682, 65534, 1441807, 393213, 65534, 1048591, 393218, 65534, 1441807, 458749, 65534, 1048591, 458754, 65534, 1441807, 524285, 65534, 1441807, 524290, 65534, 1441807, 589821, 65534, 1441807, 589826, 65534, 1441807, 655357, 65534, 1441807, 655362, 65534, 1441807, 720884, 65534, 655375, 720893, 65534, 1048591, 720898, 65534, 1441807, 786429, 65534, 1048591, -65536, 65534, 2, -65535, 65534, 2, -65534, 65534, 2, -65533, 65534, 2, -65532, 65534, 2, -65531, 65534, 2, -65530, 65534, 2, -65529, 65534, 0, -7, 65534, 2, -6, 65534, 2, -5, 65534, 2, -4, 65534, 2, -3, 65534, 2, -2, 65534, 2, -1, 65534, 2, 0, 65535, 15, 1, 65535, 15, 2, 65535, 15, 3, 65535, 15, 4, 65535, 15, 5, 65535, 15, 6, 65535, 15, 7, 65535, 15, 8, 65535, 15, 9, 65535, 15, 10, 65535, 15, 11, 65535, 15, 12, 65535, 15, 13, 65535, 15, 14, 65535, 15, 15, 65535, 15, 65522, 65535, 15, 65523, 65535, 15, 65524, 65535, 15, 65525, 65535, 15, 65526, 65535, 15, 65527, 65535, 15, 65528, 65535, 15, 65529, 65535, 15, 65530, 65535, 15, 65531, 65535, 15, 65532, 65535, 15, 65533, 65535, 15, 65534, 65535, 15, 65535, 65535, 15, 65536, 65535, 13, 65537, 65535, 13, 65538, 65535, 13, 65539, 65535, 15, 65540, 65535, 15, 65541, 65535, 15, 65542, 65535, 15, 65543, 65535, 15, 65544, 65535, 15, 65545, 65535, 15, 65546, 65535, 15, 65547, 65535, 15, 65548, 65535, 15, 65549, 65535, 15, 65550, 65535, 15, 65551, 65535, 15, 131058, 65535, 15, 131059, 65535, 15, 131060, 65535, 15, 131061, 65535, 15, 131062, 65535, 15, 131063, 65535, 15, 131064, 65535, 15, 131065, 65535, 15, 131066, 65535, 15, 131067, 65535, 15, 131068, 65535, 15, 131069, 65535, 13, 131070, 65535, 13, 131071, 65535, 13, 131074, 65535, 1441808, 131075, 65535, 655375, 131076, 65535, 15, 131077, 65535, 15, 131078, 65535, 15, 131079, 65535, 15, 131080, 65535, 15, 131081, 65535, 15, 131082, 65535, 15, 131083, 65535, 15, 131084, 65535, 15, 131085, 65535, 15, 131086, 65535, 15, 131087, 65535, 15, 196591, 65535, 655375, 196592, 65535, 655375, 196593, 65535, 655375, 196594, 65535, 15, 196595, 65535, 15, 196596, 65535, 15, 196597, 65535, 15, 196598, 65535, 15, 196599, 65535, 15, 196600, 65535, 15, 196601, 65535, 15, 196602, 65535, 15, 196603, 65535, 15, 196604, 65535, 15, 196605, 65535, 16, 196610, 65535, 1441808, 196611, 65535, 655375, 196612, 65535, 15, 196613, 65535, 15, 196614, 65535, 15, 196615, 65535, 15, 196616, 65535, 15, 196617, 65535, 15, 196618, 65535, 15, 196619, 65535, 15, 196620, 65535, 15, 196621, 65535, 15, 196622, 65535, 15, 196623, 65535, 15, 262127, 65535, 655375, 262128, 65535, 655375, 262129, 65535, 655375, 262130, 65535, 15, 262131, 65535, 15, 262132, 65535, 15, 262133, 65535, 15, 262134, 65535, 15, 262135, 65535, 15, 262136, 65535, 15, 262137, 65535, 15, 262138, 65535, 15, 262139, 65535, 15, 262140, 65535, 15, 262141, 65535, 16, 262146, 65535, 1441808, 262147, 65535, 655375, 262148, 65535, 15, 262149, 65535, 15, 262150, 65535, 15, 262151, 65535, 15, 262152, 65535, 15, 262153, 65535, 15, 262154, 65535, 15, 262155, 65535, 15, 262156, 65535, 15, 262157, 65535, 15, 262158, 65535, 15, 327663, 65535, 655375, 327664, 65535, 655375, 327665, 65535, 655375, 327666, 65535, 15, 327667, 65535, 15, 327668, 65535, 15, 327669, 65535, 15, 327670, 65535, 15, 327671, 65535, 15, 327672, 65535, 15, 327673, 65535, 15, 327674, 65535, 15, 327675, 65535, 15, 327676, 65535, 15, 327677, 65535, 16, 327682, 65535, 1441808, 327683, 65535, 655375, 327684, 65535, 655375, 327685, 65535, 655375, 327686, 65535, 15, 327687, 65535, 15, 327688, 65535, 15, 327689, 65535, 15, 327690, 65535, 15, 327691, 65535, 15, 327692, 65535, 15, 327693, 65535, 15, 327694, 65535, 15, 393199, 65535, 655375, 393200, 65535, 655375, 393201, 65535, 655375, 393202, 65535, 15, 393203, 65535, 15, 393204, 65535, 15, 393205, 65535, 15, 393206, 65535, 15, 393207, 65535, 15, 393208, 65535, 15, 393209, 65535, 15, 393210, 65535, 655375, 393211, 65535, 655375, 393212, 65535, 655375, 393213, 65535, 16, 393218, 65535, 1441808, 393219, 65535, 655375, 393220, 65535, 655375, 393221, 65535, 655375, 393222, 65535, 15, 393223, 65535, 15, 393224, 65535, 15, 393225, 65535, 15, 393226, 65535, 15, 393227, 65535, 15, 393228, 65535, 15, 393229, 65535, 15, 393230, 65535, 15, 458738, 65535, 15, 458739, 65535, 15, 458740, 65535, 15, 458741, 65535, 15, 458742, 65535, 15, 458743, 65535, 15, 458744, 65535, 15, 458745, 65535, 15, 458746, 65535, 655375, 458747, 65535, 655375, 458748, 65535, 655375, 458749, 65535, 16, 458754, 65535, 1441808, 458755, 65535, 655375, 458756, 65535, 15, 458757, 65535, 15, 458758, 65535, 15, 458759, 65535, 15, 458760, 65535, 15, 458761, 65535, 15, 458762, 65535, 15, 458763, 65535, 15, 458764, 65535, 15, 458765, 65535, 15, 458766, 65535, 15, 524274, 65535, 15, 524275, 65535, 15, 524276, 65535, 15, 524277, 65535, 15, 524278, 65535, 15, 524279, 65535, 15, 524280, 65535, 15, 524281, 65535, 15, 524282, 65535, 15, 524283, 65535, 15, 524284, 65535, 15, 524285, 65535, 16, 524290, 65535, 1441808, 524291, 65535, 655375, 524292, 65535, 15, 524293, 65535, 15, 524294, 65535, 15, 524295, 65535, 15, 524296, 65535, 15, 524297, 65535, 15, 524298, 65535, 15, 524299, 65535, 15, 524300, 65535, 15, 524301, 65535, 15, 524302, 65535, 15, 589810, 65535, 15, 589811, 65535, 15, 589812, 65535, 15, 589813, 65535, 15, 589814, 65535, 15, 589815, 65535, 15, 589816, 65535, 15, 589817, 65535, 15, 589818, 65535, 15, 589819, 65535, 15, 589820, 65535, 15, 589821, 65535, 16, 589826, 65535, 1441808, 589827, 65535, 655375, 589828, 65535, 655375, 589829, 65535, 655375, 589830, 65535, 15, 589831, 65535, 15, 589832, 65535, 15, 589833, 65535, 15, 589834, 65535, 15, 589835, 65535, 15, 589836, 65535, 15, 589837, 65535, 15, 589838, 65535, 15, 655346, 65535, 15, 655347, 65535, 15, 655348, 65535, 15, 655349, 65535, 15, 655350, 65535, 15, 655351, 65535, 15, 655352, 65535, 15, 655353, 65535, 15, 655354, 65535, 655375, 655355, 65535, 655375, 655356, 65535, 655375, 655357, 65535, 16, 655362, 65535, 1441808, 655363, 65535, 655375, 655364, 65535, 655375, 655365, 65535, 655375, 655366, 65535, 655375, 655367, 65535, 655375, 655368, 65535, 655375, 655369, 65535, 655375, 655370, 65535, 655375, 655371, 65535, 655375, 655372, 65535, 655375, 655373, 65535, 655375, 655374, 65535, 655375, 720882, 65535, 655375, 720883, 65535, 655375, 720884, 65535, 655375, 720885, 65535, 655375, 720886, 65535, 655375, 720887, 65535, 655375, 720888, 65535, 655375, 720889, 65535, 655375, 720890, 65535, 655375, 720891, 65535, 655375, 720892, 65535, 655375, 720893, 65535, 16, 720898, 65535, 1441808, 720899, 65535, 655375, 720900, 65535, 655375, 720901, 65535, 655375, 720902, 65535, 655375, 720903, 65535, 655375, 720904, 65535, 655375, 720905, 65535, 655375, 720906, 65535, 655375, 720907, 65535, 655375, 720908, 65535, 655375, 720909, 65535, 655375, 720910, 65535, 655375, 786419, 65535, 655375, 786420, 65535, 655375, 786421, 65535, 655375, 786422, 65535, 655375, 786423, 65535, 655375, 786424, 65535, 655375, 786425, 65535, 655375, 786426, 65535, 655375, 786427, 65535, 655375, 786428, 65535, 655375, 786429, 65535, 1441811, -65536, 65535, 2, -65535, 65535, 2, -65534, 65535, 2, -65533, 65535, 2, -65532, 65535, 2, -65531, 65535, 1441794, -65530, 65535, 2, -65529, 65535, 0, -7, 65535, 2, -6, 65535, 1441794, -5, 65535, 2, -4, 65535, 2, -3, 65535, 2, -2, 65535, 2, -1, 65535, 2 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="GridMap3" type="GridMap" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.01, 0 )
+mesh_library = ExtResource( 5 )
+data = {
+"cells": PoolIntArray( 7, 0, 1441818, 65528, 0, 1048603, 65544, 0, 1441818, 65545, 0, 1048576, 65546, 0, 1048576, 65547, 0, 1048576, 65548, 0, 1048576, 65549, 0, 1048576, 65550, 0, 1048576, 65551, 0, 1048576, 65552, 0, 1441809, 65553, 0, 1441809, 131055, 0, 1048576, 131056, 0, 1048576, 131057, 0, 1048576, 131058, 0, 1048576, 131059, 0, 1048576, 131060, 0, 1048576, 131061, 0, 1048576, 131062, 0, 1048576, 131063, 0, 1048603, 7, 1, 1441815, 65528, 1, 1048599, 65544, 1, 1441815, 65545, 1, 1048576, 65546, 1, 1048576, 65547, 1, 1048576, 65548, 1, 1048576, 65549, 1, 1048576, 65550, 1, 1048576, 65551, 1, 1048576, 65552, 1, 1441809, 65553, 1, 1441809, 131055, 1, 1048576, 131056, 1, 1048576, 131057, 1, 1048576, 131058, 1, 1048576, 131059, 1, 1048576, 131060, 1, 1048576, 131061, 1, 1048576, 131062, 1, 1048576, 131063, 1, 1048599, 7, 2, 1441815, 65528, 2, 1048599, 65544, 2, 1441815, 65545, 2, 1048576, 65546, 2, 1048576, 65547, 2, 1048576, 65548, 2, 1048576, 65549, 2, 1048576, 65550, 2, 1048576, 65551, 2, 1048576, 65552, 2, 1441809, 65553, 2, 1441809, 131055, 2, 1048576, 131056, 2, 1048576, 131057, 2, 1048576, 131058, 2, 1048576, 131059, 2, 1048576, 131060, 2, 1048576, 131061, 2, 1048576, 131062, 2, 1048576, 131063, 2, 1048599, 7, 3, 1441818, 65528, 3, 1048603, 65544, 3, 1441818, 65545, 3, 1048576, 65546, 3, 1048576, 65547, 3, 1048576, 65548, 3, 1048576, 65549, 3, 1048576, 65550, 3, 1048576, 65551, 3, 1048576, 65552, 3, 1441809, 65553, 3, 1441809, 131055, 3, 1048576, 131056, 3, 1048576, 131057, 3, 1048576, 131058, 3, 1048576, 131059, 3, 1048576, 131060, 3, 1048576, 131061, 3, 1048576, 131062, 3, 1048576, 131063, 3, 1048603, 7, 4, 1441815, 65528, 4, 1048599, 65544, 4, 1441815, 65545, 4, 1048576, 65546, 4, 1048576, 65547, 4, 1048576, 65548, 4, 1048576, 65549, 4, 1048576, 65550, 4, 1048576, 65551, 4, 1048576, 65552, 4, 1441809, 65553, 4, 1441809, 131055, 4, 1048576, 131056, 4, 1048576, 131057, 4, 1048576, 131058, 4, 1048576, 131059, 4, 1048576, 131060, 4, 1048576, 131061, 4, 1048576, 131062, 4, 1048576, 131063, 4, 1048599, 7, 5, 1441815, 65528, 5, 1048599, 65544, 5, 1441815, 65545, 5, 1048576, 65546, 5, 1048576, 65547, 5, 1048576, 65548, 5, 1048576, 65549, 5, 1048576, 65550, 5, 1048576, 65551, 5, 1048576, 65552, 5, 1441809, 65553, 5, 1441809, 131054, 5, 1048576, 131055, 5, 1048576, 131056, 5, 1048576, 131057, 5, 1048576, 131058, 5, 1048576, 131059, 5, 1048576, 131060, 5, 1048576, 131061, 5, 1048576, 131062, 5, 1048576, 131063, 5, 1048599, 7, 6, 1441818, 65528, 6, 1048603, 65544, 6, 1441818, 65545, 6, 1048576, 65546, 6, 1048576, 65547, 6, 1048576, 65548, 6, 1048576, 65549, 6, 1441809, 65550, 6, 1441809, 65551, 6, 1441809, 65552, 6, 1441809, 65553, 6, 1441809, 131054, 6, 1048576, 131055, 6, 1048576, 131056, 6, 1048576, 131057, 6, 1048576, 131058, 6, 1048576, 131059, 6, 1048576, 131060, 6, 1048576, 131061, 6, 1048576, 131062, 6, 1048576, 131063, 6, 1048603, 7, 7, 1441815, 65528, 7, 1048599, 65544, 7, 1441815, 65545, 7, 1048576, 65546, 7, 1048576, 65547, 7, 1048576, 65548, 7, 1441809, 65549, 7, 1441809, 65550, 7, 1441809, 65551, 7, 1441809, 65552, 7, 1441809, 65553, 7, 1441809, 131054, 7, 1048576, 131055, 7, 1048576, 131056, 7, 1048576, 131057, 7, 1048576, 131058, 7, 1048576, 131059, 7, 1048576, 131060, 7, 1048576, 131061, 7, 1048576, 131062, 7, 1048576, 131063, 7, 1048599, 7, 8, 1441819, 65528, 8, 1048602, 65544, 8, 1441819, 65545, 8, 1048576, 65546, 8, 1048576, 65547, 8, 1048576, 65548, 8, 1441809, 65549, 8, 1441809, 65550, 8, 1441809, 65551, 8, 1441809, 65552, 8, 1441809, 65553, 8, 1441809, 131054, 8, 1048576, 131055, 8, 1048576, 131056, 8, 1048576, 131057, 8, 1048576, 131058, 8, 1048576, 131059, 8, 1048576, 131060, 8, 1048576, 131061, 8, 1048576, 131062, 8, 1048576, 131063, 8, 1048602, 7, 9, 1441815, 65528, 9, 1048599, 65544, 9, 1441815, 65545, 9, 1048576, 65546, 9, 1048576, 65547, 9, 1048576, 65548, 9, 1441809, 65549, 9, 1441809, 65550, 9, 1441809, 65551, 9, 1441809, 65552, 9, 1441809, 65553, 9, 1441809, 131055, 9, 1048576, 131056, 9, 1048576, 131057, 9, 1048576, 131058, 9, 1048576, 131059, 9, 1048576, 131060, 9, 1048576, 131061, 9, 1048576, 131062, 9, 1048576, 131063, 9, 1048599, 0, 10, 655383, 1, 10, 655383, 2, 10, 655383, 3, 10, 655383, 4, 10, 655383, 5, 10, 655383, 7, 10, 1441819, 65528, 10, 1048602, 65529, 10, 655383, 65530, 10, 655383, 65531, 10, 655383, 65532, 10, 655383, 65533, 10, 655383, 65534, 10, 655383, 65535, 10, 655383, 65542, 10, 655366, 65543, 10, 655366, 65544, 10, 1441819, 65545, 10, 1048576, 65546, 10, 1048576, 65547, 10, 1048576, 65548, 10, 1441809, 65549, 10, 1441809, 65550, 10, 1441809, 65551, 10, 1441809, 65552, 10, 1441809, 65553, 10, 1441809, 131055, 10, 1048576, 131056, 10, 1048576, 131057, 10, 1048576, 131058, 10, 1048576, 131059, 10, 1048576, 131060, 10, 1048576, 131061, 10, 1048576, 131062, 10, 1048576, 131063, 10, 1048602, 131064, 10, 655366, 0, 11, 655382, 1, 11, 655382, 2, 11, 655382, 3, 11, 655382, 4, 11, 655382, 5, 11, 655382, 65529, 11, 655382, 65530, 11, 655382, 65531, 11, 655382, 65532, 11, 655382, 65533, 11, 655382, 65534, 11, 655382, 65535, 11, 655382, 65541, 11, 1441798, 65542, 11, 1048576, 65543, 11, 1048576, 65544, 11, 1048576, 65545, 11, 1048576, 65546, 11, 1441809, 65547, 11, 1441809, 65548, 11, 1441809, 65549, 11, 1441809, 65550, 11, 1441809, 65551, 11, 1441809, 65552, 11, 1441809, 65553, 11, 1441809, 131056, 11, 1048576, 131057, 11, 1048576, 131058, 11, 1048576, 131059, 11, 1048576, 131060, 11, 1048576, 131061, 11, 1048576, 131062, 11, 1048593, 131063, 11, 1048593, 131064, 11, 1048593, 131065, 11, 1048582, 0, 12, 655379, 1, 12, 655379, 2, 12, 655381, 3, 12, 655379, 4, 12, 655379, 5, 12, 655379, 6, 12, 655379, 65529, 12, 655379, 65530, 12, 655381, 65531, 12, 655379, 65532, 12, 655379, 65533, 12, 655379, 65534, 12, 655381, 65535, 12, 655379, 65541, 12, 1441798, 65542, 12, 1441809, 65543, 12, 1441809, 65544, 12, 1441809, 65545, 12, 1441809, 65546, 12, 1441809, 65547, 12, 1441809, 65548, 12, 1441809, 65549, 12, 1441809, 65550, 12, 1441809, 65551, 12, 1441809, 65552, 12, 1441809, 65553, 12, 1441809, 131056, 12, 1048576, 131057, 12, 1048576, 131058, 12, 1048576, 131059, 12, 1048576, 131060, 12, 1048576, 131061, 12, 1048593, 131062, 12, 1048593, 131063, 12, 1048593, 131064, 12, 1048593, 131065, 12, 1048582, 0, 13, 655379, 1, 13, 655379, 2, 13, 655379, 3, 13, 655379, 4, 13, 655379, 5, 13, 655379, 6, 13, 655379, 65529, 13, 655379, 65530, 13, 655379, 65531, 13, 655379, 65532, 13, 655379, 65533, 13, 655379, 65534, 13, 655379, 65535, 13, 655379, 65541, 13, 1441798, 65542, 13, 1441809, 65543, 13, 1441809, 65544, 13, 1441809, 65545, 13, 1441809, 65546, 13, 1441809, 65547, 13, 1441809, 65548, 13, 1441809, 65549, 13, 1441809, 65550, 13, 1441809, 65551, 13, 1441809, 65552, 13, 1441809, 65553, 13, 1441809, 131056, 13, 1048576, 131057, 13, 1048576, 131058, 13, 1048576, 131059, 13, 1048576, 131060, 13, 1048576, 131061, 13, 1048593, 131062, 13, 1048593, 131063, 13, 1048593, 131064, 13, 1048593, 131065, 13, 1048582, 0, 14, 655381, 1, 14, 655379, 2, 14, 655379, 3, 14, 655379, 4, 14, 655381, 5, 14, 655379, 6, 14, 655379, 65529, 14, 655379, 65530, 14, 655379, 65531, 14, 655379, 65532, 14, 655381, 65533, 14, 655379, 65534, 14, 655379, 65535, 14, 655379, 65541, 14, 1441798, 65542, 14, 1441809, 65543, 14, 1441809, 65544, 14, 1441809, 65545, 14, 1441809, 65546, 14, 1441809, 65547, 14, 1441809, 65548, 14, 1441809, 65549, 14, 1441809, 65550, 14, 1441809, 65551, 14, 1441809, 65552, 14, 1441809, 65553, 14, 1441809, 131056, 14, 1048576, 131057, 14, 1048576, 131058, 14, 1048576, 131059, 14, 1048576, 131060, 14, 1048576, 131061, 14, 1048593, 131062, 14, 1048593, 131063, 14, 1048593, 131064, 14, 1048593, 131065, 14, 1048582, 0, 15, 655379, 1, 15, 655379, 2, 15, 655379, 3, 15, 655379, 4, 15, 655379, 5, 15, 655379, 65529, 15, 655379, 65530, 15, 655379, 65531, 15, 655379, 65532, 15, 655379, 65533, 15, 655379, 65534, 15, 655379, 65535, 15, 655379, 65541, 15, 1441798, 65542, 15, 1441809, 65543, 15, 1441809, 65544, 15, 1441809, 65545, 15, 1441809, 65546, 15, 1441809, 65547, 15, 1441809, 65548, 15, 1441809, 65549, 15, 1441809, 65550, 15, 1441809, 65551, 15, 1441809, 65552, 15, 1441809, 65553, 15, 1441809, 131056, 15, 1048593, 131057, 15, 1048593, 131058, 15, 1048593, 131059, 15, 1048593, 131060, 15, 1048593, 131061, 15, 1048593, 131062, 15, 1048593, 131063, 15, 1048593, 131064, 15, 1048593, 131065, 15, 1048582, 0, 16, 655379, 1, 16, 655379, 2, 16, 655381, 3, 16, 655379, 4, 16, 655379, 5, 16, 655379, 65529, 16, 655379, 65530, 16, 655381, 65531, 16, 655379, 65532, 16, 655379, 65533, 16, 655379, 65534, 16, 655381, 65535, 16, 655379, 65541, 16, 1441798, 65542, 16, 1441809, 65543, 16, 1441809, 65544, 16, 1441809, 65545, 16, 1441809, 65546, 16, 1441809, 65547, 16, 1441809, 65548, 16, 1441809, 65549, 16, 1441809, 65550, 16, 1441809, 65552, 16, 1441809, 131058, 16, 1048593, 131059, 16, 1048593, 131060, 16, 1048593, 131061, 16, 1048593, 131062, 16, 1048593, 131063, 16, 1048593, 131064, 16, 1048593, 131065, 16, 1048582, 65541, 17, 1441798, 65542, 17, 1441809, 65543, 17, 1441809, 65544, 17, 1441809, 65545, 17, 1441809, 65546, 17, 1441809, 65547, 17, 1441809, 65548, 17, 1441809, 131061, 65533, 1048576, 65548, 65534, 1048576, 65549, 65534, 1048576, 65550, 65534, 1048576, 65551, 65534, 1048576, 131056, 65534, 1048576, 131061, 65534, 1048576, 131062, 65534, 1048576, 65544, 65535, 1048576, 65545, 65535, 1048576, 65546, 65535, 1048576, 65547, 65535, 1048576, 65548, 65535, 1048576, 65549, 65535, 1048576, 65550, 65535, 1048576, 65551, 65535, 1048576, 131055, 65535, 1048576, 131056, 65535, 1048576, 131057, 65535, 1048576, 131058, 65535, 1048576, 131059, 65535, 1048576, 131060, 65535, 1048576, 131061, 65535, 1048576, 131062, 65535, 1048576, 131063, 65535, 1048576 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="GridMap2" type="GridMap" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+mesh_library = ExtResource( 15 )
+data = {
+"cells": PoolIntArray( 6, 0, 1441827, 65529, 0, 1048612, 6, 1, 1441825, 65529, 1, 1048609, 6, 2, 1441825, 65529, 2, 1048609, 6, 3, 1441825, 65529, 3, 1048609, 6, 4, 1441825, 65529, 4, 1048609, 6, 5, 1441825, 65529, 5, 1048609, 6, 6, 1441825, 65529, 6, 1048609, 6, 7, 1441825, 65529, 7, 1048609, 6, 8, 1441825, 65529, 8, 1048609, 6, 9, 1441825, 65529, 9, 1048611, 6, 10, 1441825 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.17707 )
+
+[node name="GridMap2" type="GridMap" parent="Spatial"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 65536, 0, 6, 65537, 0, 6, 65538, 0, 12, 131069, 0, 11, 131070, 0, 6, 131071, 0, 6 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="BattleSlotPlayer1" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1, -15, 0, 6 )
+focus_neighbour_bottom = NodePath("../BattleSlotPlayer2")
+focus_neighbour_left = NodePath("../BattleSlotPlayer2")
+focus_neighbour_right = NodePath("../BattleSlotEnemy1")
+
+[node name="BattleSlotPlayer2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1, -20, 0, 18 )
+focus_neighbour_bottom = NodePath("../BattleSlotPlayer3")
+focus_neighbour_left = NodePath("../BattleSlotPlayer3")
+focus_neighbour_right = NodePath("../BattleSlotEnemy2")
+focus_neighbour_top = NodePath("../BattleSlotPlayer1")
+
+[node name="BattleSlotPlayer3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1, -15, 0, 28 )
+focus_neighbour_bottom = NodePath("../BattleSlotPlayer4")
+focus_neighbour_right = NodePath("../BattleSlotEnemy3")
+focus_neighbour_top = NodePath("../BattleSlotPlayer2")
+
+[node name="BattleSlotPlayer4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1, -20, 0, 37 )
+focus_neighbour_right = NodePath("../BattleSlotEnemy4")
+focus_neighbour_top = NodePath("../BattleSlotPlayer3")
+
+[node name="BattleSlotEnemy1" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1, 15, 0, 6 )
+direction = -1
+team = 1
+focus_neighbour_bottom = NodePath("../BattleSlotEnemy2")
+focus_neighbour_left = NodePath("../BattleSlotPlayer1")
+focus_neighbour_right = NodePath("../BattleSlotEnemy2")
+
+[node name="BattleSlotEnemy2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1, 20, 0, 18 )
+direction = -1
+team = 1
+focus_neighbour_bottom = NodePath("../BattleSlotEnemy3")
+focus_neighbour_left = NodePath("../BattleSlotPlayer2")
+focus_neighbour_right = NodePath("../BattleSlotEnemy3")
+focus_neighbour_top = NodePath("../BattleSlotEnemy1")
+
+[node name="BattleSlotEnemy3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1, 15, 0, 28 )
+direction = -1
+team = 1
+focus_neighbour_bottom = NodePath("../BattleSlotEnemy4")
+focus_neighbour_left = NodePath("../BattleSlotPlayer3")
+focus_neighbour_top = NodePath("../BattleSlotEnemy2")
+
+[node name="BattleSlotEnemy4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1, 20, 0, 37 )
+direction = -1
+team = 1
+focus_neighbour_left = NodePath("../BattleSlotPlayer4")
+focus_neighbour_top = NodePath("../BattleSlotEnemy3")
+
+[node name="Props" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="TrainingNPC" type="KinematicBody" parent="Props"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0149609, 9.11556, -6.98516 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+direction = Vector2( 0, 1 )
+sprite_colors = {
+"body_color_1": 6,
+"body_color_2": 14,
+"eye_color": -1,
+"face_accessory_color": 13,
+"favorite_color": 16,
+"hair_accessory_color": 6,
+"hair_color": 16,
+"legs_color": 6,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "poncho1",
+"body": "cultist1",
+"hair": "candevil",
+"head": "visor1",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = 6
+human_colors/body_color_2 = 14
+human_colors/eye_color = -1
+human_colors/face_accessory_color = 13
+human_colors/favorite_color = 16
+human_colors/hair_accessory_color = 6
+human_colors/hair_color = 16
+human_colors/legs_color = 6
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Props/TrainingNPC"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Props/TrainingNPC"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Spatial" parent="Props/TrainingNPC"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.99972, 0, -1.01111, 3.99967, 3.87024, 1.02559 )
+
+[node name="HumanSprite" parent="Props/TrainingNPC/Sprite" instance=ExtResource( 29 )]
+part_names = {
+"arms": "poncho1",
+"body": "cultist1",
+"hair": "candevil",
+"head": "visor1",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 6,
+"body_color_2": 14,
+"eye_color": -1,
+"face_accessory_color": 13,
+"favorite_color": 16,
+"hair_accessory_color": 6,
+"hair_color": 16,
+"legs_color": 6,
+"shoe_color": -1,
+"skin_color": -1
+}
+
+[node name="Node" type="Node" parent="Props/TrainingNPC/Sprite"]
+
+[node name="Tween" type="Tween" parent="Props/TrainingNPC/Sprite/Node"]
+
+[node name="EmotePlayer" parent="Props/TrainingNPC" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Footsteps" parent="Props/TrainingNPC" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Props/TrainingNPC"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Props/TrainingNPC"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Props/TrainingNPC" instance=ExtResource( 30 )]
+default_state = "Jump"
+process_mode = 1
+
+[node name="coffee_stool_1" parent="Props" instance=ExtResource( 22 )]
+transform = Transform( -3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 1.78814e-07, 7.22854, -7.18281 )
+
+[node name="MicStand" parent="Props" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 7.0455, -3.58585 )
+
+[node name="hanging_lamp_1" parent="Props" instance=ExtResource( 11 )]
+transform = Transform( 2, 0.00180587, -0.00171885, -0.00180645, 2, -0.000675042, 0.00171824, 0.000676594, 2, -34.689, 27.4615, 10.8123 )
+
+[node name="hanging_lamp_2" parent="Props" instance=ExtResource( 11 )]
+transform = Transform( 2, 0.00180587, -0.00171885, -0.00180645, 2, -0.000675042, 0.00171824, 0.000676594, 2, -34.689, 24.0314, 4.00442 )
+
+[node name="hanging_lamp_5" parent="Props" instance=ExtResource( 11 )]
+transform = Transform( 2, 0.00180587, -0.00171885, -0.00180645, 2, -0.000675042, 0.00171824, 0.000676594, 2, 33.063, 27.4615, 10.8123 )
+
+[node name="hanging_lamp_6" parent="Props" instance=ExtResource( 11 )]
+transform = Transform( 2, 0.00180587, -0.00171885, -0.00180645, 2, -0.000675042, 0.00171824, 0.000676594, 2, 33.063, 24.0314, 4.00442 )
+
+[node name="SpotLight" type="SpotLight" parent="Props"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.4621, 13.7635, 15.1969 )
+light_color = Color( 0.890196, 0.886275, 0.54902, 1 )
+light_energy = 3.0
+light_indirect_energy = 5.0
+shadow_enabled = true
+spot_range = 23.9879
+spot_angle = 69.6458
+
+[node name="SpotLight2" type="SpotLight" parent="Props"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 12.5938, 13.7635, 17.2683 )
+light_color = Color( 0.890196, 0.886275, 0.54902, 1 )
+light_energy = 3.0
+light_indirect_energy = 5.0
+shadow_enabled = true
+spot_range = 24.9583
+spot_angle = 69.6458
+
+[node name="OldProjector1" parent="Props" instance=ExtResource( 13 )]
+transform = Transform( -1.81675, 0, -0.836305, 0, 2, 0, 0.836305, 0, -1.81675, 28.2632, 7.39043, 48.5816 )
+
+[node name="SpotLight4" type="SpotLight" parent="Props/OldProjector1"]
+transform = Transform( -0.498701, 0, -0.0360277, 0, 0.5, 0, 0.0360277, 0, -0.498701, -0.0411358, 2.58061, 0.851276 )
+light_color = Color( 0.890196, 0.886275, 0.54902, 1 )
+light_energy = 2.0
+light_indirect_energy = 5.0
+shadow_enabled = true
+spot_range = 76.2219
+spot_angle = 12.1369
+
+[node name="Spatial" type="Spatial" parent="Props/OldProjector1"]
+transform = Transform( 0.0231477, -0.241989, 0.970005, -0.991597, 0.117972, 0.0530943, -0.127281, -0.963084, -0.237225, -0.239989, 3.80157, 12.7196 )
+
+[node name="Sprite" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.957507, 0.288409, 0, -0.288409, 0.957507, 0, 0, 0, 1, -0.921557, -1.50814, -0.717049 )
+
+[node name="Sprite2" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.957506, 0.288409, 0, -0.288409, 0.957506, 0, 0, 0, 1, 1.39555, -1.50814, 0.41286 )
+
+[node name="Sprite3" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.957505, 0.288408, -0.00118101, -0.288409, 0.957505, 0, 0.00113083, 0.000340615, 0.999999, -1.47967, -5.02356, -1.15163 )
+
+[node name="Sprite4" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.957504, 0.288408, -0.00118101, -0.288409, 0.957505, 0, 0.00113083, 0.000340615, 0.999999, 1.04375, -0.102843, -0.446431 )
+
+[node name="Sprite5" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.957504, 0.288408, -0.00118101, -0.288408, 0.957505, 0, 0.00113083, 0.000340615, 0.999999, 0.19382, 1.70131, -1.9563 )
+
+[node name="Sprite6" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.957503, 0.288408, -0.00118101, -0.288408, 0.957505, 0, 0.00113083, 0.000340615, 0.999999, 1.4974, -4.21672, -2.49094 )
+
+[node name="Sprite7" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.957502, 0.288408, -0.00118101, -0.288408, 0.957505, 0, 0.00113083, 0.000340615, 0.999999, 1.69345, 1.00686, -0.0336761 )
+
+[node name="Sprite8" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.956253, 0.288032, 0.0510468, -0.288408, 0.957504, 1.86265e-09, -0.0488775, -0.0147223, 0.998696, -2.04318, -6.54781, 0.221325 )
+
+[node name="Sprite9" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.956252, 0.288032, 0.0510468, -0.288407, 0.957504, 1.86265e-09, -0.0488775, -0.0147223, 0.998696, 2.43574, 1.67778, 0.0428944 )
+
+[node name="Sprite10" parent="Props/OldProjector1/Spatial" instance=ExtResource( 12 )]
+transform = Transform( 0.956251, 0.288032, 0.0510468, -0.288407, 0.957504, 1.86265e-09, -0.0488775, -0.0147223, 0.998696, 1.28402, 3.15702, -1.59818 )
+
+[node name="sun_ray" type="Spatial" parent="Props/OldProjector1/Spatial"]
+transform = Transform( 0.957507, 0.288409, -3.72529e-09, -0.28841, 0.957507, -1.49012e-07, 3.72529e-09, -5.96046e-08, 1, 0.41781, 2.61212, 0.899261 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="Sprite3D" type="Sprite3D" parent="Props/OldProjector1/Spatial/sun_ray"]
+transform = Transform( 0.989109, -0.117376, -0.0888, 0.11537, 0.992944, -0.0274054, 0.0913898, 0.0168613, 0.995672, -1.34616, 7.93473, 0.922773 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+centered = false
+offset = Vector2( -308.5, -900 )
+modulate = Color( 1, 1, 1, 0.0352941 )
+opacity = 0.17
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 617, 1800 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/OldProjector1/Spatial/sun_ray"]
+method_call_mode = 1
+anims/animation_1 = SubResource( 2 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="Sprite3D4" type="Sprite3D" parent="Props"]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, -30.5063, 23.702, -1.7169 )
+modulate = Color( 0.423529, 0.431373, 0.533333, 1 )
+texture = ExtResource( 32 )
+
+[node name="Sprite3D5" type="Sprite3D" parent="Props"]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, -25.0822, 18.9299, -1.7169 )
+modulate = Color( 0.423529, 0.431373, 0.533333, 1 )
+texture = ExtResource( 23 )
+
+[node name="Sprite3D6" type="Sprite3D" parent="Props"]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, -20.2961, 13.4795, -1.7169 )
+modulate = Color( 0.423529, 0.431373, 0.533333, 1 )
+texture = ExtResource( 20 )
+
+[node name="Sprite3D7" type="Sprite3D" parent="Props"]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, 30.4441, 23.8953, -1.7169 )
+modulate = Color( 0.423529, 0.431373, 0.533333, 1 )
+texture = ExtResource( 7 )
+
+[node name="Sprite3D8" type="Sprite3D" parent="Props"]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, 25.1411, 19.0682, -1.7169 )
+modulate = Color( 0.423529, 0.431373, 0.533333, 1 )
+texture = ExtResource( 21 )
+
+[node name="Sprite3D9" type="Sprite3D" parent="Props"]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, 19.9606, 13.9196, -1.7169 )
+modulate = Color( 0.423529, 0.431373, 0.533333, 1 )
+texture = ExtResource( 3 )
+
+[node name="Tape" type="Sprite3D" parent="Props"]
+transform = Transform( 2, 0, 0, 0, 1.93288, 0.256897, 0, -0.513793, 0.966439, 10.89, 12.4209, -1.68281 )
+flip_h = true
+modulate = Color( 0.478431, 0.494118, 0.603922, 1 )
+texture = ExtResource( 33 )
+
+[node name="Tape2" type="Sprite3D" parent="Props"]
+transform = Transform( 2, 0, 0, 0, 1.93288, 0.256897, 0, -0.513793, 0.966439, -10.8752, 12.3414, -1.50043 )
+flip_h = true
+modulate = Color( 0.698039, 0.219608, 0.192157, 1 )
+texture = ExtResource( 33 )
+
+[node name="vinyl" type="Sprite3D" parent="Props"]
+transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, -0.0211592, 1.98377, -0.310114 )
+flip_h = true
+flip_v = true
+texture = ExtResource( 34 )
+
+[node name="vinyl2" type="Sprite3D" parent="Props"]
+transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, -8.55851, 1.98377, -0.310114 )
+modulate = Color( 0.996078, 0.623529, 0.972549, 1 )
+texture = ExtResource( 34 )
+
+[node name="vinyl3" type="Sprite3D" parent="Props"]
+transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, 8.69527, 1.98377, -0.310114 )
+flip_h = true
+modulate = Color( 0.592157, 0.933333, 1, 1 )
+texture = ExtResource( 34 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 14 )
+script = ExtResource( 9 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.901863, -0.0157421, 0, 0.0107361, 0.615069, 0.659681, -0.011513, -0.659581, 0.615162, 0.05, 6.4, 9.503 )
+light_color = Color( 0.0666667, 0.0980392, 0.164706, 1 )
+light_energy = 4.0
+light_bake_mode = 0
+shadow_enabled = true
+shadow_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+directional_shadow_mode = 0
+
+[node name="BattleCamera" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.38559, 13.9135, 33.4483 )
+
+[node name="Crowd" type="Node" parent="."]
+script = ExtResource( 19 )
+jump_chance = 0.5
+flight_chance = 0.0
+
+[node name="HumanNPC2" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -29.7733, 1.79004, 33.0573 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC2"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC2"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC2/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC2" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC2" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC2/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC2" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC2"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC2" instance=ExtResource( 30 )]
+
+[node name="HumanNPC3" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -32.852, 5.07982, 28.3602 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC3"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC3"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC3"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC3/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC3" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC3" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC3/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC3" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC3"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC3" instance=ExtResource( 30 )]
+
+[node name="HumanNPC29" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -29.7733, 1.28388, 38.3171 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC29"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC29"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC29"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC29/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC29" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC29" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC29/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC29" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC29"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC29"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC29" instance=ExtResource( 30 )]
+
+[node name="HumanNPC30" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -29.7733, 1.79004, 43.0142 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC30"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC30"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC30"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC30/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC30" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC30" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC30/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC30" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC30"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC30"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC30" instance=ExtResource( 30 )]
+
+[node name="HumanNPC32" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -32.852, 4.02278, 43.0142 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC32"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC32"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC32"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC32/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC32" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC32" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC32/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC32" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC32"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC32"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC32" instance=ExtResource( 30 )]
+
+[node name="HumanNPC5" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -36.5145, 7.92611, 18.1876 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC5"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC5"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC5"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC5/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC5" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC5" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC5/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC5" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC5"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC5" instance=ExtResource( 30 )]
+
+[node name="HumanNPC7" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -29.7733, 1.28388, 16.7038 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC7"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC7"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC7"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC7/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC7" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC7" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC7/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC7" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC7"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC7" instance=ExtResource( 30 )]
+
+[node name="HumanNPC8" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -29.7733, 1.79004, 21.4008 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC8"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC8"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC8"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC8/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC8" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC8" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC8/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC8" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC8"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC8" instance=ExtResource( 30 )]
+
+[node name="HumanNPC10" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -32.852, 5.45659, 21.4008 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC10"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC10"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC10"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC10/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC10" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC10" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC10/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC10" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC10"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC10" instance=ExtResource( 30 )]
+
+[node name="HumanNPC13" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -29.7733, 1.28388, 4.31016 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC13"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC13"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC13"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC13/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC13" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC13" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC13/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC13" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC13"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC13" instance=ExtResource( 30 )]
+
+[node name="HumanNPC15" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -32.852, 5.83535, 4.31016 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC15"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC15"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC15"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC15/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC15" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC15" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC15/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC15" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC15"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC15"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC15" instance=ExtResource( 30 )]
+
+[node name="HumanNPC16" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -32.852, 5.9952, 9.00721 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC16"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC16"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC16"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC16/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC16" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC16" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC16/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC16" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC16"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC16" instance=ExtResource( 30 )]
+
+[node name="HumanNPC12" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -36.5145, 8.43227, 9.9189 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC12"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC12"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC12"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC12/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC12" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC12" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC12/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC12" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC12"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC12" instance=ExtResource( 30 )]
+
+[node name="HumanNPC33" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -38.7476, 7.92611, 29.691 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC33"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC33"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC33"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC33/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC33" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC33" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC33/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC33" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC33"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC33"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC33" instance=ExtResource( 30 )]
+
+[node name="HumanNPC35" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -44.3306, 7.92611, 31.4307 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC35"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC35"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC35"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC35/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC35" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC35" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC35/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC35" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC35"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC35"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC35" instance=ExtResource( 30 )]
+
+[node name="HumanNPC36" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -44.3306, 8.43227, 36.1277 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC36"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC36"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC36"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC36/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC36" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC36" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC36/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC36" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC36"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC36"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC36" instance=ExtResource( 30 )]
+
+[node name="HumanNPC38" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -41.3972, 8.43227, 42.505 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC38"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC38"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC38"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC38/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC38" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC38" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC38/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC38" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC38"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC38"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC38" instance=ExtResource( 30 )]
+
+[node name="HumanNPC39" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -37.5741, 7.92611, 39.5932 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC39"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC39"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC39"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC39/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC39" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC39" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC39/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC39" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC39"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC39"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC39" instance=ExtResource( 30 )]
+
+[node name="HumanNPC17" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -40.7449, 7.92611, 21.0677 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC17"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC17"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC17"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC17/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC17" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC17" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC17/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC17" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC17"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC17" instance=ExtResource( 30 )]
+
+[node name="HumanNPC18" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -40.7449, 8.43227, 25.7648 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC18"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC18"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC18"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC18/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC18" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC18" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC18/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC18" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC18"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC18" instance=ExtResource( 30 )]
+
+[node name="HumanNPC20" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -40.7449, 8.43227, 12.799 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC20"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC20"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC20"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC20/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC20" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC20" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC20/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC20" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC20"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC20"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC20" instance=ExtResource( 30 )]
+
+[node name="HumanNPC21" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -45.2721, 7.92611, 18.2199 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC21"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC21"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC21"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC21/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC21" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC21" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC21/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC21" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC21"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC21"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC21" instance=ExtResource( 30 )]
+
+[node name="HumanNPC23" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -45.2721, 7.92611, 5.25411 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC23"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC23"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC23"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC23/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC23" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC23" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC23/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC23" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC23"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC23"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC23" instance=ExtResource( 30 )]
+
+[node name="HumanNPC24" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -45.2721, 8.43227, 9.95117 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC24"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC24"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC24"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC24/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC24" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC24" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC24/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC24" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC24"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC24"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC24" instance=ExtResource( 30 )]
+
+[node name="HumanNPC26" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -50.1645, 8.43227, 28.4114 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC26"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC26"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC26"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC26/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC26" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC26" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC26/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC26" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC26"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC26"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC26" instance=ExtResource( 30 )]
+
+[node name="HumanNPC27" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -50.1645, 7.92611, 10.7486 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/HumanNPC27"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC27"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/HumanNPC27"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -0.0144828, 0, -1.99972, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/HumanNPC27/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/HumanNPC27" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/HumanNPC27" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/HumanNPC27/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/HumanNPC27" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/HumanNPC27"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/HumanNPC27"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/HumanNPC27" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 37.6311, 7.92611, 5.22184 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC3" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 33.4049, 5.31551, 5.22184 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC3"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC3"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC3"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC3/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC3" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC3" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC3/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC3" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC3"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC3" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC5" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 29.7186, 1.92024, 5.22184 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC5"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC5"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC5"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC5/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC5" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC5" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC5/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC5" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC5"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC5" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC6" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 29.7186, 2.4264, 9.9189 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC6"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC6"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC6"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC6/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC6" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC6" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC6/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC6" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC6"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC6" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC7" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 37.6311, 7.92611, 17.1626 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC7"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC7"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC7"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC7/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC7" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC7" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC7/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC7" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC7"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC7" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC8" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 37.6311, 8.43227, 21.8596 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC8"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC8"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC8"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC8/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC8" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC8" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC8/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC8" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC8"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC8" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC9" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 33.4049, 5.31551, 17.1626 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC9"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC9"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC9"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC9/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC9" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC9" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC9/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC9" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC9"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC9" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC10" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 33.4049, 5.82167, 21.8596 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC10"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC10"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC10"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC10/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC10" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC10" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC10/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC10" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC10"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC10" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC13" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 37.6311, 7.92611, 27.8606 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC13"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC13"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC13"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC13/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC13" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC13" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC13/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC13" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC13"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC13" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC17" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 29.7186, 1.92024, 27.8606 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC17"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC17"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC17"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC17/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC17" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC17" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC17/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC17" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC17"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC17" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC19" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 37.6311, 7.92611, 36.9767 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC19"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC19"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC19"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC19/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC19" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC19" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC19/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC19" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC19"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC19"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC19" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC20" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 37.6311, 8.43227, 41.6738 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC20"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC20"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC20"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC20/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC20" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC20" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC20/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC20" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC20"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC20"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC20" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC25" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 42.8174, 7.92611, 7.43457 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC25"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC25"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC25"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC25/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC25" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC25" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC25/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC25" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC25"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC25"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC25" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC26" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 42.8174, 8.43227, 12.1316 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC26"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC26"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC26"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC26/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC26" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC26" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC26/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC26" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC26"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC26"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC26" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC27" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 42.8174, 7.92611, 19.3753 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC27"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC27"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC27"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC27/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC27" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC27" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC27/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC27" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC27"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC27"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC27" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC28" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 42.8174, 8.43227, 24.0724 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC28"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC28"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC28"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC28/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC28" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC28" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC28/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC28" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC28"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC28"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC28" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC31" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 42.8174, 7.92611, 39.1895 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC31"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC31"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC31"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC31/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC31" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC31" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC31/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC31" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC31"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC31"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC31" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC32" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 42.8174, 8.43227, 43.8865 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC32"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC32"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC32"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC32/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC32" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC32" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC32/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC32" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC32"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC32"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC32" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC33" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 48.0134, 7.92611, 3.82537 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC33"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC33"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC33"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC33/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC33" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC33" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC33/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC33" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC33"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC33"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC33" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC34" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 48.0134, 8.43227, 8.52242 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC34"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC34"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC34"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC34/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC34" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC34" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC34/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC34" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC34"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC34"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC34" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC36" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 48.0134, 8.43227, 20.4632 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC36"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC36"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC36"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC36/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC36" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC36" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC36/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC36" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC36"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC36"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC36" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC37" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 48.0134, 7.92611, 26.4641 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC37"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC37"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC37"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC37/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC37" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC37" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC37/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC37" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC37"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC37"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC37" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC38" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 48.0134, 8.43227, 31.1612 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC38"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC38"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC38"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC38/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC38" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC38" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC38/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC38" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC38"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC38"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC38" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC40" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 48.0134, 8.43227, 40.2773 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC40"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC40"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC40"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC40/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC40" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC40" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC40/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC40" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC40"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC40"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC40" instance=ExtResource( 30 )]
+
+[node name="RightSideNPC22" type="KinematicBody" parent="Crowd"]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 33.4049, 5.82167, 41.6738 )
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 31 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Crowd/RightSideNPC22"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC22"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Spatial" parent="Crowd/RightSideNPC22"]
+script = ExtResource( 24 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_t_frequency = 5.0
+aabb = AABB( -1.01111, 0, -1.99994, 1.02559, 3.87024, 3.99967 )
+
+[node name="HumanSprite" parent="Crowd/RightSideNPC22/Sprite" instance=ExtResource( 29 )]
+
+[node name="EmotePlayer" parent="Crowd/RightSideNPC22" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="Crowd/RightSideNPC22" instance=ExtResource( 16 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Crowd/RightSideNPC22/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 5 )
+
+[node name="Footsteps" parent="Crowd/RightSideNPC22" instance=ExtResource( 26 )]
+
+[node name="Controls" type="Node" parent="Crowd/RightSideNPC22"]
+script = ExtResource( 28 )
+
+[node name="FloorRay" type="RayCast" parent="Crowd/RightSideNPC22"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 27 )
+
+[node name="StateMachine" parent="Crowd/RightSideNPC22" instance=ExtResource( 30 )]
+
+[node name="LeftSideMonsters" type="Node" parent="."]
+script = ExtResource( 60 )
+crowd_face_direction = "right"
+scale_override = Vector3( 2, 2, 2 )
+monster_forms = [ ExtResource( 36 ), ExtResource( 18 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 35 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 37 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 42 ), ExtResource( 39 ), ExtResource( 59 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 58 ), ExtResource( 49 ), ExtResource( 55 ), ExtResource( 51 ), ExtResource( 57 ), ExtResource( 52 ), ExtResource( 17 ) ]
+
+[node name="Position3D" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0739, 2.12417, 8.63916 )
+
+[node name="Position3D2" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6872, 6.43561, 32.0239 )
+
+[node name="Position3D3" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.782, 6.43561, 16.2171 )
+
+[node name="Position3D4" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.782, 6.43561, 38.5315 )
+
+[node name="Position3D5" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8647, 8.33, 33.7368 )
+
+[node name="Position3D6" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8647, 8.33, 23.1834 )
+
+[node name="Position3D7" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8647, 8.33, 13.4173 )
+
+[node name="Position3D8" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8647, 8.33, 4.99663 )
+
+[node name="Position3D9" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8647, 8.33, 0.836069 )
+
+[node name="Position3D10" type="Position3D" parent="LeftSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1648, 8.33, 12.6761 )
+
+[node name="RightSideMonsters" type="Node" parent="."]
+script = ExtResource( 60 )
+crowd_face_direction = "left"
+scale_override = Vector3( 2, 2, 2 )
+monster_forms = [ ExtResource( 36 ), ExtResource( 18 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 35 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 37 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 42 ), ExtResource( 39 ), ExtResource( 59 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 58 ), ExtResource( 49 ), ExtResource( 55 ), ExtResource( 51 ), ExtResource( 57 ), ExtResource( 52 ), ExtResource( 17 ) ]
+
+[node name="Position3D" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3987, 6.42831, 8.38581 )
+
+[node name="Position3D2" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.001, 2.54787, 16.0487 )
+
+[node name="Position3D3" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.9287, 2.48928, 20.8199 )
+
+[node name="Position3D4" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.9287, 2.3942, 31.3022 )
+
+[node name="Position3D5" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9047, 6.30684, 31.013 )
+
+[node name="Position3D6" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.4872, 7.10893, 27.6572 )
+
+[node name="Position3D7" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.3319, 9.23134, 34.9355 )
+
+[node name="Position3D8" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3659, 8.5977, 9.27528 )
+
+[node name="Position3D9" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3896, 8.41697, 5.14357 )
+
+[node name="Position3D10" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3896, 8.94072, 29.5966 )
+
+[node name="Position3D11" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.0154, 9.75507, 28.6691 )
+
+[node name="Position3D12" type="Position3D" parent="RightSideMonsters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5109, 8.7847, 30.0182 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape6" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5171, 8.66091, 20.4101 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7337, 8.66091, 20.4101 )
+shape = SubResource( 6 )
+
+[connection signal="screen_entered" from="Props/TrainingNPC/VisibilityNotifier" to="Props/TrainingNPC" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Props/TrainingNPC/VisibilityNotifier" to="Props/TrainingNPC" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC2/VisibilityNotifier" to="Crowd/HumanNPC2" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC2/VisibilityNotifier" to="Crowd/HumanNPC2" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC3/VisibilityNotifier" to="Crowd/HumanNPC3" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC3/VisibilityNotifier" to="Crowd/HumanNPC3" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC29/VisibilityNotifier" to="Crowd/HumanNPC29" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC29/VisibilityNotifier" to="Crowd/HumanNPC29" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC30/VisibilityNotifier" to="Crowd/HumanNPC30" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC30/VisibilityNotifier" to="Crowd/HumanNPC30" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC32/VisibilityNotifier" to="Crowd/HumanNPC32" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC32/VisibilityNotifier" to="Crowd/HumanNPC32" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC5/VisibilityNotifier" to="Crowd/HumanNPC5" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC5/VisibilityNotifier" to="Crowd/HumanNPC5" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC7/VisibilityNotifier" to="Crowd/HumanNPC7" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC7/VisibilityNotifier" to="Crowd/HumanNPC7" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC8/VisibilityNotifier" to="Crowd/HumanNPC8" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC8/VisibilityNotifier" to="Crowd/HumanNPC8" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC10/VisibilityNotifier" to="Crowd/HumanNPC10" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC10/VisibilityNotifier" to="Crowd/HumanNPC10" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC13/VisibilityNotifier" to="Crowd/HumanNPC13" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC13/VisibilityNotifier" to="Crowd/HumanNPC13" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC15/VisibilityNotifier" to="Crowd/HumanNPC15" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC15/VisibilityNotifier" to="Crowd/HumanNPC15" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC16/VisibilityNotifier" to="Crowd/HumanNPC16" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC16/VisibilityNotifier" to="Crowd/HumanNPC16" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC12/VisibilityNotifier" to="Crowd/HumanNPC12" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC12/VisibilityNotifier" to="Crowd/HumanNPC12" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC33/VisibilityNotifier" to="Crowd/HumanNPC33" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC33/VisibilityNotifier" to="Crowd/HumanNPC33" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC35/VisibilityNotifier" to="Crowd/HumanNPC35" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC35/VisibilityNotifier" to="Crowd/HumanNPC35" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC36/VisibilityNotifier" to="Crowd/HumanNPC36" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC36/VisibilityNotifier" to="Crowd/HumanNPC36" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC38/VisibilityNotifier" to="Crowd/HumanNPC38" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC38/VisibilityNotifier" to="Crowd/HumanNPC38" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC39/VisibilityNotifier" to="Crowd/HumanNPC39" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC39/VisibilityNotifier" to="Crowd/HumanNPC39" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC17/VisibilityNotifier" to="Crowd/HumanNPC17" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC17/VisibilityNotifier" to="Crowd/HumanNPC17" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC18/VisibilityNotifier" to="Crowd/HumanNPC18" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC18/VisibilityNotifier" to="Crowd/HumanNPC18" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC20/VisibilityNotifier" to="Crowd/HumanNPC20" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC20/VisibilityNotifier" to="Crowd/HumanNPC20" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC21/VisibilityNotifier" to="Crowd/HumanNPC21" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC21/VisibilityNotifier" to="Crowd/HumanNPC21" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC23/VisibilityNotifier" to="Crowd/HumanNPC23" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC23/VisibilityNotifier" to="Crowd/HumanNPC23" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC24/VisibilityNotifier" to="Crowd/HumanNPC24" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC24/VisibilityNotifier" to="Crowd/HumanNPC24" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC26/VisibilityNotifier" to="Crowd/HumanNPC26" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC26/VisibilityNotifier" to="Crowd/HumanNPC26" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/HumanNPC27/VisibilityNotifier" to="Crowd/HumanNPC27" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/HumanNPC27/VisibilityNotifier" to="Crowd/HumanNPC27" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC/VisibilityNotifier" to="Crowd/RightSideNPC" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC/VisibilityNotifier" to="Crowd/RightSideNPC" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC3/VisibilityNotifier" to="Crowd/RightSideNPC3" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC3/VisibilityNotifier" to="Crowd/RightSideNPC3" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC5/VisibilityNotifier" to="Crowd/RightSideNPC5" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC5/VisibilityNotifier" to="Crowd/RightSideNPC5" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC6/VisibilityNotifier" to="Crowd/RightSideNPC6" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC6/VisibilityNotifier" to="Crowd/RightSideNPC6" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC7/VisibilityNotifier" to="Crowd/RightSideNPC7" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC7/VisibilityNotifier" to="Crowd/RightSideNPC7" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC8/VisibilityNotifier" to="Crowd/RightSideNPC8" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC8/VisibilityNotifier" to="Crowd/RightSideNPC8" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC9/VisibilityNotifier" to="Crowd/RightSideNPC9" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC9/VisibilityNotifier" to="Crowd/RightSideNPC9" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC10/VisibilityNotifier" to="Crowd/RightSideNPC10" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC10/VisibilityNotifier" to="Crowd/RightSideNPC10" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC13/VisibilityNotifier" to="Crowd/RightSideNPC13" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC13/VisibilityNotifier" to="Crowd/RightSideNPC13" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC17/VisibilityNotifier" to="Crowd/RightSideNPC17" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC17/VisibilityNotifier" to="Crowd/RightSideNPC17" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC19/VisibilityNotifier" to="Crowd/RightSideNPC19" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC19/VisibilityNotifier" to="Crowd/RightSideNPC19" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC20/VisibilityNotifier" to="Crowd/RightSideNPC20" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC20/VisibilityNotifier" to="Crowd/RightSideNPC20" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC25/VisibilityNotifier" to="Crowd/RightSideNPC25" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC25/VisibilityNotifier" to="Crowd/RightSideNPC25" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC26/VisibilityNotifier" to="Crowd/RightSideNPC26" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC26/VisibilityNotifier" to="Crowd/RightSideNPC26" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC27/VisibilityNotifier" to="Crowd/RightSideNPC27" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC27/VisibilityNotifier" to="Crowd/RightSideNPC27" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC28/VisibilityNotifier" to="Crowd/RightSideNPC28" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC28/VisibilityNotifier" to="Crowd/RightSideNPC28" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC31/VisibilityNotifier" to="Crowd/RightSideNPC31" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC31/VisibilityNotifier" to="Crowd/RightSideNPC31" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC32/VisibilityNotifier" to="Crowd/RightSideNPC32" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC32/VisibilityNotifier" to="Crowd/RightSideNPC32" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC33/VisibilityNotifier" to="Crowd/RightSideNPC33" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC33/VisibilityNotifier" to="Crowd/RightSideNPC33" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC34/VisibilityNotifier" to="Crowd/RightSideNPC34" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC34/VisibilityNotifier" to="Crowd/RightSideNPC34" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC36/VisibilityNotifier" to="Crowd/RightSideNPC36" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC36/VisibilityNotifier" to="Crowd/RightSideNPC36" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC37/VisibilityNotifier" to="Crowd/RightSideNPC37" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC37/VisibilityNotifier" to="Crowd/RightSideNPC37" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC38/VisibilityNotifier" to="Crowd/RightSideNPC38" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC38/VisibilityNotifier" to="Crowd/RightSideNPC38" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC40/VisibilityNotifier" to="Crowd/RightSideNPC40" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC40/VisibilityNotifier" to="Crowd/RightSideNPC40" method="set_paused" binds= [ true ]]
+[connection signal="screen_entered" from="Crowd/RightSideNPC22/VisibilityNotifier" to="Crowd/RightSideNPC22" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="Crowd/RightSideNPC22/VisibilityNotifier" to="Crowd/RightSideNPC22" method="set_paused" binds= [ true ]]

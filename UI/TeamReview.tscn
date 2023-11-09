@@ -1,0 +1,570 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://menus/party/TapeButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=2]
+[ext_resource path="res://menus/menu_bg_fade.shader" type="Shader" id=3]
+[ext_resource path="res://addons/misc_utils/OverscanMarginContainer.gd" type="Script" id=4]
+[ext_resource path="res://nodes/menus/FocusIndicator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://menus/background.png" type="Texture" id=6]
+[ext_resource path="res://ui/fonts/regular/regular_70.tres" type="DynamicFont" id=7]
+[ext_resource path="res://nodes/menus/APBar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://nodes/menus/ScrollIndicator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://menus/party/MonsterSpriteContainer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://menus/party/GradeStars.tscn" type="PackedScene" id=11]
+[ext_resource path="res://battle/ui/MoveInfoPanel.tscn" type="PackedScene" id=12]
+[ext_resource path="res://menus/party_tape/TypeLabels.tscn" type="PackedScene" id=13]
+[ext_resource path="res://menus/party_character/StatHex.tscn" type="PackedScene" id=14]
+[ext_resource path="res://mods/RangerArena/Scripts/TeamReview.gd" type="Script" id=15]
+[ext_resource path="res://ui/fonts/regular/regular_30.tres" type="DynamicFont" id=16]
+[ext_resource path="res://nodes/menus/InputMappedButton.gd" type="Script" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="ShaderMaterial" id=27]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/progress = 1.0
+shader_param/max_alpha = 1.0
+shader_param/base_color = Color( 0.1686, 0.1098, 0.2235, 1 )
+shader_param/hi_color = Color( 0.6706, 0.4588, 0.9098, 0.0625 )
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+length = 0.1
+
+[sub_resource type="Animation" id=3]
+length = 0.3
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.952941, 0.929412, 0.847059, 1 )
+border_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+shadow_color = Color( 0, 0, 0, 0.890196 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+resource_local_to_scene = true
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+shadow_offset = Vector2( -20, 40 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+resource_local_to_scene = true
+content_margin_right = 20.0
+bg_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -20, 40 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 128.0
+bg_color = Color( 0.952941, 0.929412, 0.847059, 1 )
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=10]
+resource_local_to_scene = true
+content_margin_right = 60.0
+bg_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+corner_radius_bottom_right = 80
+corner_detail = 1
+expand_margin_left = 20.0
+expand_margin_top = 1.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 60.0
+bg_color = Color( 0.952941, 0.929412, 0.847059, 1 )
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_offset = Vector2( -20, 40 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_right = 15
+border_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.952941, 0.929412, 0.847059, 1 )
+border_width_left = 5
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.952941, 0.929412, 0.847059, 1 )
+border_width_left = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.952941, 0.929412, 0.847059, 1 )
+border_width_left = 5
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+corner_radius_top_right = 80
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 15
+border_width_right = 15
+border_width_bottom = 10
+border_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+shadow_color = Color( 0, 0, 0, 0.890196 )
+shadow_size = 10
+shadow_offset = Vector2( 0, 20 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+content_margin_left = 84.0
+content_margin_right = 84.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 14
+border_width_top = 10
+border_width_right = 14
+border_color = Color( 0.168627, 0.113725, 0.223529, 1 )
+corner_radius_top_left = 66
+corner_radius_top_right = 66
+corner_detail = 1
+expand_margin_left = 40.0
+expand_margin_right = 70.0
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[node name="TeamReview" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+custom_styles/panel = SubResource( 26 )
+script = ExtResource( 15 )
+regular_heading_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+bootleg_heading_color = Color( 0.898039, 0.0980392, 0.0980392, 1 )
+
+[node name="Blur" type="TextureRect" parent="."]
+material = SubResource( 27 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/RESET = SubResource( 23 )
+anims/default = SubResource( 2 )
+anims/show = SubResource( 3 )
+
+[node name="Scroller" type="PanelContainer" parent="."]
+margin_left = 268.0
+margin_top = 46.0
+margin_right = 1652.0
+margin_bottom = 1034.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="OverscanMarginContainer" type="MarginContainer" parent="Scroller"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 1378.0
+margin_bottom = 984.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+script = ExtResource( 4 )
+vertical_margin = false
+horizontal_margin = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer"]
+margin_right = 1372.0
+margin_bottom = 980.0
+size_flags_vertical = 0
+
+[node name="MonsterPreview" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer"]
+margin_right = 1060.0
+margin_bottom = 980.0
+rect_min_size = Vector2( 800, 980 )
+custom_constants/separation = 0
+
+[node name="Monster" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview"]
+margin_right = 460.0
+margin_bottom = 980.0
+rect_min_size = Vector2( 380, 495 )
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="GridContainer" type="GridContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster"]
+margin_right = 460.0
+margin_bottom = 980.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+
+[node name="HeadingPanel1" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer"]
+margin_right = 460.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 7 )
+
+[node name="TapeNameLabel" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/HeadingPanel1"]
+margin_left = 20.0
+margin_right = 440.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 400, 0 )
+custom_fonts/font = ExtResource( 7 )
+text = "Tape Name"
+
+[node name="HeadingPanel2" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer"]
+show_behind_parent = true
+margin_top = 90.0
+margin_right = 460.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 8 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/HeadingPanel2"]
+margin_right = 440.0
+
+[node name="PanelContainer3" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer"]
+margin_top = 90.0
+margin_right = 460.0
+margin_bottom = 980.0
+rect_min_size = Vector2( 460, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 9 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3"]
+margin_left = 20.0
+margin_right = 440.0
+margin_bottom = 762.0
+custom_constants/separation = 10
+
+[node name="HeadingPanel3" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer"]
+margin_right = 420.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 10 )
+
+[node name="TypeLabels" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer/HeadingPanel3" instance=ExtResource( 13 )]
+margin_right = 285.0
+margin_bottom = 60.0
+
+[node name="APBar" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer" instance=ExtResource( 8 )]
+margin_top = 70.0
+margin_bottom = 86.0
+
+[node name="GradeStars" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer" instance=ExtResource( 11 )]
+margin_top = 96.0
+margin_right = 420.0
+margin_bottom = 126.0
+
+[node name="Control" type="Control" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer"]
+margin_top = 136.0
+margin_right = 420.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MonsterSpriteContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer/Control" instance=ExtResource( 10 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 0.0
+margin_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 600, 288 )
+min_camera_size = 10.0
+fit_mode = 2
+
+[node name="PanelContainer4" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer"]
+show_behind_parent = true
+margin_top = 454.0
+margin_right = 420.0
+margin_bottom = 762.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 11 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer/PanelContainer4"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 400.0
+margin_bottom = 248.0
+custom_constants/margin_top = 40
+
+[node name="StatHex" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/Monster/GridContainer/PanelContainer3/VBoxContainer/PanelContainer4/MarginContainer" instance=ExtResource( 14 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 40.0
+margin_right = 380.0
+margin_bottom = 228.0
+size_flags_horizontal = 3
+size_flags_vertical = 11
+stat_limits = [ 200, 200, 200, 200, 200, 200 ]
+
+[node name="StickersPanel" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview"]
+margin_left = 460.0
+margin_right = 1060.0
+margin_bottom = 980.0
+rect_min_size = Vector2( 600, 495 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 12 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel"]
+margin_right = 585.0
+margin_bottom = 980.0
+custom_constants/separation = 0
+
+[node name="HeadingPanel1" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer"]
+margin_right = 585.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 7 )
+
+[node name="TapeNameLabel" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer/HeadingPanel1"]
+margin_left = 20.0
+margin_right = 565.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 400, 0 )
+custom_fonts/font = ExtResource( 7 )
+text = "Stickers"
+align = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer"]
+margin_top = 90.0
+margin_right = 585.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 0, 20 )
+custom_styles/panel = SubResource( 25 )
+
+[node name="PanelContainer2" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer"]
+margin_top = 110.0
+margin_right = 585.0
+margin_bottom = 665.0
+custom_styles/panel = SubResource( 24 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer/PanelContainer2"]
+margin_left = 5.0
+margin_right = 585.0
+margin_bottom = 550.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer/PanelContainer2/HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer/PanelContainer2/HBoxContainer"]
+margin_left = 24.0
+margin_right = 24.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 0, 550 )
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="Stickers" type="GridContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer/PanelContainer2/HBoxContainer/ScrollContainer"]
+margin_bottom = 550.0
+rect_min_size = Vector2( 0, 550 )
+rect_clip_content = true
+size_flags_vertical = 3
+
+[node name="ScrollIndicator" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer/PanelContainer2" instance=ExtResource( 9 )]
+margin_left = 5.0
+margin_right = 585.0
+margin_bottom = 550.0
+scroll_container = NodePath("../HBoxContainer/ScrollContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer"]
+margin_top = 665.0
+margin_right = 585.0
+margin_bottom = 980.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 20 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer/PanelContainer"]
+margin_left = 5.0
+margin_right = 585.0
+margin_bottom = 315.0
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+
+[node name="MoveInfoPanel" parent="Scroller/OverscanMarginContainer/HBoxContainer/MonsterPreview/StickersPanel/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 580.0
+margin_bottom = 315.0
+rect_min_size = Vector2( 390, 200 )
+size_flags_vertical = 9
+show_ap_bar = true
+description_font_override = ExtResource( 16 )
+
+[node name="VSeparator" type="VSeparator" parent="Scroller/OverscanMarginContainer/HBoxContainer"]
+margin_left = 1064.0
+margin_right = 1068.0
+margin_bottom = 980.0
+
+[node name="TapeUI" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer"]
+margin_left = 1072.0
+margin_right = 1372.0
+margin_bottom = 980.0
+
+[node name="SelectedTeam" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/TapeUI"]
+margin_right = 300.0
+margin_bottom = 980.0
+rect_min_size = Vector2( 300, 600 )
+
+[node name="HeadingPanel" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/TapeUI/SelectedTeam"]
+margin_right = 300.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 0, 75 )
+custom_styles/panel = SubResource( 19 )
+
+[node name="Label" type="Label" parent="Scroller/OverscanMarginContainer/HBoxContainer/TapeUI/SelectedTeam/HeadingPanel"]
+margin_top = 7.0
+margin_right = 300.0
+margin_bottom = 67.0
+text = "Team"
+align = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/TapeUI/SelectedTeam"]
+margin_top = 79.0
+margin_right = 300.0
+margin_bottom = 980.0
+rect_min_size = Vector2( 0, 500 )
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/TapeUI/SelectedTeam/PanelContainer"]
+margin_left = 15.0
+margin_right = 285.0
+margin_bottom = 891.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/HBoxContainer/TapeUI/SelectedTeam/PanelContainer/ScrollContainer"]
+margin_right = 270.0
+margin_bottom = 891.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollIndicator" parent="Scroller/OverscanMarginContainer/HBoxContainer/TapeUI/SelectedTeam/PanelContainer" instance=ExtResource( 9 )]
+margin_left = 15.0
+margin_right = 285.0
+margin_bottom = 891.0
+scroll_container = NodePath("../ScrollContainer")
+
+[node name="FocusIndicator" parent="." instance=ExtResource( 5 )]
+visible = false
+size_flags_horizontal = 0
+size_flags_vertical = 0
+container_path = NodePath("../Scroller/OverscanMarginContainer/HBoxContainer")
+hide_when_focus_lost = false
+
+[node name="SwapTape" parent="FocusIndicator" instance=ExtResource( 1 )]
+visible = false
+show_behind_parent = true
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -246.4
+margin_right = 393.6
+margin_bottom = 410.0
+rect_scale = Vector2( 0.385, 0.385 )
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 0
+mouse_filter = 2
+button_mask = 0
+expand = true
+
+[node name="BackButtonPanel" type="PanelContainer" parent="."]
+margin_left = 1156.0
+margin_top = 1018.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource( 2 )
+custom_styles/panel = SubResource( 21 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackButtonPanel"]
+margin_left = 84.0
+margin_top = 10.0
+margin_right = 680.0
+margin_bottom = 62.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_constants/separation = 64
+alignment = 1
+
+[node name="Swap" type="Button" parent="BackButtonPanel/HBoxContainer"]
+margin_right = 139.0
+margin_bottom = 52.0
+size_flags_horizontal = 10
+size_flags_vertical = 6
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 22 )
+text = "Swap Tape"
+expand_icon = true
+script = ExtResource( 20 )
+action = "ui_accept"
+
+[node name="InfoPanel" type="Button" parent="BackButtonPanel/HBoxContainer"]
+margin_left = 203.0
+margin_right = 354.0
+margin_bottom = 52.0
+size_flags_horizontal = 10
+size_flags_vertical = 6
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 22 )
+text = "Sticker Info"
+expand_icon = true
+script = ExtResource( 20 )
+action = "ui_action_2"
+
+[node name="Confirm" type="Button" parent="BackButtonPanel/HBoxContainer"]
+margin_left = 418.0
+margin_right = 596.0
+margin_bottom = 52.0
+size_flags_horizontal = 10
+size_flags_vertical = 6
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 22 )
+text = "Confirm Team"
+expand_icon = true
+script = ExtResource( 20 )
+action = "ui_action_1"
+
+[connection signal="resized" from="BackButtonPanel/HBoxContainer" to="BackButtonPanel" method="_on_HBoxContainer_resized"]
+[connection signal="pressed" from="BackButtonPanel/HBoxContainer/Swap" to="." method="_on_tape_pressed" binds= [ false ]]
+[connection signal="pressed" from="BackButtonPanel/HBoxContainer/InfoPanel" to="." method="_on_InfoPanel_pressed"]
+[connection signal="pressed" from="BackButtonPanel/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]

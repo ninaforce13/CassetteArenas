@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://mods/RangerArena/Scripts/RangerData.gd" type="Script" id=1]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/sunny/missmimic.tres" type="Resource" id=2]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/sunny/kingrave.tres" type="Resource" id=3]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/sunny/queenyx.tres" type="Resource" id=4]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/sunny/cryoshear.tres" type="Resource" id=5]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/sunny/rockertrice.tres" type="Resource" id=6]
+[ext_resource path="res://mods/RangerArena/Ranger Data/Tapes/sunny/mascotorn.tres" type="Resource" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "SUNNY_NAME"
+human_colors = {
+"body_color_1": 6,
+"body_color_2": 2,
+"eye_color": 12,
+"face_accessory_color": 4,
+"favorite_color": 9,
+"hair_accessory_color": 16,
+"hair_color": 12,
+"legs_color": 2,
+"shoe_color": 12,
+"skin_color": 14
+}
+human_part_names = {
+"arms": "sunny",
+"body": "sunny",
+"hair": "long1",
+"head": "grumpy",
+"legs": "shorts1",
+"wings": "generic"
+}
+pronouns = 2
+introdialog = "Ready for the new me?"
+defeatdialog = "Haha.. That was fun"
+biotext = "Once part of the Landkeepers. Sunny is now on a journey of self-discovery."
+recruiter = "Bytten Studio"
+recruiter_id = "0000-0000"
+tape0 = ExtResource( 6 )
+tape1 = ExtResource( 4 )
+tape2 = ExtResource( 2 )
+tape3 = ExtResource( 7 )
+tape4 = ExtResource( 3 )
+tape5 = ExtResource( 5 )
+stats = null
+version = 1.1
+default_stickers = true
