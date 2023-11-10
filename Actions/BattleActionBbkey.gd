@@ -158,21 +158,21 @@ func fully_evolve_tape(tape:MonsterTape)->MonsterForm:
 	return tape.form
 	
 func music_mod_override()->bool:
-	if not SaveState.other_data.has("GramophoneModProperties"):
+	if not SaveState.other_data.has("GramophonePlayerData"):
 		return false
-	if not SaveState.other_data.GramophoneModProperties.has("battle_track"):
-		return false
-	if SaveState.other_data.GramophoneModProperties["battle_track"] == "":	
+	if not SaveState.other_data.GramophonePlayerData.has("BattleData"):
 		return false
 	return true
 
 func load_music():
-	if SaveState.other_data.GramophoneModProperties["altload"]:
-		return load_external_ogg(SaveState.other_data.GramophoneModProperties["battle_track"])
+	if SaveState.other_data.GramophonePlayerData.BattleData.altload or SaveState.other_data.GramophonePlayerData.BattleData.path == "mute":
+		return load_external_ogg(SaveState.other_data.GramophonePlayerData.BattleData.path)
 	else:
-		return load(SaveState.other_data.GramophoneModProperties["battle_track"])
+		return load(SaveState.other_data.GramophonePlayerData.BattleData.path)
 
 func load_external_ogg(path):
+	if path == "mute":
+		return AudioStreamMP3.new()	
 	var ogg_file = File.new()
 	var err = ogg_file.open(path, File.READ)
 	if err != OK:

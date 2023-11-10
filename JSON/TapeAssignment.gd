@@ -93,7 +93,7 @@ func assign_loaded_tapes(result:Dictionary):
 
 func build_tape_list():
 	var monster_forms = Datatables.load("res://data/monster_forms/").table.values()
-	for form in monster_forms:
+	for form in monster_forms:		
 		var tape = MonsterTape.new()
 		tape.set_form(form)
 		tape.assign_initial_stickers(false)
@@ -101,7 +101,7 @@ func build_tape_list():
 		tape.fix_slot_overflow(true)
 		var index = tapes_by_name.bsearch_custom(tape, self, "_cmp_tape_by_name", false)
 		tapes_by_name.insert(index, tape)
-				
+
 		index = tapes_by_index.bsearch_custom(tape, self, "_cmp_tape_by_index", false)
 		tapes_by_index.insert(index, tape)
 		
@@ -238,8 +238,6 @@ func update_monster_preview(tape):
 			var button = stickers_grid.get_child(stickers_grid.get_child_count() - 1)
 			var focus = button.has_focus()
 			stickers_grid.remove_child(button)
-#			tape.peel_sticker(tape.stickers[sticker_count])		
-#			tape.fix_slot_overflow()	
 			button.queue_free()
 			if focus:
 				if stickers_grid.get_child_count() > 0:
@@ -254,9 +252,9 @@ func update_monster_preview(tape):
 			button.connect("focus_entered", self, "_on_MoveButton_focus_entered", [button])
 			stickers_grid.add_child(button)
 			button.connect("pressed", self, "_on_MoveButton_pressed", [button])
-			tape.insert_sticker(tape.stickers.size(), null)
-			tape.fix_slot_overflow()
-#
+#			tape.insert_sticker(tape.stickers.size(), null)
+#			tape.fix_slot_overflow()
+##
 		for i in range(sticker_slots):
 			var sticker = tape.stickers[i] if i < tape.stickers.size() else null
 			var button = stickers_grid.get_child(i)

@@ -1026,7 +1026,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
 
 [node name="HumanSprite" type="Spatial" parent="SuperFan Alexa/Sprite"]
 script = ExtResource( 12 )
@@ -1142,7 +1141,6 @@ named_fighter_pool = [ ExtResource( 75 ), ExtResource( 71 ), ExtResource( 84 ), 
 captain_pool = [ ExtResource( 91 ), ExtResource( 92 ), ExtResource( 40 ), ExtResource( 56 ), ExtResource( 61 ), ExtResource( 67 ), ExtResource( 104 ), ExtResource( 106 ), ExtResource( 107 ), ExtResource( 109 ), ExtResource( 111 ), ExtResource( 114 ), ExtResource( 118 ) ]
 captain_scenes = [ ExtResource( 64 ), ExtResource( 94 ), ExtResource( 31 ), ExtResource( 46 ), ExtResource( 60 ), ExtResource( 66 ), ExtResource( 103 ), ExtResource( 105 ), ExtResource( 108 ), ExtResource( 110 ), ExtResource( 112 ), ExtResource( 113 ), ExtResource( 117 ) ]
 wilma = ExtResource( 116 )
-demo_mode = true
 demo_fighter1 = ExtResource( 74 )
 demo_captain = 2
 CutsceneNode = NodePath("../Cutscene/ChangeTrackerTargetAction2")
@@ -1648,7 +1646,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC33/Sprite" instance=ExtResource( 21 )]
 
@@ -1742,7 +1739,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC43/Sprite" instance=ExtResource( 21 )]
 
@@ -1836,7 +1832,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC44/Sprite" instance=ExtResource( 21 )]
 
@@ -1930,7 +1925,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC45/Sprite" instance=ExtResource( 21 )]
 
@@ -2024,7 +2018,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC46/Sprite" instance=ExtResource( 21 )]
 
@@ -2118,7 +2111,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC47/Sprite" instance=ExtResource( 21 )]
 
@@ -2212,7 +2204,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC48/Sprite" instance=ExtResource( 21 )]
 
@@ -2306,7 +2297,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC34/Sprite" instance=ExtResource( 21 )]
 
@@ -2400,7 +2390,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC35/Sprite" instance=ExtResource( 21 )]
 
@@ -2494,7 +2483,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC36/Sprite" instance=ExtResource( 21 )]
 
@@ -2588,7 +2576,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC37/Sprite" instance=ExtResource( 21 )]
 
@@ -2682,7 +2669,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC38/Sprite" instance=ExtResource( 21 )]
 
@@ -2776,7 +2762,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC39/Sprite" instance=ExtResource( 21 )]
 
@@ -2870,7 +2855,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC40/Sprite" instance=ExtResource( 21 )]
 
@@ -2964,7 +2948,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC41/Sprite" instance=ExtResource( 21 )]
 
@@ -3058,7 +3041,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC42/Sprite" instance=ExtResource( 21 )]
 
@@ -3152,7 +3134,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC3/Sprite" instance=ExtResource( 21 )]
 
@@ -3246,7 +3227,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC4/Sprite" instance=ExtResource( 21 )]
 
@@ -3340,7 +3320,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC5/Sprite" instance=ExtResource( 21 )]
 
@@ -3434,7 +3413,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC6/Sprite" instance=ExtResource( 21 )]
 
@@ -3528,7 +3506,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC8/Sprite" instance=ExtResource( 21 )]
 
@@ -3622,7 +3599,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC9/Sprite" instance=ExtResource( 21 )]
 
@@ -3716,7 +3692,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC10/Sprite" instance=ExtResource( 21 )]
 
@@ -3810,7 +3785,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC11/Sprite" instance=ExtResource( 21 )]
 
@@ -3903,7 +3877,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC12/Sprite" instance=ExtResource( 21 )]
 
@@ -3997,7 +3970,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC18/Sprite" instance=ExtResource( 21 )]
 
@@ -4091,7 +4063,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC19/Sprite" instance=ExtResource( 21 )]
 
@@ -4184,7 +4155,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC20/Sprite" instance=ExtResource( 21 )]
 
@@ -4277,7 +4247,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC21/Sprite" instance=ExtResource( 21 )]
 
@@ -4370,7 +4339,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC22/Sprite" instance=ExtResource( 21 )]
 
@@ -4463,7 +4431,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC23/Sprite" instance=ExtResource( 21 )]
 
@@ -4557,7 +4524,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -3.01992e-07, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC24/Sprite" instance=ExtResource( 21 )]
 
@@ -4651,7 +4617,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -3.01992e-07, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC26/Sprite" instance=ExtResource( 21 )]
 
@@ -4745,7 +4710,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC27/Sprite" instance=ExtResource( 21 )]
 
@@ -4839,7 +4803,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC28/Sprite" instance=ExtResource( 21 )]
 
@@ -4933,7 +4896,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC29/Sprite" instance=ExtResource( 21 )]
 
@@ -5027,7 +4989,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC30/Sprite" instance=ExtResource( 21 )]
 
@@ -5121,7 +5082,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC31/Sprite" instance=ExtResource( 21 )]
 
@@ -5215,7 +5175,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC32/Sprite" instance=ExtResource( 21 )]
 
@@ -5308,7 +5267,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC13/Sprite" instance=ExtResource( 21 )]
 
@@ -5402,7 +5360,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC14/Sprite" instance=ExtResource( 21 )]
 
@@ -5496,7 +5453,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC15/Sprite" instance=ExtResource( 21 )]
 
@@ -5590,7 +5546,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -8.74228e-08, 0, -2, 2, 3.4641, 4 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC16/Sprite" instance=ExtResource( 21 )]
 
@@ -5683,7 +5638,6 @@ idle = "idle"
 direction = "down"
 billboard_depth_hack = true
 wave_t_frequency = 5.0
-aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
 
 [node name="HumanSprite" parent="Crowd/HumanNPC17/Sprite" instance=ExtResource( 21 )]
 
