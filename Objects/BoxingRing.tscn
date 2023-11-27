@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://world/objects/static_physics/ranger_props/boxing_ring.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://world/objects/static_physics/ranger_props/boxing_ring_post.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://world/objects/static_physics/ranger_props/boxing_ring_rope.json" type="PackedScene" id=3]
+[ext_resource path="res://mods/RangerArena/Scripts/InjectObjectToScene.gd" type="Script" id=4]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.25, 1, 0.25 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 3.32558, 1, 0.001 )
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 4, 0.5, 4 )
+
+[node name="BoxingRing" type="Spatial"]
+script = ExtResource( 4 )
+object_to_inject = "res://mods/RangerArena/NPC/DoorMan.tscn"
+scene_to_add_to = "TownHall"
+
+[node name="boxing_ring" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.5, 2, 3.5 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, 3.5 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.5, 2, -3.5 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.5, 2, -3.5 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.487, -3.5 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="boxing_ring_post" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.5, 1, 3.5 )
+mesh = ExtResource( 2 )
+
+[node name="boxing_ring_post2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 3.5 )
+mesh = ExtResource( 2 )
+
+[node name="boxing_ring_post3" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.5, 1, -3.5 )
+mesh = ExtResource( 2 )
+
+[node name="boxing_ring_post4" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.5, 1, -3.5 )
+mesh = ExtResource( 2 )
+
+[node name="Sprite" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3.5 )

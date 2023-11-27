@@ -1,6 +1,6 @@
 extends "res://menus/BaseMenu.gd"
 
-enum value_range {MINIMUM = 0, AVERAGE = 1, MAX = 2}
+enum value_range {MINIMUM = 0, AVERAGE = 1, MAX = 2, RANDOM = 3}
 
 signal show_tape_actions
 signal show_sticker_actions
@@ -527,9 +527,9 @@ func apply_effect(index:int, rarity):
 	var battle_move = current_tape.stickers[index].battle_move
 	var attribute_profile = battle_move.attribute_profile
 	var readable_options:Array = ["None"]
-	var modded_attributes:Array = attributes[attribute_profile]
+	var modded_attributes:Array = attributes[attribute_profile] if attribute_profile != null else []
 	var applicable_effects:Array = [null]
-	var value_setting = yield(show_options("ARENAS_EFFECT_STRENGTH_PROMPT",["ARENAS_EFFECT_STRENGTH_LOW","ARENAS_EFFECT_STRENGTH_MED","ARENAS_EFFECT_STRENGTH_HIGH"]),"completed")			
+	var value_setting = yield(show_options("ARENAS_EFFECT_STRENGTH_PROMPT",["ARENAS_EFFECT_STRENGTH_LOW","ARENAS_EFFECT_STRENGTH_MED","ARENAS_EFFECT_STRENGTH_HIGH", "ARENAS_EFFECT_STRENGTH_RANDOM"]),"completed")			
 	for mod_attribute in modded_attributes:			
 		if mod_attribute.rarity == rarity and mod_attribute.is_applicable_to(battle_move):
 			if mod_attribute.has_method("generate"):
@@ -540,7 +540,7 @@ func apply_effect(index:int, rarity):
 					if value_setting == value_range.AVERAGE:
 						mod_attribute.chance = int(mod_attribute.chance_max / 2)
 					if value_setting == value_range.MAX:
-						mod_attribute.chance = mod_attribute.chance_max
+						mod_attribute.chance = mod_attribute.chance_max					
 				if mod_attribute.get("stat_value") != null:					
 					if value_setting == value_range.MINIMUM:					
 						mod_attribute.stat_value = mod_attribute.stat_value_min
